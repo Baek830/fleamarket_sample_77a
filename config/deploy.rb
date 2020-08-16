@@ -1,5 +1,5 @@
 lock "~> 3.14.1"
-set :application, "fleamarket_samole_77a"
+set :application, "fleamarket_sample_77a"
 set :repo_url, "git@github.com:Baek830/fleamarket_sample_77a.git"
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
