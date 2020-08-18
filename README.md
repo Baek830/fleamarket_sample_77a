@@ -1,24 +1,38 @@
-# README
+## Delivery_addresses
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|------|----|-------|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|phonetic_first_name|string|null: false|
+|phonetic_last_name|string|null: false|
+|postal_code|integer|null: false|
+|prefectures|string|null: false|
+|city|srting|null: false|
+|adress1|string|null: false|
+|adress2|string||
+|phone_number|integer||
+|user_id|references|null: false, foreign_key: true|
 
-Things you may want to cover:
+### Association
+- belongs_to :user
 
-* Ruby version
 
-* System dependencies
+## Users
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|phonetic_first_name|string|null: false|
+|phonetic_last_name|string|null: false|
+|birthday|date|null: false|
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- has_many :credit_card, dependent: :destroy
+- has_many :delivery_address, dependent: :destroy
+- has_many :product, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :favorites, dependent: :destroy
