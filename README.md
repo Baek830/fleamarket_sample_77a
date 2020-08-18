@@ -12,7 +12,7 @@ application up and running.
 
 * Configuration
 
-* Database creation
+# Database creation
 
 ## Products table
 |Column|Type|Options|
