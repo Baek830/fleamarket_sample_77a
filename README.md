@@ -13,11 +13,6 @@ Things you may want to cover:
 
 * Database creation
 
-# Products
-
-
-
-
 * Database initialization
 
 * How to run the test suite
