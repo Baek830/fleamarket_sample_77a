@@ -22,7 +22,6 @@ application up and running.
 |description|text|null: false|
 |price|integer|null: false|
 |brand|string||
-
 |condition_id|references|null: false, foreign_key: true|
 |shipping_cost_id|references|null: false, foreign_key: true|
 |shipment_date_id|references|null: false, foreign_key: true|
@@ -31,7 +30,7 @@ application up and running.
 |buyer_id|references||
 |seller_id|references|null: false|
 
-Association
+### Association
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
 - belongs_to :condition
