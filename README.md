@@ -3,15 +3,10 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
-<<<<<<< HEAD
 * version
   - Ruby 2.5.1
   - Rails 5.2.4.3
-=======
-* Ruby version 
->>>>>>> 9bf188c98c72f58606c522af31aebbbd8d9fa8f6
 
 * System dependencies
 
@@ -19,7 +14,6 @@ Things you may want to cover:
 
 * Database creation
 
-<<<<<<< HEAD
 ## Products table
 |Column|Type|Options|
 |------|----|-------|
@@ -47,11 +41,6 @@ belongs_to :shipping_region
 belongs_to :category
 belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
 belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
-=======
-# Products
-
-
->>>>>>> 9bf188c98c72f58606c522af31aebbbd8d9fa8f6
 
 
 * Database initialization
