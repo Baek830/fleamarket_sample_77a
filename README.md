@@ -1,5 +1,4 @@
 ## Delivery_addresses
-
 |Column|Type|Options|
 |------|----|-------|
 |first_name|string|null: false|
@@ -31,8 +30,8 @@
 |birthday|date|null: false|
 
 ### Association
-- has_many :credit_card, dependent: :destroy
-- has_many :delivery_address, dependent: :destroy
-- has_many :product, dependent: :destroy
+- has_many :credit_cards, dependent: :destroy
+- has_many :delivery_addresses, dependent: :destroy
+- has_many :products, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
