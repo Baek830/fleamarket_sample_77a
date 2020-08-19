@@ -24,7 +24,7 @@ Things you may want to cover:
 * ...
 
 # DB design
-## comments テーブル
+## Comments テーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
