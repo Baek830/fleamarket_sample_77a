@@ -6,7 +6,7 @@
 |phonetic_first_name|string|null: false|
 |phonetic_last_name|string|null: false|
 |postal_code|integer|null: false|
-|prefectures|string|null: false|
+|prefecture|string|null: false|
 |city|srting|null: false|
 |adress1|string|null: false|
 |adress2|string||
