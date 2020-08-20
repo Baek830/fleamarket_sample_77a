@@ -44,7 +44,7 @@ Things you may want to cover:
 - has_many :products
 
 
-## Shippment_datesテーブル
+## Shipment_datesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -58,7 +58,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|prefecture|string|null: false|
+|prefectures|string|null: false|
 
 ### Association
 - has_many :products
