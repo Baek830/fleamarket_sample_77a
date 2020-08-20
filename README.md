@@ -90,6 +90,46 @@ application up and running.
 - has_many :favorites, dependent: :destroy
 
 
+## Conditionsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|status|string|null: false|
+
+### Association
+- has_many :products
+
+
+## Shipping_costsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|payer|string|null: false|
+
+### Association
+- has_many :products
+
+
+## Shipment_datesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|days|string|null: false|
+
+### Association
+- has_many :products
+
+
+## Shipping_regionsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|prefecture|string|null: false|
+
+### Association
+- has_many :products
+
+
 ## Comments テーブル
 |Column|Type|Options|
 |------|----|-------|
