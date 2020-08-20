@@ -15,7 +15,7 @@ application up and running.
 
 # Database creation
 
-## Users
+## Users table
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
@@ -59,7 +59,7 @@ application up and running.
 - belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
 - belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
 
-## Delivery_addresses
+## Delivery_addresses table
 |Column|Type|Options|
 |------|----|-------|
 |first_name|string|null: false|
@@ -83,7 +83,7 @@ application up and running.
 ### Association
 - has_many :products
 
-## Conditionsテーブル
+## Conditions table
 |Column|Type|Options|
 |------|----|-------|
 |status|string|null: false|
@@ -91,28 +91,28 @@ application up and running.
 - has_many :products
 
 
-## Shipping_costsテーブル
+## Shipping_costs table
 |Column|Type|Options|
 |------|----|-------|
 |payer|string|null: false|
 ### Association
 - has_many :products
 
-## Shipment_datesテーブル
+## Shipment_dates table
 |Column|Type|Options|
 |------|----|-------|
 |days|string|null: false|
 ### Association
 - has_many :products
 
-## Shipping_regionsテーブル
+## Shipping_regions table
 |Column|Type|Options|
 |------|----|-------|
 |prefecture|string|null: false|
 ### Association
 - has_many :products
 
-## Comments テーブル
+## Comments table
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
@@ -122,7 +122,7 @@ application up and running.
 - belongs_to: user
 - belongs_to: product
 
-## Favorites テーブル
+## Favorites table
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
@@ -131,7 +131,7 @@ application up and running.
 - belongs_to: user
 - belongs_to: product
 
-## Credit_cards テーブル
+## Credit_cards table
 |Column|Type|Options|
 |------|----|-------|
 |customer_id|string|null: false|
