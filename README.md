@@ -15,6 +15,24 @@ application up and running.
 
 # Database creation
 
+## Users
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|phonetic_first_name|string|null: false|
+|phonetic_last_name|string|null: false|
+|birthday|date|null: false|
+### Association
+- has_many :credit_cards, dependent: :destroy
+- has_many :delivery_addresses, dependent: :destroy
+- has_many :products, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :favorites, dependent: :destroy
+
 ## Products table
 |Column|Type|Options|
 |------|----|-------|
@@ -30,7 +48,6 @@ application up and running.
 |category_id|references|null: false, foreign_key: true|
 |buyer_id|references||
 |seller_id|references|null: false|
-
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
@@ -41,15 +58,6 @@ application up and running.
 - belongs_to :category
 - belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
 - belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
-
-## Categories table
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :products
-
 
 ## Delivery_addresses
 |Column|Type|Options|
@@ -65,70 +73,44 @@ application up and running.
 |adress2|string||
 |phone_number|integer||
 |user_id|references|null: false, foreign_key: true|
-
 ### Association
 - belongs_to :user
 
-
-## Users
+## Categories table
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
-|email|string|null: false, unique: true|
-|password|string|null: false|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|phonetic_first_name|string|null: false|
-|phonetic_last_name|string|null: false|
-|birthday|date|null: false|
-
+|name|string|null: false|
 ### Association
-- has_many :credit_cards, dependent: :destroy
-- has_many :delivery_addresses, dependent: :destroy
-- has_many :products, dependent: :destroy
-- has_many :comments, dependent: :destroy
-- has_many :favorites, dependent: :destroy
-
+- has_many :products
 
 ## Conditionsテーブル
-
 |Column|Type|Options|
 |------|----|-------|
 |status|string|null: false|
-
 ### Association
 - has_many :products
 
 
 ## Shipping_costsテーブル
-
 |Column|Type|Options|
 |------|----|-------|
 |payer|string|null: false|
-
 ### Association
 - has_many :products
 
-
 ## Shipment_datesテーブル
-
 |Column|Type|Options|
 |------|----|-------|
 |days|string|null: false|
-
 ### Association
 - has_many :products
 
-
 ## Shipping_regionsテーブル
-
 |Column|Type|Options|
 |------|----|-------|
 |prefecture|string|null: false|
-
 ### Association
 - has_many :products
-
 
 ## Comments テーブル
 |Column|Type|Options|
