@@ -129,3 +129,31 @@ application up and running.
 ### Association
 - has_many :products
 
+
+## Comments テーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to: user
+- belongs_to: product
+
+## Favorites テーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to: user
+- belongs_to: product
+
+## Credit_cards テーブル
+|Column|Type|Options|
+|------|----|-------|
+|customer_id|string|null: false|
+|card_id|string|null: false|
+|user_id|references|null: false|
+### Association
+- belongs_to: user
