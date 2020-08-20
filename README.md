@@ -58,7 +58,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|prefectures|string|null: false|
+|prefecture|string|null: false|
 
 ### Association
 - has_many :products
