@@ -88,14 +88,32 @@ application up and running.
 - has_many :products, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
-=======
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Comments テーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to: user
+- belongs_to: product
 
-* Deployment instructions
+## Favorites テーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to: user
+- belongs_to: product
 
-* ...
-
+## Credit_cards テーブル
+|Column|Type|Options|
+|------|----|-------|
+|customer_id|string|null: false|
+|card_id|string|null: false|
+|user_id|references|null: false|
+### Association
+- belongs_to: user
