@@ -41,7 +41,7 @@ application up and running.
 |description|text|null: false|
 |price|integer|null: false|
 |brand|string||
-|condition_id|references|null: false, foreign_key: true|
+|condition|string|null: false|
 |shipping_cost_id|references|null: false, foreign_key: true|
 |shipment_date_id|references|null: false, foreign_key: true|
 |shipping_region_id|references|null: false, foreign_key: true|
@@ -51,7 +51,6 @@ application up and running.
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
-- belongs_to :condition
 - belongs_to :shipping_cost
 - belongs_to :shipment_date
 - belongs_to :shipping_region
@@ -80,13 +79,6 @@ application up and running.
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-### Association
-- has_many :products
-
-## Conditions table
-|Column|Type|Options|
-|------|----|-------|
-|status|string|null: false|
 ### Association
 - has_many :products
 
@@ -136,6 +128,8 @@ application up and running.
 |------|----|-------|
 |customer_id|string|null: false|
 |card_id|string|null: false|
+|token|string|null: false|
+|price|integer|null: false|
 |user_id|references|null: false|
 ### Association
 - belongs_to: user
