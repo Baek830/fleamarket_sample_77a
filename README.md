@@ -36,27 +36,32 @@ application up and running.
 ## Products table
 |Column|Type|Options|
 |------|----|-------|
-|image|text|null: false|
 |name|string|null: false|
 |description|text|null: false|
 |price|integer|null: false|
 |brand|string||
-|condition|string|null: false|
+|condition_id(active_hash)|integer|null: false|
 |shipping_cost_id|references|null: false, foreign_key: true|
-|shipment_date_id|references|null: false, foreign_key: true|
-|shipping_region_id|references|null: false, foreign_key: true|
+|shipment_date_id(active_hash)|integer|null: false|
+|prefecture_id(active_hash)|integer|null: false|
 |category_id|references|null: false, foreign_key: true|
 |buyer_id|references||
 |seller_id|references|null: false|
 ### Association
+- has_many :images, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
-- belongs_to :shipping_cost
-- belongs_to :shipment_date
-- belongs_to :shipping_region
 - belongs_to :category
 - belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
 - belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+
+## Images table
+|Column|Type|Options|
+|------|----|-------|
+|image|text|null: false|
+|product_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to :products
 
 ## Delivery_addresses table
 |Column|Type|Options|
@@ -66,11 +71,11 @@ application up and running.
 |phonetic_first_name|string|null: false|
 |phonetic_last_name|string|null: false|
 |postal_code|integer|null: false|
-|prefecture|string|null: false|
+|prefecture_id(active_hash)|integer|null: false|
 |city|srting|null: false|
-|adress1|string|null: false|
-|adress2|string||
-|phone_number|integer||
+|ward|string|null: false|
+|building|string||
+|phone_number|string||
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -79,28 +84,6 @@ application up and running.
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-### Association
-- has_many :products
-
-
-## Shipping_costs table
-|Column|Type|Options|
-|------|----|-------|
-|payer|string|null: false|
-### Association
-- has_many :products
-
-## Shipment_dates table
-|Column|Type|Options|
-|------|----|-------|
-|days|string|null: false|
-### Association
-- has_many :products
-
-## Shipping_regions table
-|Column|Type|Options|
-|------|----|-------|
-|prefecture|string|null: false|
 ### Association
 - has_many :products
 
@@ -129,7 +112,6 @@ application up and running.
 |customer_id|string|null: false|
 |card_id|string|null: false|
 |token|string|null: false|
-|price|integer|null: false|
-|user_id|references|null: false|
+|user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to: user
