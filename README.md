@@ -41,7 +41,7 @@ application up and running.
 |price|integer|null: false|
 |brand|string||
 |condition_id(active_hash)|integer|null: false|
-|shipping_cost_id|references|null: false, foreign_key: true|
+|shipping_cost_id(active_hash)|integer|null: false|
 |shipment_date_id(active_hash)|integer|null: false|
 |prefecture_id(active_hash)|integer|null: false|
 |category_id|references|null: false, foreign_key: true|
