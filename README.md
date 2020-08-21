@@ -111,7 +111,6 @@ application up and running.
 |------|----|-------|
 |customer_id|string|null: false|
 |card_id|string|null: false|
-|token|string|null: false|
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to: user
