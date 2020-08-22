@@ -1,5 +1,5 @@
 body {
-  background-color: #f0f0f0;
+  background-color: white;
   font-size: 14px;
   color: #333;
   margin: 0 auto;
@@ -13,14 +13,14 @@ h1,h2,h3,h4,h5,h6,p {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: yellow;
+  background-color: white;
 }
 
 .account__page__header {
   height: 60px;
   width: 100%;
   font-size: x-large;
-  background-color: blue;
+  background-color: white;
   margin: 0 auto;
   text-align: center;
   position: fixed;
@@ -38,7 +38,7 @@ h1,h2,h3,h4,h5,h6,p {
 .account__page__main__content {
   width: 520px;
   margin: 0 auto;
-  background-color: red;
+  background-color: white;
 }
 
 .field__title {
@@ -110,6 +110,6 @@ h1,h2,h3,h4,h5,h6,p {
   padding-left: 10px;
   width: 150px;
   margin-right: 10px;
-  background-color: violet;
+  background-color: white;
   border: solid black 1px;
 }
