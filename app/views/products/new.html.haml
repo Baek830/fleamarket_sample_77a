@@ -2,8 +2,8 @@
   .sales__page__header FURIMA
   .sales__page__main
     .sales__page__main__photos
-      .field__label
-        .field__label-name
+      .field
+        .field__label
           .name 出品画像
           .required 必須
         .field__label-desc 最大10枚までアップロードできます
@@ -42,17 +42,17 @@
       .field__label
         .name 配送料の負担
         .required 必須
-      .field_selector
+      .field__selector
 
       .field__label
         .name 発送元の地域
         .required 必須
-      .field_selector
+      .field__selector
 
       .field__label
         .name 発送までの日数
         .required 必須
-      .field_selector
+      .field__selector
 
     .sales__page__main__price
       .text 価格 (¥300〜9,999,999)
@@ -61,17 +61,16 @@
           .name 販売価格
           .required 必須
         .price
-          .price_tag ¥
-          .price__input
-
+          .price-tag ¥
+          .field__input
       .sales-comission
         .name 販売手数料 (10%)
         .auto-calc -
       .sales-profit
         .name 販売利益
         .auto-calc -
-
-    .action 次へ進む
-    .pending 下書きに保存
-    .back もどる
+    .button
+      .next 次へ進む
+      .pending 下書きに保存
+      .back もどる
     .agreement 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
