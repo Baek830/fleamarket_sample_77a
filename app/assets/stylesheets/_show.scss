@@ -1,6 +1,29 @@
+.product-container{
+  background: lightgray;
+}
+
 .product-infos{
-  background: red;
-  
+  background: white;
+  width: 620px;
+  margin: 40px auto;
+  padding: 24px 40px 40px;
+  &__name{
+    background: white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__main-content{
+    margin: 16px 0 0;
+    background: yellowgreen;
+    display: flex;
+    justify-content: space-between;
+    &__image{
+      background: red;
+    }
+    &__details-table{
+    }
+  }
 }
 
 .product-details-comments{

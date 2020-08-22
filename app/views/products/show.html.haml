@@ -1,12 +1,41 @@
-.product-infos
-  .product-infos__name
-    %h1 鬼滅の刃
-  .product-infos__main-content
-    .product-infos__main-content__image
-    .product-infos__main-content__details-table
-.product-details-comments
-  .product-details-comments__warning-message
-    %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-.product-social-media
-  .product-social-media__box
-    %p Facebookアイコン挿入予定
+.product-container
+  .product-infos
+    .product-infos__name
+      %h1 鬼滅の刃
+    .product-infos__main-content
+      .product-infos__main-content__image
+        = image_tag 'kimetsu.jpg', height: '300', width: '200', class: 'sample-image'
+      %table.product-infos__main-content__details-table{:border => 1}
+        %tbody
+          %tr
+            %th 出品者
+            %td
+              %a(href="https://dic.pixiv.net/a/%E7%AB%88%E9%96%80%E7%82%AD%E6%B2%BB%E9%83%8E") 竈門炭治郎
+          %tr
+            %th カテゴリー
+            %td 漫画/コミック
+          %tr
+            %th ブランド
+            %td ジャンプコミックス
+          %tr
+            %th 商品の状態
+            %td 新品/未使用 鬼の血が少しついているので注意
+          %tr
+            %th 配送料の負担
+            %td 送料込み（出品者負担）
+          %tr
+            %th 配送の方法
+            %td らくらくカマド便
+          %tr
+            %th 配送元地域
+            %td 東京都(江戸)
+          %tr
+            %th 発送日の目安
+            %td 2〜3日で発送
+            
+  .product-details-comments
+    .product-details-comments__warning-message
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+  .product-social-media
+    .product-social-media__box
+      = icon('fab', 'facebook-square')
