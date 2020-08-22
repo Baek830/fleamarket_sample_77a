@@ -1,38 +1,45 @@
 .product-container
   .product-infos
     .product-infos__name
-      %h1 鬼滅の刃
+      %p 鬼滅の刃 1〜21巻 全巻セット
     .product-infos__main-content
       .product-infos__main-content__image
-        = image_tag 'kimetsu.jpg', height: '300', width: '200', class: 'sample-image'
+        = image_tag 'kimetsu.jpg', height: '300', width: '220', class: 'sample-image'
       %table.product-infos__main-content__details-table{:border => 1}
         %tbody
           %tr
-            %th 出品者
-            %td
+            %th.table-holder 出品者
+            %td.table-data
               %a(href="https://dic.pixiv.net/a/%E7%AB%88%E9%96%80%E7%82%AD%E6%B2%BB%E9%83%8E") 竈門炭治郎
           %tr
-            %th カテゴリー
-            %td 漫画/コミック
+            %th.table-holder カテゴリー
+            %td.table-data 漫画/コミック
           %tr
-            %th ブランド
-            %td ジャンプコミックス
+            %th.table-holder ブランド
+            %td.table-data ジャンプコミックス
           %tr
-            %th 商品の状態
-            %td 新品/未使用 鬼の血が少しついているので注意
+            %th.table-holder 商品の状態
+            %td.table-data 新品/未使用
           %tr
-            %th 配送料の負担
-            %td 送料込み（出品者負担）
+            %th.table-holder 配送料の負担
+            %td.table-data 送料込み（出品者負担）
           %tr
-            %th 配送の方法
-            %td らくらくカマド便
+            %th.table-holder 配送の方法
+            %td.table-data らくらくカマド便
           %tr
-            %th 配送元地域
-            %td 東京都(江戸)
+            %th.table-holder 配送元地域
+            %td.table-data 東京都(江戸)
           %tr
-            %th 発送日の目安
-            %td 2〜3日で発送
-            
+            %th.table-holder 発送日の目安
+            %td.table-data 2〜3日で発送
+    .product-infos__price
+      %span.product-infos__price__box
+        ¥10,000
+      %span.product-infos__price__tax
+        (税込)
+      %span.product-infos__price__shipping-cost
+        送料込み
+
   .product-details-comments
     .product-details-comments__warning-message
       %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。

@@ -15,14 +15,44 @@
   }
   &__main-content{
     margin: 16px 0 0;
-    background: yellowgreen;
     display: flex;
     justify-content: space-between;
     &__image{
-      background: red;
+      background: lightgray;
+      width: 300px;
+      height: 350px;
+      margin-right: 20px;
+      .sample-image{
+        display: block;
+        margin: 0 auto;
+      }
     }
     &__details-table{
+      width: 300px;
+      height: 420px;
+      .table-holder{
+        padding-left: 5px;
+        background: lightgray;
+      }
+      .table-data{
+        padding-left: 5px;
+      }
     }
+  }
+  &__price{
+    margin-top: 24px;
+    text-align: center;
+    &__box{
+      font-size: 45px;
+      font-weight: bold;
+    }
+    &__tax{
+      font-size: 10px;
+    }
+    &__shipping-cost{
+      font-size: 16px;
+    }
+
   }
 }
 
