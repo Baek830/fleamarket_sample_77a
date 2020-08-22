@@ -1,1 +1,7 @@
 %h1 Fleamaapp
+
+- @product.each do |product|
+  .example-btn
+    = link_to "/products/#{product.id}", method: :get do
+      = product.name
+%end
