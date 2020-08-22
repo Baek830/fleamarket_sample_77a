@@ -61,7 +61,7 @@ application up and running.
 |image|text|null: false|
 |product_id|references|null: false, foreign_key: true|
 ### Association
-- belongs_to :products
+- belongs_to :product
 
 ## Delivery_addresses table
 |Column|Type|Options|
