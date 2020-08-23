@@ -52,7 +52,23 @@
     &__shipping-cost{
       font-size: 16px;
     }
-
+  }
+  .product-buy-btn{
+    display: block;
+    text-align: center;
+    background: red;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    line-height: 60px;
+    margin-top: 20px;
+  }
+  &__description{
+    padding: 32px 0 0;
+    font-size: 18px;
+    &__inner{
+      white-space: pre-wrap;
+    }
   }
 }
 
