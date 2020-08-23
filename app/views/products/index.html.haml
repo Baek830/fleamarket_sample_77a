@@ -1,4 +1,4 @@
-.header
+%header
   =render partial: 'layouts/header'
 
 %main
@@ -14,17 +14,53 @@
           %a{:href => "https://play.google.com/store/apps?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"}
             %img{:alt => "Google Play で手に入れよう", :src => "https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png", :width => "155"}/
 
-
-
-
   %section.topIntroduction
+    %h2.topIntroduction__subtitle FURIMAが選ばれる3つの理由
+    .topIntroduction__contents
+      %ul.topIntroduction__contents__lists
+        %li.topIntroduction__contents__lists__firstBox
+          .topIntroduction__contents__lists__firstBox__pict
+            %span.topIntroduction__contents__lists__firstBox__pict__number 1
+            = image_tag 'pict-reason-01.jpg', class: 'topIntroduction__contents__lists__firstBox__pict__img'
+          %h3.topIntroduction__contents__lists__firstBox__text
+            %span 3分
+            ですぐに出品
+          %p.topIntroduction__contents__lists__firstBox__description スマホで入力するだけで簡単に出品できる！
+        %li.topIntroduction__contents__lists__secondBox
+          .topIntroduction__contents__lists__secondBox__pict
+            %span.topIntroduction__contents__lists__secondBox__pict__number 2
+            = image_tag 'pict-reason-02.jpg', class: 'topIntroduction__contents__lists__secondBox__pict__img'
+          %h3.topIntroduction__contents__lists__secondBox__text
+            %span シンプル
+            で使いやすい
+          %p.topIntroduction__contents__lists__secondBox__description めんどくさい入力は必要なく、検索も購入もスムーズ！
+        %li.topIntroduction__contents__lists__thirdBox
+          .topIntroduction__contents__lists__thirdBox__pict
+            %span.topIntroduction__contents__lists__thirdBox__pict__number 3
+            = image_tag 'pict-reason-03.jpg', class: 'topIntroduction__contents__lists__thirdBox__pict__img'
+          %h3.topIntroduction__contents__lists__thirdBox__text
+            手数料
+            %span 業界最安値
+          %p.topIntroduction__contents__lists__thirdBox__description 最大3%でお得に出品＆購入！
+
   %section.topMiddleDl
+    .topMiddleDl__contents
+      %h2.topMiddleDl__contents__subtitle 会員数世界一位
+      %p.topMiddleDl__contents__text FURIMAは、フリマアプリで最も人気！<br>出品・購入回数も業界最多です！<br>ほしかったあの商品に出会えるかもしれません。
+      .appLink
+        .appLink__appleStore__btn
+          %a{:href => "https://apps.apple.com/jp/app/apple-store/id375380948?mt=8", :style => "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"}
+
+        .appLink__googlePley__btn
+          %a{:href => "https://play.google.com/store/apps?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"}
+            %img{:alt => "Google Play で手に入れよう", :src => "https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png", :width => "155"}/
+
+
+
+
   %section.topKeyFeatures
   %section.pickupContainer
   %section.pickupContainer
   
-.footer
+%footer
   =render partial: 'layouts/footer'
-
-
-    
