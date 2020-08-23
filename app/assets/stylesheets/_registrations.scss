@@ -73,13 +73,17 @@
     }
     .naming {
       display: flex;
-      .short {
-        height: 40px;
+      height: 40px;
+      .shortbox {
         padding-left: 10px;
         width: 150px;
         margin-right: 10px;
         background-color: white;
         border: solid black 1px;
+      }
+      .birth {
+        line-height: 40px;
+        font-size:  15px;
       }
     }
   }
