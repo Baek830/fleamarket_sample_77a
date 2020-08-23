@@ -81,14 +81,15 @@
           %i.fas.fa-lock
           %span あんしん・あんぜんへの取り組み
           
-  .product-details-comments
-    .product-details-comments__warning-message
-      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-    
-    .product-details-comments__message-form
-      
-    .product-details-comments__submit-button
-
+  .product-detail-comment
+    .comment-container
+      .comment-container__content
+        %form.comment-container__content__comment-form 
+          -# 後ほどアクション定義予定
+          %p.warning-message 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %textarea.textarea-default
+          -# 後ほどtextareaにvalueやnameなどを定義予定
+          %button.comment-submit-btn コメントする
   .product-social-media
     .product-social-media__box
       = icon('fab', 'facebook-square')

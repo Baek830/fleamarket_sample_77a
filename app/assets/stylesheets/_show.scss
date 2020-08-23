@@ -60,7 +60,7 @@
   .product-buy-btn{
     display: block;
     text-align: center;
-    background: red;
+    background: #3CCACE;
     text-decoration: none;
     color: white;
     font-size: 24px;
@@ -110,8 +110,44 @@
 
 }
 
-.product-details-comments{
-  background: blue;
+.product-detail-comment{
+  margin: 8px auto;
+  width: 700px;
+  background: white;
+  .comment-container{
+    &__content{
+      padding: 24px;
+      &__comment-form{
+        .warning-message{
+          background: #fff6de;
+          padding: 8px;
+          font-size: 14px;
+        }
+        .textarea-default{
+          display: block;
+          width: 631px;
+          max-width: 100%;
+          min-height: 104px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          background: #fff;
+          font-size: 16px;
+          line-height: 1.5;
+          margin-top: 8px;
+        }
+        .comment-submit-btn{
+          display: block;
+          width: 100%;
+          line-height: 50px;
+          border-radius: 5px;
+          margin-top: 8px;
+          text-align: center;
+          background: #3CCACE;
+          color: #ffffff;
+        }
+      }
+    }
+  }
 }
 
 .product-social-media{
