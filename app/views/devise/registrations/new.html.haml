@@ -1,5 +1,5 @@
 .account__info
-  .account__info__header FURIMA
+  = render 'products/form-header'
   .account__info__main
     .account__info__main__content
       .field__title 会員情報
@@ -20,6 +20,9 @@
         .subject 再度パスワード
         .required 必須
       .field__input
+      .field__display
+        .check__box
+        .field__guide パスワードを表示する
       %br/
       .field__subtitle 本人確認
       .field__guide 安心・安全にご利用いただくために、お客様の本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
@@ -72,8 +75,4 @@
       %br/
       .field__guide ※ 「新規登録」のボタンを押すことにより、 利用規約 に同意したものとみなします。
       .action 新規登録
-    .footer
-      %ul
-        %li プライバシーポリシー
-        %li 利用規約
-        %li 特定商取引に関する表記
+    = render 'layouts/form-footer'
