@@ -81,6 +81,12 @@
     &__price {
       padding: 40px 40px 0;
       border-bottom: none;
+      .text {
+        margin-bottom: 24px;
+        color: rgb(136, 136, 136);
+        font-size: 14px;
+        font-weight: 600;
+      }
       .sales-price {
         display: flex;
         justify-content: space-between;
