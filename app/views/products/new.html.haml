@@ -8,67 +8,67 @@
           .required 必須
         .field__label-desc 最大10枚までアップロードできます
       .file__field
-  .sales__page__main__product
-    .field__label
-      .name 商品名
-      .required 必須
-    .field__input
-    .field__label
-      .name 商品の説明
-      .required 必須
-    .field__text-box
-
-  .sales__page__main__details
-    .text 商品の詳細
-    .field__label
-      .name カテゴリー
-      .required 必須
-    .field__selector
-
-    .field__label
-      .name ブランド
-      .better 任意
-    .field__input
-
-    .field__label
-      .name 商品の状態
-      .required 必須
-    .field__selector
-
-  .sales__page__main__shipment
-    .text 配送について
-    .field__label
-      .name 配送料の負担
-      .required 必須
-    .field__selector
-
-    .field__label
-      .name 発送元の地域
-      .required 必須
-    .field__selector
-
-    .field__label
-      .name 発送までの日数
-      .required 必須
-    .field__selector
-
-  .sales__page__main__price
-    .text 価格 (¥300〜9,999,999)
-    .sales-price
+    .sales__page__main__product
       .field__label
-        .name 販売価格
+        .name 商品名
         .required 必須
-      .price
-        .price-tag ¥
-        .field__input
-    .sales-comission
-      .name 販売手数料 (10%)
-      .auto-calc -
-    .sales-profit
-      .name 販売利益
-      .auto-calc -
-  .button
-    .next 次へ進む
-    .pending 下書きに保存
-    .back もどる
-  .agreement 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+      .field__input
+      .field__label
+        .name 商品の説明
+        .required 必須
+      .field__text-box
+
+    .sales__page__main__details
+      .text 商品の詳細
+      .field__label
+        .name カテゴリー
+        .required 必須
+      .field__selector
+
+      .field__label
+        .name ブランド
+        .better 任意
+      .field__input
+
+      .field__label
+        .name 商品の状態
+        .required 必須
+      .field__selector
+
+    .sales__page__main__shipment
+      .text 配送について
+      .field__label
+        .name 配送料の負担
+        .required 必須
+      .field__selector
+
+      .field__label
+        .name 発送元の地域
+        .required 必須
+      .field__selector
+
+      .field__label
+        .name 発送までの日数
+        .required 必須
+      .field__selector
+
+    .sales__page__main__price
+      .text 価格 (¥300〜9,999,999)
+      .sales-price
+        .field__label
+          .name 販売価格
+          .required 必須
+        .price
+          .price-tag ¥
+          .field__input
+      .sales-comission
+        .name 販売手数料 (10%)
+        .auto-calc -
+      .sales-profit
+        .name 販売利益
+        .auto-calc -
+    .sales__page__main__button
+      = link_to "次へ進む", "#", class: "next" 
+      = link_to "下書きに保存", "#", class: "pending" 
+      = link_to "もどる", root_path, class: "back" 
+      .agreement 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
