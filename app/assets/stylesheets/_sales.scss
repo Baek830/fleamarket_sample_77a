@@ -132,8 +132,8 @@
   }
 }
 
-.required {
-  background-color: green;
+@mixin required($background-color: green) {
+  background-color: $background-color;
   color: white;
   font-size: 10px;
   height: 20px;
@@ -144,14 +144,9 @@
   border-radius: 4px;
 }
 
+.require {
+  @include required();
+}
 .better {
-  background-color: #bfbfbf;
-  color: white;
-  font-size: 10px;
-  height: 20px;
-  width: 30px;
-  text-align: center;
-  line-height: 20px;
-  margin-left: 10px;
-  border-radius: 4px;
+  @include required(#bfbfbf);
 }
