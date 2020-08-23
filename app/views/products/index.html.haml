@@ -1,1 +1,30 @@
-%h1 Fleamaapp
+.header
+  =render partial: 'layouts/header'
+
+%main
+  %section.mainVisual
+    .mainVisual__contents
+      %h2.mainVisual__contents__subtitle 人生を変えるフリマアプリ
+      %p.mainVisual__contents__text FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
+      .appLink
+        .appLink__appleStore__btn
+          %a{:href => "https://apps.apple.com/jp/app/apple-store/id375380948?mt=8", :style => "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"}
+
+        .appLink__googlePley__btn
+          %a{:href => "https://play.google.com/store/apps?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"}
+            %img{:alt => "Google Play で手に入れよう", :src => "https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png", :width => "155"}/
+
+
+
+
+  %section.topIntroduction
+  %section.topMiddleDl
+  %section.topKeyFeatures
+  %section.pickupContainer
+  %section.pickupContainer
+  
+.footer
+  =render partial: 'layouts/footer'
+
+
+    
