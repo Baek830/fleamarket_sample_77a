@@ -1,5 +1,5 @@
 .account__info
-  .account__info__header FURIMA
+  = render 'layouts/form-header'
   .account__info__main
     .account__info__main__content
       .field__title ログイン
@@ -12,3 +12,4 @@
         .required 必須
       .field__input
       .action ログイン
+    = render 'layouts/form-footer'
