@@ -1,5 +1,6 @@
 .product-container{
   background:#f5f5f5;
+  overflow: auto;
 }
 
 .product-infos{
@@ -40,6 +41,10 @@
       .table-data{
         padding-left: 5px;
         border: 1px solid #f5f5f5;
+        .seller_name{
+          text-decoration: none;
+          color: #3CCACE;
+        }
       }
     }
   }
