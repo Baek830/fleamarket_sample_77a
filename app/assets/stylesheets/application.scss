@@ -2,6 +2,14 @@
 @import "registrations";
 @import "products";
 
+@mixin logo() {
+  width: 120px;
+  height: 33px;
+  @media screen and (min-width:768px) {
+    width: 185px;
+    height: 49px;
+  }
+}
 
 .form__header {
   height: 56px;
@@ -14,12 +22,7 @@
     height: 120px;
   }
   img {
-    width: 120px;
-    height: 33px;
-    @media screen and (min-width:768px) {
-      width: 185px;
-      height: 49px;
-    }
+    @include logo();
   }
 }
 
@@ -41,12 +44,7 @@
   .logoWhite {
     text-align: center;
     img {
-      width: 120px;
-      height: 33px;
-      @media screen and (min-width:768px) {
-        width: 185px;
-        height: 49px;
-      }
+      @include logo();
     }
   }
 }
