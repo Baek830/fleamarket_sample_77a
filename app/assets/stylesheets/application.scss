@@ -46,5 +46,10 @@
     img {
       @include logo();
     }
+    p {
+      font-size: 14px;
+      padding-left: 15px;
+      color: white;
+    }
   }
 }
