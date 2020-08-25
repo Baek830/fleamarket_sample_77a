@@ -74,3 +74,4 @@ end
 
 gem 'haml-rails'
 gem 'devise'
+gem 'active_hash', '~> 2.3.0'

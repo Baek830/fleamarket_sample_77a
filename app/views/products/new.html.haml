@@ -1,56 +1,56 @@
 = render 'layouts/form-header'
 .sales__page
-  .sales__page__main
+  = form_with(model: @product, local: true, class: "sales__page__main") do |form|
     .sales__page__main__photos
       .field
         .field__label
           .name 出品画像
           .required 必須
         .field__label-desc 最大10枚までアップロードできます
-      .file__field
+      = image_tag "upload_img.png", class: "file__field"
     .sales__page__main__product
       .field__label
         .name 商品名
         .required 必須
-      .field__input
+      = form.text_field :name, {class: "field__input"}
       .field__label
         .name 商品の説明
         .required 必須
-      .field__text-box
+      = form.text_area :description, class: "field__text-box", placeholder: "商品の説明（必須 1,000文字以内）&#13;&#10;（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。".html_safe
 
     .sales__page__main__details
       .text 商品の詳細
       .field__label
         .name カテゴリー
         .required 必須
-      .field__selector
+      = form.collection_select(:category_id, @categories, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
 
       .field__label
         .name ブランド
         .better 任意
-      .field__input
+      = form.text_field :brand, placeholder: "例）シャネル", class: "field__input"
 
       .field__label
         .name 商品の状態
         .required 必須
-      .field__selector
+      = form.collection_select(:condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
 
     .sales__page__main__shipment
       .text 配送について
       .field__label
         .name 配送料の負担
         .required 必須
-      .field__selector
+      = form.collection_select(:shipping_cost_id, Shipping_cost.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
 
       .field__label
         .name 発送元の地域
         .required 必須
-      .field__selector
+      = form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
 
       .field__label
         .name 発送までの日数
         .required 必須
-      .field__selector
+      = form.collection_select(:shipment_date_id, Shipment_date.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
 
     .sales__page__main__price
       .text 価格 (¥300〜9,999,999)
@@ -60,7 +60,7 @@
           .required 必須
         .price
           .price-tag ¥
-          .field__input
+          = form.number_field :price, class: "field__input"
       .sales-comission
         .name 販売手数料 (10%)
         .auto-calc -

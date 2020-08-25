@@ -14,6 +14,18 @@
   margin: 0 auto 20px;
 }
 
+@mixin required($background-color: green) {
+  background-color: $background-color;
+  color: white;
+  font-size: 10px;
+  height: 20px;
+  width: 30px;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
 .sales__page {
   height: 100%;
   width: 100%;
@@ -30,24 +42,21 @@
       font-size: 14px;
       line-height: 1.4em;
     }
-    .field__input {
-      height: 40px;
-      background-color: white;
-      border: solid #ccc 1px;
-      border-radius: 4px;
-      width: 100%;
+    .text {
+      margin-bottom: 24px;
+      color: rgb(136, 136, 136);
+      font-size: 14px;
+      font-weight: 600;
     }
     
-    .field__text-box {
-      height: 126px;
-      background-color: white;
-      border: solid #ccc 1px;
-      border-radius: 4px;
-      width: 100%;
-    }
-    &__photos, &__product, &__details, &__shipment {
+    &__photos {
       padding: 40px;
       border-bottom: solid 1px #ccc;
+      .file__field {
+        width: 100%;
+        border: dotted 1px #ccc;
+        background-color: #f5f5f5;
+      }
       .field__label {
         display: flex;
         &-name {
@@ -59,34 +68,51 @@
           padding-bottom: 10px;
         }
       }
-      .file__field {
-        height: 100px;
-        border: dotted 1px #ccc;
-        background-color: #f5f5f5;
+    }
+    &__product {
+      padding: 40px;
+      border-bottom: solid 1px #ccc;
+      .field__input {
+        height: 46px;
+        border: solid #ccc 1px;
+        border-radius: 4px;
+        width: 100%;
+        padding: 0 16px;
+        box-sizing: border-box;
       }
-      .text {
-        margin-bottom: 24px;
-        color: rgb(136, 136, 136);
-        font-size: 14px;
-        font-weight: 600;
+      .field__text-box {
+        height: 150px;
+        border: solid #ccc 1px;
+        border-radius: 4px;
+        width: 100%;
+        padding: 13px 16px;
+        box-sizing: border-box;
+        overflow: scroll;
       }
+    }
+    &__details, &__shipment {
+      padding: 40px;
+      border-bottom: solid 1px #ccc;
       .field__selector {
-      height: 40px;
-      background-color: white;
+      height: 46px;
       border: solid #ccc 1px;
       border-radius: 4px;
       width: 100%;
+      padding: 0 56px 0 16px;
+      color: #222;
+      cursor: pointer;
+      }
+      .field__input {
+        height: 46px;
+        border: solid #ccc 1px;
+        border-radius: 4px;
+        width: 100%;
+        padding: 0 16px;
+        box-sizing: border-box;
       }
     }
     &__price {
       padding: 40px 40px 0;
-      border-bottom: none;
-      .text {
-        margin-bottom: 24px;
-        color: rgb(136, 136, 136);
-        font-size: 14px;
-        font-weight: 600;
-      }
       .sales-price {
         display: flex;
         justify-content: space-between;
@@ -101,7 +127,12 @@
             margin: auto 5px ;
           }
           .field__input {
+            height: 46px;
+            border: solid #ccc 1px;
+            border-radius: 4px;
             width: 100%;
+            padding: 0 16px;
+            box-sizing: border-box;
           }
         }
       }
@@ -118,7 +149,7 @@
       }
     }
     &__button {
-      padding: 40px;
+      padding: 46px;
       .next {
         @include button();
       }
@@ -130,18 +161,6 @@
       }
     }
   }
-}
-
-@mixin required($background-color: green) {
-  background-color: $background-color;
-  color: white;
-  font-size: 10px;
-  height: 20px;
-  width: 30px;
-  text-align: center;
-  line-height: 20px;
-  margin-left: 10px;
-  border-radius: 4px;
 }
 
 .required {
