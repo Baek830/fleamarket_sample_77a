@@ -13,125 +13,129 @@
   text-align: center;
   margin: 0 auto 20px;
 }
-
-.sales__page {
-  height: 100%;
-  width: 100%;
+.page {
   overflow: auto;
+  height: auto !important;
+  height: 100vh;
+  min-height: 100vh;
+  position: relative;
   background-color: #f5f5f5;
-  &__main {
-    width: 700px;
-    background-color: white;
-    margin: 0 auto 50px;
-    height: 100%;
-    .field__label {
-      margin: 25px 0px 10px 0px;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 1.4em;
-    }
-    .field__input {
-      height: 40px;
+  .sales__page {
+    width: 100%;
+    margin-bottom: 200px;
+    &__main {
+      width: 700px;
       background-color: white;
-      border: solid #ccc 1px;
-      border-radius: 4px;
-      width: 100%;
-    }
-    
-    .field__text-box {
-      height: 126px;
-      background-color: white;
-      border: solid #ccc 1px;
-      border-radius: 4px;
-      width: 100%;
-    }
-    &__photos, &__product, &__details, &__shipment {
-      padding: 40px;
-      border-bottom: solid 1px #ccc;
+      margin: 0 auto 50px;
+      height: 100%;
       .field__label {
-        display: flex;
-        &-name {
-          display: flex;
-          padding-bottom: 5px;
-        }
-        &-desc {
-          font-size: 12px;
-          padding-bottom: 10px;
-        }
-      }
-      .file__field {
-        height: 100px;
-        border: dotted 1px #ccc;
-        background-color: #f5f5f5;
-      }
-      .text {
-        margin-bottom: 24px;
-        color: rgb(136, 136, 136);
-        font-size: 14px;
+        margin: 25px 0px 10px 0px;
         font-weight: 600;
-      }
-      .field__selector {
-      height: 40px;
-      background-color: white;
-      border: solid #ccc 1px;
-      border-radius: 4px;
-      width: 100%;
-      }
-    }
-    &__price {
-      padding: 40px 40px 0;
-      border-bottom: none;
-      .text {
-        margin-bottom: 24px;
-        color: rgb(136, 136, 136);
         font-size: 14px;
-        font-weight: 600;
+        line-height: 1.4em;
       }
-      .sales-price {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 25px;
+      .field__input {
+        height: 40px;
+        background-color: white;
+        border: solid #ccc 1px;
+        border-radius: 4px;
+        width: 100%;
+      }
+      
+      .field__text-box {
+        height: 126px;
+        background-color: white;
+        border: solid #ccc 1px;
+        border-radius: 4px;
+        width: 100%;
+      }
+      &__photos, &__product, &__details, &__shipment {
+        padding: 40px;
+        border-bottom: solid 1px #ccc;
         .field__label {
-          margin: auto 0;
-        }
-        .price {
-          width: 50%;
           display: flex;
-          .price-tag {
-            margin: auto 5px ;
+          &-name {
+            display: flex;
+            padding-bottom: 5px;
           }
-          .field__input {
-            width: 100%;
+          &-desc {
+            font-size: 12px;
+            padding-bottom: 10px;
           }
         }
+        .file__field {
+          height: 100px;
+          border: dotted 1px #ccc;
+          background-color: #f5f5f5;
+        }
+        .text {
+          margin-bottom: 24px;
+          color: rgb(136, 136, 136);
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .field__selector {
+        height: 40px;
+        background-color: white;
+        border: solid #ccc 1px;
+        border-radius: 4px;
+        width: 100%;
+        }
       }
-      .sales-comission {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 25px;
-        border-bottom: 1px solid #ccc;
-      }    
-      .sales-profit {
-        display: flex;
-        justify-content: space-between;
-        padding: 25px 0;
+      &__price {
+        padding: 40px 40px 0;
+        border-bottom: none;
+        .text {
+          margin-bottom: 24px;
+          color: rgb(136, 136, 136);
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .sales-price {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 25px;
+          .field__label {
+            margin: auto 0;
+          }
+          .price {
+            width: 50%;
+            display: flex;
+            .price-tag {
+              margin: auto 5px ;
+            }
+            .field__input {
+              width: 100%;
+            }
+          }
+        }
+        .sales-comission {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 25px;
+          border-bottom: 1px solid #ccc;
+        }    
+        .sales-profit {
+          display: flex;
+          justify-content: space-between;
+          padding: 25px 0;
+        }
       }
-    }
-    &__button {
-      padding: 40px;
-      .next {
-        @include button();
-      }
-      .pending {
-        @include button(#bfbfbf, #222);
-      }
-      .back {
-        @include button(#ffffff, #222);
+      &__button {
+        padding: 40px;
+        .next {
+          @include button();
+        }
+        .pending {
+          @include button(#bfbfbf, #222);
+        }
+        .back {
+          @include button(#ffffff, #222);
+        }
       }
     }
   }
 }
-
 @mixin required($background-color: green) {
   background-color: $background-color;
   color: white;
