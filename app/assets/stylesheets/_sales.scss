@@ -56,6 +56,10 @@
         width: 100%;
         border: dotted 1px #ccc;
         background-color: #f5f5f5;
+        cursor: pointer;
+      }
+      input {
+        display: none;
       }
       .field__label {
         display: flex;
@@ -133,6 +137,7 @@
             width: 100%;
             padding: 0 16px;
             box-sizing: border-box;
+            text-align: right;
           }
         }
       }

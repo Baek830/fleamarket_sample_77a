@@ -7,7 +7,9 @@
           .name 出品画像
           .required 必須
         .field__label-desc 最大10枚までアップロードできます
-      = image_tag "upload_img.png", class: "file__field"
+      = form.label :image, class: "form-image" do
+        = image_tag "upload_img.png", class: "file__field"
+        = form.file_field :image
     .sales__page__main__product
       .field__label
         .name 商品名
@@ -68,8 +70,9 @@
         .name 販売利益
         .auto-calc -
     .sales__page__main__button
-      = link_to "次へ進む", "#", class: "next" 
+      = form.submit "次へ進む", class: "next" 
       = link_to "下書きに保存", "#", class: "pending" 
       = link_to "もどる", root_path, class: "back" 
       .agreement 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 -# = render 'layouts/form-footer'
+-# footerはMasterにMergeしてからRender予定
