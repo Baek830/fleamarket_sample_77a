@@ -13,7 +13,8 @@
           %tr
             %th.table-holder 出品者
             %td.table-data
-              %a.seller_name(href="https://dic.pixiv.net/a/%E7%AB%88%E9%96%80%E7%82%AD%E6%B2%BB%E9%83%8E") 竈門炭治郎
+              = link_to 'https://dic.pixiv.net/a/%E7%AB%88%E9%96%80%E7%82%AD%E6%B2%BB%E9%83%8E', class: "seller_name" do
+                竈門炭治郎
           %tr
             %th.table-holder カテゴリー
             %td.table-data 漫画/コミック
@@ -44,7 +45,8 @@
       %span.product-infos__price__shipping-cost
         送料込み
     
-    %a.product-buy-btn(href="#") 購入画面に進む
+    = link_to '#', class: "product-buy-btn" do
+      購入画面に進む
 
     .product-infos__description
       %p.product-infos__description__inner  
@@ -80,7 +82,7 @@
           %span 不適切な商品の報告
 
       .product-btn-container__right
-        %a.product-promise-btn(href="https://www.mercari.com/jp/safe/description/")
+        = link_to "https://www.mercari.com/jp/safe/description/", class: "product-promise-btn" do
           %i.fas.fa-lock
           %span あんしん・あんぜんへの取り組み
           
