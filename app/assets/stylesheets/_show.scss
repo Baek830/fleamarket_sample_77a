@@ -1,0 +1,197 @@
+.product-container{
+  background:#f5f5f5;
+  overflow: auto;
+}
+
+.product-infos{
+  background: white;
+  width: 620px;
+  margin: 40px auto 0;
+  padding: 24px 40px 40px;
+  &__name{
+    background: white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__main-content{
+    margin: 16px 0 0;
+    display: flex;
+    justify-content: space-between;
+    &__image{
+      background: #fafafa;
+      width: 300px;
+      height: 350px;
+      margin-right: 20px;
+      .sample-image{
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    &__details-table{
+      width: 300px;
+      height: 420px;
+      border-collapse: collapse;
+      border: 1px solid #f5f5f5;
+      .table-holder{
+        padding-left: 5px;
+        background: #fafafa;
+        border: 1px solid #f5f5f5;
+      }
+      .table-data{
+        padding-left: 5px;
+        border: 1px solid #f5f5f5;
+        .seller_name{
+          text-decoration: none;
+          color: #3CCACE;
+        }
+      }
+    }
+  }
+  &__price{
+    margin-top: 24px;
+    text-align: center;
+    &__box{
+      font-size: 45px;
+      font-weight: bold;
+    }
+    &__tax{
+      font-size: 10px;
+    }
+    &__shipping-cost{
+      font-size: 16px;
+    }
+  }
+  .product-buy-btn{
+    display: block;
+    text-align: center;
+    background: #3CCACE;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    line-height: 60px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  &__description{
+    padding: 32px 0 0;
+    font-size: 18px;
+    &__inner{
+      white-space: pre-wrap;
+    }
+  }
+
+  .product-btn-container{
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    &__left{
+      .product-btn{
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 40px;
+      }
+      .product-like-btn{
+        color: #333;
+        border: 1px solid #f5f5f5;
+        background: #f5f5f5;
+      }
+
+      .product-report-btn{
+        color: #333;
+        border: 1px solid #f5f5f5;
+        background: #f5f5f5;
+        margin-left: 16px;
+      }
+    }
+    &__right{
+      margin-top: 8px;
+      .product-promise-btn{
+        text-decoration: none;
+        color: #0099e8;
+      }
+    }
+  }
+
+}
+
+.product-detail-comment{
+  margin: 8px auto;
+  width: 700px;
+  background: white;
+  .comment-container{
+    &__content{
+      padding: 24px;
+      &__comment-form{
+        .warning-message{
+          background: #fff6de;
+          padding: 8px;
+          font-size: 14px;
+        }
+        .textarea-default{
+          display: block;
+          width: 631px;
+          max-width: 100%;
+          min-height: 104px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          background: #fff;
+          font-size: 16px;
+          line-height: 1.5;
+          margin-top: 8px;
+        }
+        .comment-submit-btn{
+          display: block;
+          width: 100%;
+          line-height: 50px;
+          border-radius: 5px;
+          margin-top: 8px;
+          text-align: center;
+          background: #3CCACE;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.product-social-media{
+  width: 653px;
+  margin: 24px auto;
+  padding: 32px 24px;
+  background: #fff;
+  &__box{
+    margin-top: 8px;
+    text-align: center;
+    li{
+      display: inline;
+      i{
+        width: 44px;
+        height: 44px;
+        border-radius: 4px;
+        line-height: 44px;
+        margin-left: 5px;
+      }
+      .fa-facebook-square{
+        font-size: 30px;
+        color: white;
+        background: #385185;
+      }
+      .fa-twitter{
+        font-size: 30px;
+        color: white;
+        background: #5d9dc9;
+      }
+      .fa-line{
+        font-size: 30px;
+        color: #fff;
+        background: #00c137;
+      }
+      .fa-pinterest{
+        font-size: 30px;
+        color: #fff;
+        background: #aa262a;
+      }
+    }
+  }
+}
