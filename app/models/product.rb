@@ -5,7 +5,6 @@ class Product < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  mount_uploader :image, ImageUploader
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_cost

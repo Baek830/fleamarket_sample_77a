@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_08_25_144437) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "image", null: false
-    t.bigint "product_id", null: false
+    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_images_on_product_id"
@@ -55,4 +55,5 @@ ActiveRecord::Schema.define(version: 2020_08_25_144437) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "images", "products"
 end
