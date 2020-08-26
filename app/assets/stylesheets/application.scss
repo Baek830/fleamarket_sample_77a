@@ -4,3 +4,26 @@
 @import "show";
 @import "header";
 @import "footer";
+@import "registrations";
+@import "products";
+
+
+.form__header {
+  height: 56px;
+  width: 100%;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (min-width:768px) {
+    height: 120px;
+  }
+  img {
+    width: 120px;
+    height: 33px;
+    @media screen and (min-width:768px) {
+      width: 185px;
+      height: 49px;
+    }
+  }
+}
