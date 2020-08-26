@@ -1,1 +1,6 @@
-%h1 Fleamaapp
+- @product.each do |product|
+  .example-btn
+    = link_to product_path(product.id) do
+      = product.name
+%end
+  %p 商品詳細ページ移動用リンク
