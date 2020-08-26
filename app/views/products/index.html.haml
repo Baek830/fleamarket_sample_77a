@@ -1,6 +1,6 @@
 - @product.each do |product|
   .example-btn
-    = link_to "/products/#{product.id}", method: :get do
+    = link_to product_path(product.id) do
       = product.name
 %end
   %p 商品詳細ページ移動用リンク
