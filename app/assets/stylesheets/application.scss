@@ -1,5 +1,11 @@
 @import "reset";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "show";
+@import "header";
+@import "footer";
 @import "registrations";
+@import "products";
 
 @mixin logo() {
   width: 120px;

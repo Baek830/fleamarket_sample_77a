@@ -1,0 +1,16 @@
+.header
+  .header__contents
+    .header__contents__main
+      = link_to image_tag('logo.png', class: "header__contents__main__headerLogo"), root_path
+      .header__contents__main__searchBox
+        %form.header__contents__main__searchBox__form
+          %input.header__contents__main__searchBox__form__textBox{:placeholder => "キーワードから探す", :type => "text"}/
+          %input.header__contents__main__searchBox__form__submitBtn{:src => "/assets/icon-search 1.png", :type => "image"}/
+
+    .header__contents__nav
+      %ul.header__contents__nav__listsLeft
+        %li= link_to 'カテゴリー'
+        %li= link_to 'ブランド'
+      %ul.header__contents__nav__listsRight
+        %li= link_to 'ログイン'
+        %li= link_to '新規会員登録'
