@@ -3,9 +3,9 @@
 @import "font-awesome";
 @import "show";
 @import "header";
-@import "footer";
+@import "footer/footer";
 @import "registrations";
-@import "products";
+@import "sales";
 
 @mixin logo() {
   width: 120px;
@@ -31,7 +31,7 @@
   }
 }
 
-.footer {
+.form__footer {
   height: 200px;
   width: 100%;
   background-color: #222222;

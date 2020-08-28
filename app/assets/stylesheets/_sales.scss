@@ -26,148 +26,153 @@
   border-radius: 4px;
 }
 
-.sales__page {
-  height: 100%;
-  width: 100%;
+.container {
   overflow: auto;
+  height: auto !important;
+  height: 100vh;
+  min-height: 100vh;
+  position: relative;
   background-color: #f5f5f5;
-  &__main {
-    width: 700px;
-    background-color: white;
-    margin: 0 auto 50px;
-    height: 100%;
-    .field__label {
-      margin: 25px 0px 10px 0px;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 1.4em;
-    }
-    .text {
-      margin-bottom: 24px;
-      color: rgb(136, 136, 136);
-      font-size: 14px;
-      font-weight: 600;
-    }
-    
-    &__photos {
-      padding: 40px;
-      border-bottom: solid 1px #ccc;
-      .file__field {
-        width: 100%;
-        border: dotted 1px #ccc;
-        background-color: #f5f5f5;
-        cursor: pointer;
-      }
-      input {
-        display: none;
-      }
+  .sales__page {
+    width: 100%;
+    margin-bottom: 350px;
+    &__main {
+      width: 700px;
+      background-color: white;
+      margin: 0 auto 50px;
+      height: 100%;
       .field__label {
-        display: flex;
-        &-name {
-          display: flex;
-          padding-bottom: 5px;
+        margin: 25px 0px 10px 0px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.4em;
+      }
+      .text {
+        margin-bottom: 24px;
+        color: rgb(136, 136, 136);
+        font-size: 14px;
+        font-weight: 600;
+      }
+      
+      &__photos {
+        padding: 40px;
+        border-bottom: solid 1px #ccc;
+        .file__field {
+          width: 100%;
+          border: dotted 1px #ccc;
+          background-color: #f5f5f5;
+          cursor: pointer;
         }
-        &-desc {
-          font-size: 12px;
-          padding-bottom: 10px;
+        input {
+          display: none;
         }
-      }
-    }
-    &__product {
-      padding: 40px;
-      border-bottom: solid 1px #ccc;
-      .field__input {
-        height: 46px;
-        border: solid #ccc 1px;
-        border-radius: 4px;
-        width: 100%;
-        padding: 0 16px;
-        box-sizing: border-box;
-      }
-      .field__text-box {
-        height: 150px;
-        border: solid #ccc 1px;
-        border-radius: 4px;
-        width: 100%;
-        padding: 13px 16px;
-        box-sizing: border-box;
-        overflow: scroll;
-      }
-    }
-    &__details, &__shipment {
-      padding: 40px;
-      border-bottom: solid 1px #ccc;
-      .field__selector {
-      height: 46px;
-      border: solid #ccc 1px;
-      border-radius: 4px;
-      width: 100%;
-      padding: 0 56px 0 16px;
-      color: #222;
-      cursor: pointer;
-      }
-      .field__input {
-        height: 46px;
-        border: solid #ccc 1px;
-        border-radius: 4px;
-        width: 100%;
-        padding: 0 16px;
-        box-sizing: border-box;
-      }
-    }
-    &__price {
-      padding: 40px 40px 0;
-      .sales-price {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 25px;
         .field__label {
-          margin: auto 0;
-        }
-        .price {
-          width: 50%;
           display: flex;
-          .price-tag {
-            margin: auto 5px ;
+          &-name {
+            display: flex;
+            padding-bottom: 5px;
           }
-          .field__input {
-            height: 46px;
-            border: solid #ccc 1px;
-            border-radius: 4px;
-            width: 100%;
-            padding: 0 16px;
-            box-sizing: border-box;
-            text-align: right;
+          &-desc {
+            font-size: 12px;
+            padding-bottom: 10px;
           }
         }
       }
-      .sales-comission {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 25px;
-        border-bottom: 1px solid #ccc;
-      }    
-      .sales-profit {
-        display: flex;
-        justify-content: space-between;
-        padding: 25px 0;
+      &__product {
+        padding: 40px;
+        border-bottom: solid 1px #ccc;
+        .field__input {
+          height: 46px;
+          border: solid #ccc 1px;
+          border-radius: 4px;
+          width: 100%;
+          padding: 0 16px;
+          box-sizing: border-box;
+        }
+        .field__text-box {
+          height: 150px;
+          border: solid #ccc 1px;
+          border-radius: 4px;
+          width: 100%;
+          padding: 13px 16px;
+          box-sizing: border-box;
+          overflow: scroll;
+        }
       }
-    }
-    &__button {
-      padding: 46px;
-      .next {
-        @include button();
+      &__details, &__shipment {
+        padding: 40px;
+        border-bottom: solid 1px #ccc;
+        .field__selector {
+        height: 46px;
+        border: solid #ccc 1px;
+        border-radius: 4px;
+        width: 100%;
+        padding: 0 56px 0 16px;
+        color: #222;
+        cursor: pointer;
+        }
+        .field__input {
+          height: 46px;
+          border: solid #ccc 1px;
+          border-radius: 4px;
+          width: 100%;
+          padding: 0 16px;
+          box-sizing: border-box;
+        }
       }
-      .pending {
-        @include button(#bfbfbf, #222);
+      &__price {
+        padding: 40px 40px 0;
+        .sales-price {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 25px;
+          .field__label {
+            margin: auto 0;
+          }
+          .price {
+            width: 50%;
+            display: flex;
+            .price-tag {
+              margin: auto 5px ;
+            }
+            .field__input {
+              height: 46px;
+              border: solid #ccc 1px;
+              border-radius: 4px;
+              width: 100%;
+              padding: 0 16px;
+              box-sizing: border-box;
+              text-align: right;
+            }
+          }
+        }
+        .sales-comission {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 25px;
+          border-bottom: 1px solid #ccc;
+        }    
+        .sales-profit {
+          display: flex;
+          justify-content: space-between;
+          padding: 25px 0;
+        }
       }
-      .back {
-        @include button(#ffffff, #222);
+      &__button {
+        padding: 46px;
+        .next {
+          @include button();
+        }
+        .pending {
+          @include button(#bfbfbf, #222);
+        }
+        .back {
+          @include button(#ffffff, #222);
+        }
       }
     }
   }
 }
-
 .required {
   @include required();
 }
