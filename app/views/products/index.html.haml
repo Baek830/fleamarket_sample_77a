@@ -1,66 +1,194 @@
 %header
-  =render partial: 'layouts/header'
+  =render 'layouts/header'
 
 %main
-  %section.mainVisual
-    .mainVisual__contents
-      %h2.mainVisual__contents__subtitle 人生を変えるフリマアプリ
-      %p.mainVisual__contents__text FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
-      .appLink
-        .appLink__appleStore__btn
-          %a{:href => "https://apps.apple.com/jp/app/apple-store/id375380948?mt=8", :style => "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"}
+  %section.main-visual
+    .main-contents
+      %h2.main-contents__subtitle 人生を変えるフリマアプリ
+      %p.main-contents__text FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
+      .app-link
+        .app-link__app-store-btn
+          = link_to("https://apps.apple.com/jp/app/apple-store/id375380948?mt=8") do
+            = image_tag 'https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps', height: '60px', width: '155px'
+ 
+        .app-link__google-play-btn
+          = link_to("https://play.google.com/store/apps?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1") do
+            = image_tag 'https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png', alt: 'Google Play で手に入れよう', height: '', width: '180px'
 
-        .appLink__googlePley__btn
-          %a{:href => "https://play.google.com/store/apps?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"}
-            %img{:alt => "Google Play で手に入れよう", :src => "https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png", :width => "155"}/
-
-  %section.topIntroduction
-    %h2.topIntroduction__subtitle FURIMAが選ばれる3つの理由
-    .topIntroduction__contents
-      %ul.topIntroduction__contents__lists
-        %li.topIntroduction__contents__lists__firstBox
-          .topIntroduction__contents__lists__firstBox__pict
-            %span.topIntroduction__contents__lists__firstBox__pict__number 1
-            = image_tag 'pict-reason-01.jpg', class: 'topIntroduction__contents__lists__firstBox__pict__img'
-          %h3.topIntroduction__contents__lists__firstBox__text
+  %section.top-introduction
+    %h2.top-introduction-subtitle FURIMAが選ばれる3つの理由
+    .top-introduction-contents
+      %ul.top-introduction-contents__lists
+        %li.list-first
+          .list-first__pict
+            %span.list-first__pict__number 1
+            = image_tag 'pict-reason-01.jpg', class: 'list-first__pict__img'
+          %h3.list-first__text
             %span 3分
             ですぐに出品
-          %p.topIntroduction__contents__lists__firstBox__description スマホで入力するだけで簡単に出品できる！
-        %li.topIntroduction__contents__lists__secondBox
-          .topIntroduction__contents__lists__secondBox__pict
-            %span.topIntroduction__contents__lists__secondBox__pict__number 2
-            = image_tag 'pict-reason-02.jpg', class: 'topIntroduction__contents__lists__secondBox__pict__img'
-          %h3.topIntroduction__contents__lists__secondBox__text
+          %p.list-first__description スマホで入力するだけで簡単に出品できる！
+        %li.list-second
+          .list-second__pict
+            %span.list-second__pict__number 2
+            = image_tag 'pict-reason-02.jpg', class: 'list-second__pict__img'
+          %h3.list-second__text
             %span シンプル
             で使いやすい
-          %p.topIntroduction__contents__lists__secondBox__description めんどくさい入力は必要なく、検索も購入もスムーズ！
-        %li.topIntroduction__contents__lists__thirdBox
-          .topIntroduction__contents__lists__thirdBox__pict
-            %span.topIntroduction__contents__lists__thirdBox__pict__number 3
-            = image_tag 'pict-reason-03.jpg', class: 'topIntroduction__contents__lists__thirdBox__pict__img'
-          %h3.topIntroduction__contents__lists__thirdBox__text
+          %p.list-second__description めんどくさい入力は必要なく、検索も購入もスムーズ！
+        %li.list-third
+          .list-third__pict
+            %span.list-third__pict__number 3
+            = image_tag 'pict-reason-03.jpg', class: 'list-third__pict__img'
+          %h3.list-third__text
             手数料
             %span 業界最安値
-          %p.topIntroduction__contents__lists__thirdBox__description 最大3%でお得に出品＆購入！
+          %p.list-third__description 最大3%でお得に出品＆購入！
 
-  %section.topMiddleDl
-    .topMiddleDl__contents
-      %h2.topMiddleDl__contents__subtitle 会員数世界一位
-      %p.topMiddleDl__contents__text FURIMAは、フリマアプリで最も人気！<br>出品・購入回数も業界最多です！<br>ほしかったあの商品に出会えるかもしれません。
-      .appLink
-        .appLink__appleStore__btn
-          %a{:href => "https://apps.apple.com/jp/app/apple-store/id375380948?mt=8", :style => "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"}
+  %section.top-middle-visual
+    .top-middle-visual-contents
+      %h2.top-middle-visual-contents__subtitle 会員数世界一位
+      %p.top-middle-visual-contents__text FURIMAは、フリマアプリで最も人気！<br>出品・購入回数も業界最多です！<br>ほしかったあの商品に出会えるかもしれません。
+      .app-link
+        .app-link__app-store-btn
+          = link_to("https://apps.apple.com/jp/app/apple-store/id375380948?mt=8") do
+            = image_tag 'https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps', height: '60px', width: '155px'
+ 
+        .app-link__google-play-btn
+          = link_to("https://play.google.com/store/apps?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1") do
+            = image_tag 'https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png', alt: 'Google Play で手に入れよう', height: '', width: '180px'
 
-        .appLink__googlePley__btn
-          %a{:href => "https://play.google.com/store/apps?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"}
-            %img{:alt => "Google Play で手に入れよう", :src => "https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png", :width => "155"}/
+  %section.top-features
+    %h2.top-features-subtitle FURIMAの特徴
+    .top-features-contents
+      %ul.top-features-contents__lists
+        %li.list-first
+          .list-first__icon
+            = image_tag 'icon-01.png', class: 'list-first__icon__img'
+          %h3.list-first__text 簡単に売り買いできる
+          %p.list-first__description スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+        %li.list-second
+          .list-second__icon
+            = image_tag 'icon-03.png', class: 'list-second__icon__img'
+          %h3.list-second__text 売上金は即日振込み
+          %p.list-second__description 午前9時までに振込みを依頼いただければ、翌日に指定の口座に入金いたします！
+        %li.list-third
+          .list-third__icon
+            = image_tag 'icon-04.png', class: 'list-third__icon__img'
+          %h3.list-third__text 様々な支払いに対応
+          %p.list-third__description お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
+  %section.product-list
+    .product-list-contents
+      %h2.product-list-contents__title 新着アイテム
+      .product-list-contents__grid
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥2990
+            = image_tag 'product_img_16.png', class: 'product__img'
+            %p.product__text ハンド扇風機　タイフーン！あの有名人も愛用しているとかいないとか。
+            %span.product__icon ♡ 0
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥29900
+            = image_tag 'product_img_15.png', class: 'product__img'
+            %p.product__text 快眠　チェアー さとり
+            %span.product__icon ♡ 6
+        = link_to('', class: "product-box__link") do  
+          .product
+            %span.product__price ¥990
+            = image_tag 'product_img_14.png', class: 'product__img'
+            %p.product__text 新着 快速シューズ　チーター
+            %span.product__icon ♡ 3
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥11900
+            = image_tag 'product_img_13.png', class: 'product__img'
+            %p.product__text 履き心地抜群！！ waraji3
+            %span.product__icon ♡ 5
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥190
+            = image_tag 'product_img_12.png', class: 'product__img'
+            %p.product__text おしゃれエプロン！！！ ブルーベリー
+            %span.product__icon ♡ 9
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥9900
+            = image_tag 'product_img_09.png', class: 'product__img'
+            %p.product__text 最強老人列伝 ここから伝説がはじまる。。。
+            %span.product__icon ♡ 0
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥32990
+            = image_tag 'product_img_03.png', class: 'product__img'
+            %p.product__text なんでも入ります！ブラックホール２ 
+            %span.product__icon ♡ 2
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥6
+            = image_tag 'product_img_04.png', class: 'product__img'
+            %p.product__text 【大人気！！】それは×！　ダメダメライダーZ 
+            %span.product__icon ♡ 4
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥190
+            = image_tag 'product_img_12.png', class: 'product__img'
+            %p.product__text おしゃれエプロン！！！ ブルーベリー
+            %span.product__icon ♡ 300
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥9900
+            = image_tag 'product_img_09.png', class: 'product__img'
+            %p.product__text 最強老人列伝 ここから伝説がはじまる。。。
+            %span.product__icon ♡ 2
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥32990
+            = image_tag 'product_img_03.png', class: 'product__img'
+            %p.product__text なんでも入ります！ブラックホール２ 
+            %span.product__icon ♡ 1
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥6
+            = image_tag 'product_img_04.png', class: 'product__img'
+            %p.product__text 【大人気！！】それは×！　ダメダメライダーZ 
+            %span.product__icon ♡ 30
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥2990
+            = image_tag 'product_img_16.png', class: 'product__img'
+            %p.product__text ハンド扇風機　タイフーン！あの有名人も愛用しているとかいないとか。
+            %span.product__icon ♡ 0
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥29900
+            = image_tag 'product_img_15.png', class: 'product__img'
+            %p.product__text 快眠　チェアー さとり
+            %span.product__icon ♡ 6
+        = link_to('', class: "product-box__link") do
+          .product
+            %span.product__price ¥990
+            = image_tag 'product_img_14.png', class: 'product__img'
+            %p.product__text 新着 快速シューズ　チーター
+            %span.product__icon ♡ 3
 
+  %section.app-banner 
+    .app-banner-contents
+      %h2.app-banner-contents__subtitle だれでもカンタン、人生を変えるフリマアプリ
+      %p.app-banner-contents__text 今すぐ無料ダウンロード！！
+      .app-link
+        .app-link__app-store-btn
+          = link_to("https://apps.apple.com/jp/app/apple-store/id375380948?mt=8") do
+            = image_tag 'https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps', height: '60px', width: '155px'
+ 
+        .app-link__google-play-btn
+          = link_to("https://play.google.com/store/apps?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1") do
+            = image_tag 'https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png', alt: 'Google Play で手に入れよう', height: '', width: '180px'
 
-
-  %section.topKeyFeatures
-  %section.pickupContainer
-  %section.pickupContainer
-  
 %footer
-  =render partial: 'layouts/footer'
+  =render 'layouts/footer'
+
+= link_to('', class: "exhibit-btn__link") do
+  .exhibit-btn
+    %span.exhibit-btn__text 出品する
+    %i.fas.fa-camera  
