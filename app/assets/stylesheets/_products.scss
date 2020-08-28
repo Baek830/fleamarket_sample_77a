@@ -10,7 +10,7 @@ $main-background-color: #3CCACE;
 
 @mixin introduction-box {
   width: 30%;
-  margin-right: 5%;
+  margin: 0 2.5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +50,8 @@ $main-background-color: #3CCACE;
 
 @mixin features-box {
   width: calc(1 / 3 * 100%);
-  margin-right: 5%;
+  // margin-right: 5%;
+  margin: 0 2.5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,12 +59,13 @@ $main-background-color: #3CCACE;
     margin-bottom: 20px;
     display: block;
     &__img {
-      width: 70%;
+      width: 80%;
     }
   }
   &__text {
     font-size: 19px;
     font-weight: bold;
+    margin-bottom: 15px;
   }
   &__description {
     font-size: 16px;
@@ -201,9 +203,10 @@ $main-background-color: #3CCACE;
     font-size: 26px;
     font-weight: bold;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 80px;
     padding-bottom: 15px;
     position: relative;
+    margin-bottom: 50px;
   }
   .top-features-subtitle::after {
     content: "";
@@ -216,10 +219,9 @@ $main-background-color: #3CCACE;
     transform: translateX(-50%);
   }
   .top-features-contents {
-    max-width: 720px;
-    height: 460px;
-    margin: 50px auto 0;
-
+    max-width: 960px;
+    height: 550px;
+    margin: 0 auto;
     &__lists {
       display: flex;
       justify-content: space-between;
@@ -240,7 +242,8 @@ $main-background-color: #3CCACE;
   width: 100%;
   height: 600;
   background-color:#f4f4f4;
-  padding-bottom: 60px;
+  padding-bottom: 70px;
+  margin-top: 40px;
   .product-list-contents {
     padding: 60px 40px 0px;
     &__title {
