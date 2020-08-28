@@ -4,9 +4,17 @@
 @import "show";
 @import "header";
 @import "footer";
-// @import "registrations";
+@import "registrations";
 @import "products";
 
+@mixin logo() {
+  width: 120px;
+  height: 33px;
+  @media screen and (min-width:768px) {
+    width: 185px;
+    height: 49px;
+  }
+}
 
 .form__header {
   height: 56px;
@@ -19,11 +27,34 @@
     height: 120px;
   }
   img {
-    width: 120px;
-    height: 33px;
-    @media screen and (min-width:768px) {
-      width: 185px;
-      height: 49px;
+    @include logo();
+  }
+}
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background-color: #222222;
+  position: absolute;
+  bottom: 0;
+  ul {
+    display: flex;
+    justify-content: center;
+    li {
+      margin: 40px 20px;
+      font-size: small;
+      color: white;
+    }
+  }
+  .logoWhite {
+    text-align: center;
+    img {
+      @include logo();
+    }
+    p {
+      font-size: 14px;
+      padding-left: 15px;
+      color: white;
     }
   }
 }

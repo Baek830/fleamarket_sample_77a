@@ -1,0 +1,16 @@
+.account__info
+  = render 'layouts/form-header'
+  .account__info__main
+    %form
+    .account__info__main__content
+      .field__title ログイン
+      .field__form
+        .subject email
+        .required 必須
+      %input.field__input{:placeholder => "メールアドレス", :type => "text"}/
+      .field__form
+        .subject パスワード
+        .required 必須
+      %input.field__input{:placeholder => "パスワード", :type => "text"}/
+      .action ログイン
+  = render 'layouts/form-footer'
