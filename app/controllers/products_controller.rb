@@ -1,11 +1,14 @@
 class ProductsController < ApplicationController
 
   def index
+    @product = Product.all
   end
 
-  def search
-    @products = Products.search(params[:keyword])
+  def new
+    @categories = Category.all
   end
-
+  def show
+    @product = Product.find(params[:id])
+  end
 
 end
