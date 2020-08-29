@@ -72,7 +72,7 @@ application up and running.
 |phonetic_last_name|string|null: false|
 |postal_code|integer|null: false|
 |prefecture_id(active_hash)|integer|null: false|
-|city|srting|null: false|
+|city|string|null: false|
 |ward|string|null: false|
 |building|string||
 |phone_number|string||
