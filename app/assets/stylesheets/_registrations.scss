@@ -1,3 +1,16 @@
+@mixin terms($background-color:green) {
+  background-color: $background-color;
+  color: white;
+  font-size: 10px;
+  height: 20px;
+  width: 30px;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+
 .account__info {
   overflow: auto;
   height: auto !important;
@@ -28,15 +41,10 @@
         line-height: 20px;
       }
       .required {
-        background-color: green;
-        color: white;
-        font-size: 10px;
-        height: 20px;
-        width: 30px;
-        text-align: center;
-        line-height: 20px;
-        margin-left: 10px;
-        border-radius: 4px;
+        @include terms();
+      }
+      .better {
+        @include terms(#bfbfbf);
       }
     }
     .field__display {
@@ -86,6 +94,7 @@
         margin-right: 4px;
         background-color: white;
         border: solid #ccc 1px;
+        border-radius: 4px;
       }
       .birth {
         line-height: 40px;
