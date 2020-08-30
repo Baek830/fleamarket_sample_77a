@@ -4,10 +4,10 @@
 .product-container
   .product-infos
     .product-infos__name
-      %p 鬼滅の刃 1〜21巻 全巻セット
+      = @product.name
     .product-infos__main-content
       .product-infos__main-content__image
-        = image_tag 'kimetsu.jpg', height: '300', width: '220', class: 'sample-image'
+        = image_tag @product.images.first.image.url, height: '300', width: '220', class: 'sample-image'
       %table.product-infos__main-content__details-table
         %tbody
           %tr

@@ -1,9 +1,9 @@
 %header
   =render 'layouts/header'
 
-  - @product.each do |product|
+  - @products.each do |product|
     .example-btn
-      = link_to "/products/#{product.id}", method: :get do
+      = link_to product_path(product.id), method: :get do
         = product.name
   %end
 
