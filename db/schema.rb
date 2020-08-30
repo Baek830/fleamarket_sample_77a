@@ -19,17 +19,17 @@ ActiveRecord::Schema.define(version: 2020_08_29_084441) do
   end
 
   create_table "delivery_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "phonetic_first_name", null: false
-    t.string "phonetic_last_name", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phonetic_first_name"
+    t.string "phonetic_last_name"
     t.integer "postal_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
     t.string "ward", null: false
     t.string "building"
     t.string "phone_number"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_delivery_addresses_on_user_id"

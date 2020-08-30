@@ -1,83 +1,54 @@
 .account__info
   = render 'layouts/form-header'
   .account__info__main
-    %form
-    .account__info__main__content
-      .field__title 会員情報
-      .field__form
-        .subject ニックネーム
-        .required 必須
-      %input.field__input{:placeholder => "例)メルカリ太郎", :type => "text"}/
-      .field__form
-        .subject email
-        .required 必須
-      %input.field__input{:placeholder => "PC・携帯どちらでも可", :type => "text"}/
-      .field__form
-        .subject パスワード
-        .required 必須
-      %input.field__input{:placeholder => "7文字以上の半角英数字", :type => "text"}/
-      .field__guide ＊ 半角英数字７文字以上で設定して下さい
-      .field__form
-        .subject 再度パスワード
-        .required 必須
-      %input.field__input{:placeholder => "7文字以上の半角英数字", :type => "text"}/
-      .field__display
-        .check__box
-        .field__guide パスワードを表示する
-      %br/
-      .field__subtitle 本人確認
-      .field__guide 安心・安全にご利用いただくために、お客様の本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-      .field__form
-        .subject お名前(全角)
-        .required 必須
-      .naming
-        %input.shortbox{:placeholder => "例)山田", :type => "text"}/
-        %input.shortbox{:placeholder => "例)彩", :type => "text"}/
-      .field__form
-        .subject お名前(カナ)
-        .required 必須
-      .naming
-        %input.shortbox{:placeholder => "例)ヤマダ", :type => "text"}/
-        %input.shortbox{:placeholder => "例)アヤ", :type => "text"}/
-      .field__form
-        .subject 生年月日
-        .required 必須
-      .naming
-        %input.shortbox{:placeholder => "---", :type => "text"}/
-        .birth 年
-        %input.shortbox{:placeholder => "---", :type => "text"}/
-        .birth 月
-        %input.shortbox{:placeholder => "---", :type => "text"}/
-        .birth 日
-      .field__form
-        .subject 郵便番号
-        .required 必須
-      %input.field__input{:placeholder => "例)123-4567", :type => "text"}/
-      .field__form
-        .subject 都道府県
-        .required 必須
-      %input.field__input{:placeholder => "例)北海道", :type => "text"}/
-      .field__form
-        .subject 市区町村
-        .required 必須
-      %input.field__input{:placeholder => "例)横浜市緑区", :type => "text"}/
-      .field__form
-        .subject 番地
-        .required 必須
-      %input.field__input{:placeholder => "例)青山1-1-1", :type => "text"}/
-      .field__form
-        .subject ビル・マンション名と部屋番号
-        .better 任意
-      %input.field__input{:placeholder => "例)柳ビル103", :type => "text"}/
-      .field__form
-        .subject 電話番号
-        .required 必須
-      %input.field__input{:placeholder => "例)09012345678", :type => "text"}/
-      %br/
-      %br/
-      .field__guide ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-      %br/
-      %br/
-      .field__guide ※ 「新規登録」のボタンを押すことにより、 利用規約 に同意したものとみなします。
-      .action 新規登録
+    = form_for(@user, url: user_registration_path) do |form|
+      .account__info__main__content
+        .field__title 会員情報
+        .field__form
+          .subject ニックネーム
+          .required 必須
+        = form.text_field :nickname, class: "field__input", placeholder: "例)メルカリ太郎"
+        .field__form
+          .subject email
+          .required 必須
+        = form.email_field :email, class: "field__input", placeholder: "PC・携帯どちらでも可"
+        .field__form
+          .subject パスワード
+          .required 必須
+        = form.password_field :password, class: "field__input", placeholder: "7文字以上の半角英数字"
+        .field__guide ＊ 半角英数字７文字以上で設定して下さい
+        .field__form
+          .subject 再度パスワード
+          .required 必須
+        = form.password_field :password_confirmation, class: "field__input", placeholder: "7文字以上の半角英数字"
+        .field__display
+          .check__box
+          .field__guide パスワードを表示する
+        %br/
+        .field__subtitle 本人確認
+        .field__guide 安心・安全にご利用いただくために、お客様の本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        .field__form
+          .subject お名前(全角)
+          .required 必須
+        .naming
+          = form.text_field :last_name, class:"shortbox", placeholder: "例)山田"
+          = form.text_field :first_name, class:"shortbox", placeholder: "例)彩"
+        .field__form
+          .subject お名前(カナ)
+          .required 必須
+        .naming
+          = form.text_field :phonetic_last_name, class:"shortbox", placeholder: "例)ヤマダ"
+          = form.text_field :phonetic_first_name, class:"shortbox", placeholder: "例)アヤ"
+        .field__form
+          .subject 生年月日
+          .required 必須
+        .naming
+          = form.date_select :birthday, class: "box"
+          -# %input.shortbox{:placeholder => "---", :type => "text"}/
+          -# .birth 年
+          -# %input.shortbox{:placeholder => "---", :type => "text"}/
+          -# .birth 月
+          -# %input.shortbox{:placeholder => "---", :type => "text"}/
+          -# .birth 日
+        =form.submit "次に進む", class:"action"
   = render 'layouts/form-footer'
