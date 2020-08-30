@@ -3,11 +3,12 @@ class ProductsController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :edit]
 
   def index
-    @product = Product.all
+    @product = Product.includes(:images).order("created_at desc")
   end
 
   def new
     @product = Product.new
+    @product.images.new
   end
 
   def create
@@ -41,11 +42,11 @@ class ProductsController < ApplicationController
 
 
   private
-    def product_params
-      params.require(:product).permit(:name, :description, :price, :brand, :condition_id, :shipping_cost_id, :shipment_date_id, :prefecture_id, :category_id, :buyer_id, :seller_id)
-    end
+  def product_params
+    params.require(:product).permit(:name, :description, :price, :brand, :condition_id, :shipping_cost_id, :shipment_date_id, :prefecture_id, :category_id, :buyer_id, :seller_id)
+  end
 
-    def find_product
-      @product = Product.find(params[:id])
-    end
+  def find_product
+    @product = Product.find(params[:id])
+  end
 end

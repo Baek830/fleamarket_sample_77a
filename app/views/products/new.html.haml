@@ -8,9 +8,12 @@
             .name 出品画像
             .required 必須
           .field__label-desc 最大10枚までアップロードできます
-        = form.label :image, class: "form-image" do
-          = image_tag "upload_img.png", class: "file__field"
-          = form.file_field :image
+        #image-box-1
+          .product-num-0#image-box__container
+            = form.fields_for :images do |i|
+              = i.file_field :image, type: 'file', name: "product[images_attributes][][image]]", value:"", style: "display:none", id: "img-file"
+              %label{for: "img-file"}
+                = image_tag "upload_img.png", class: "file__field"
       .sales__page__main__product
         .field__label
           .name 商品名
