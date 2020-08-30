@@ -1,14 +1,14 @@
 class ProductsController < ApplicationController
 
   def index
-    @product = Product.all
+    @products = Product.includes(:images).order('created_at DESC')
   end
 
   def new
     @categories = Category.all
   end
   def show
-    @product = Product.find(params[:id])
+    @product = Product.includes(:images).find(params[:id])
   end
 
 end
