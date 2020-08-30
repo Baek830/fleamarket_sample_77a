@@ -26,7 +26,7 @@
         .field__label
           .name カテゴリー
           .required 必須
-        = form.collection_select(:category_id, @categories, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
+        = form.collection_select(:category_id, Category.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
 
         .field__label
           .name ブランド
