@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# p "create Categories"
+# Category.create!(
+#   name: 'コミック'
+# )
+# Category.create!(
+#   name: 'ゲーム'
+# )
+
 p "create Users"
 User.create!(
   email: 'user1@example.com',
@@ -18,23 +26,44 @@ User.create!(
 
 p "create Products"
 Product.create!(
-  name: '鬼滅の刃 全巻セット',
-  description: '鬼滅の刃の全巻セットです',
-  price: 10000,
+  name: 'キングダム 全巻セット',
+  description: 'キングダムの全巻セットです',
+  price: 25000,
   condition_id: 0,
   shipping_cost_id: 0,
   shipment_date_id: 0,
   prefecture_id: 0,
+  category_id: 1,
   buyer_id: 2,
   seller_id: 1,
 )
 
 p "create Images"
 Image.create!(
-  image: open("#{Rails.root}/db/dummy_img/kimetsu.jpg"),
+  image: open("#{Rails.root}/db/dummy_img/Kingdom_1.jpeg"),
   product_id: 1,
 )
 Image.create!(
-  image: open("#{Rails.root}/db/dummy_img/kimetsu_2.jpg"),
+  image: open("#{Rails.root}/db/dummy_img/Kingdom_2.jpeg"),
+  product_id: 1,
+)
+Image.create!(
+  image: open("#{Rails.root}/db/dummy_img/Kingdom_3.jpeg"),
+  product_id: 1,
+)
+Image.create!(
+  image: open("#{Rails.root}/db/dummy_img/Kingdom_4.jpeg"),
+  product_id: 1,
+)
+Image.create!(
+  image: open("#{Rails.root}/db/dummy_img/Kingdom_5.jpeg"),
+  product_id: 1,
+)
+Image.create!(
+  image: open("#{Rails.root}/db/dummy_img/Kingdom_6.jpeg"),
+  product_id: 1,
+)
+Image.create!(
+  image: open("#{Rails.root}/db/dummy_img/Kingdom_7.jpeg"),
   product_id: 1,
 )

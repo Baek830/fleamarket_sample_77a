@@ -21,12 +21,28 @@
     &__image{
       background: #fafafa;
       width: 300px;
-      height: 350px;
+      max-width: 300px;
+      min-height: 375px;
       margin-right: 20px;
-      .sample-image{
-        display: block;
-        margin: 0 auto;
+      .image-outer{
+        .product-image{
+          display: block;
+          margin: 0 auto;
+          max-height: 300px;
+        }
       }
+      .image-dots{
+        &__dot{
+          float: left;
+          cursor: pointer;
+          .dot-inner{
+            width: 60px;
+            height: 60px;
+            max-height: none;
+          }
+        }
+      }
+      
     }
     &__details-table{
       width: 300px;
