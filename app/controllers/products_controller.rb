@@ -30,6 +30,10 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.includes(:images).find(params[:id])
+    @condition = Condition.find(@product.condition_id)
+    @shipping_cost = ShippingCost.find(@product.shipping_cost_id)
+    @prefecture = Prefecture.find(@product.prefecture_id)
+    @shipment_date = ShipmentDate.find(@product.shipment_date_id)
   end
 
   def destroy
