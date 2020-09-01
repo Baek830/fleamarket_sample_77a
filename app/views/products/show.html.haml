@@ -4,42 +4,57 @@
 .product-container
   .product-infos
     .product-infos__name
-      %p 鬼滅の刃 1〜21巻 全巻セット
+      = @product.name
     .product-infos__main-content
       .product-infos__main-content__image
-        = image_tag 'kimetsu.jpg', height: '300', width: '220', class: 'sample-image'
+        .image-outer
+          = image_tag @product.images.first.image.url(:product_thumb), class: 'product-image'
+        .image-dots
+          - @product.images.each do |image|
+            .image-dots__dot
+              = image_tag image.image.url, class: 'dot-inner'
       %table.product-infos__main-content__details-table
         %tbody
           %tr
             %th.table-holder 出品者
             %td.table-data
-              = link_to 'https://dic.pixiv.net/a/%E7%AB%88%E9%96%80%E7%82%AD%E6%B2%BB%E9%83%8E', class: "seller_name" do
+              = link_to '#', class: "seller_name" do
                 竈門炭治郎
           %tr
             %th.table-holder カテゴリー
-            %td.table-data 漫画/コミック
+            %td.table-data 
+              = @product.category.name
           %tr
             %th.table-holder ブランド
-            %td.table-data ジャンプコミックス
+            %td.table-data 
+              - if @product.brand.presence
+                = @product.brand
+              - else
+                %span 
+                  なし
           %tr
             %th.table-holder 商品の状態
-            %td.table-data 新品/未使用
+            %td.table-data
+              = @condition.name
           %tr
             %th.table-holder 配送料の負担
-            %td.table-data 送料込み（出品者負担）
+            %td.table-data
+              = @shipping_cost.name
           %tr
             %th.table-holder 配送の方法
             %td.table-data らくらくカマド便
           %tr
             %th.table-holder 配送元地域
-            %td.table-data 東京都(江戸)
+            %td.table-data
+              = @prefecture.name
           %tr
             %th.table-holder 発送日の目安
-            %td.table-data 2〜3日で発送
+            %td.table-data
+              = @shipment_date.name
 
     .product-infos__price
       %span.product-infos__price__box
-        ¥10,000
+        = @product.price
       %span.product-infos__price__tax
         (税込)
       %span.product-infos__price__shipping-cost
