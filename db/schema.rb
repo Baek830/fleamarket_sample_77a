@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_08_30_054123) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.index ["buyer_id"], name: "index_products_on_buyer_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["seller_id"], name: "index_products_on_seller_id"
   end
 
@@ -76,5 +75,4 @@ ActiveRecord::Schema.define(version: 2020_08_30_054123) do
 
   add_foreign_key "delivery_addresses", "users"
   add_foreign_key "images", "products"
-  add_foreign_key "products", "categories"
 end
