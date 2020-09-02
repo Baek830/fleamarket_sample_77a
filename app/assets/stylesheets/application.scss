@@ -7,6 +7,9 @@
 @import "show";
 @import "sales";
 @import "registrations";
+@import "slick";
+@import "slick-theme";
+@import "common";
 
 @mixin logo() {
   width: 120px;
