@@ -17,17 +17,24 @@
 p "create Users"
 User.create!(
   email: 'user1@example.com',
-  password: 'aaaaaaaa',
-)
-User.create!(
-  email: 'user2@example.com',
+  nickname: 'パワプロくん',
+  first_name: 'Junichiro',
+  last_name: 'Fujiyoshi',
+  phonetic_first_name: 'ジュンイチロウ',
+  phonetic_last_name: 'フジヨシ',
+  birthday: '2020-2-2',
   password: 'aaaaaaaa',
 )
 
 p "create Products"
 Product.create!(
   name: 'キングダム 全巻セット',
-  description: 'キングダムの全巻セットです',
+  description: 
+  'キングダムの全巻セットです
+  とても面白いのでおすすめです。
+  是非一度みてみてください
+  
+  よろしくお願いします',
   price: 25000,
   condition_id: 0,
   shipping_cost_id: 0,
@@ -39,14 +46,14 @@ Product.create!(
 )
 
 p "create Images"
-# Image.create!(
-#   image: open("#{Rails.root}/db/dummy_img/PAWAPURO.png"),
-#   product_id: 1,
-# )
-# Image.create!(
-#   image: open("#{Rails.root}/db/dummy_img/PAWAPURO_back.png"),
-#   product_id: 1,
-# )
+# # Image.create!(
+# #   image: open("#{Rails.root}/db/dummy_img/PAWAPURO.png"),
+# #   product_id: 1,
+# # )
+# # Image.create!(
+# #   image: open("#{Rails.root}/db/dummy_img/PAWAPURO_back.png"),
+# #   product_id: 1,
+# # )
 Image.create!(
   image: open("#{Rails.root}/db/dummy_img/Kingdom_1.jpeg"),
   product_id: 1,
