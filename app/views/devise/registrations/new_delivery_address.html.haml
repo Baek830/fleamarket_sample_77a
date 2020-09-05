@@ -2,6 +2,7 @@
   = render 'layouts/form-header'
   .account__info__main
     = form_for @address do |form|
+      = render 'devise/shared/error_messages', resource: @address
       .account__info__main__content
         .field__title 商品送付先入力
         .field__form
@@ -23,7 +24,7 @@
         .field__form
           .subject 都道府県
           .required 必須
-        = form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
+        = form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: false}, {class: "field__selector"})
         .field__form
           .subject 市区町村
           .required 必須

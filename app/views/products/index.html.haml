@@ -1,6 +1,5 @@
 %header
   =render 'layouts/header'
-
 %main
   %section.main-visual
     .main-contents
@@ -81,23 +80,40 @@
     .product-list-contents
       %h2.product-list-contents__title 新着アイテム
       .product-list-contents__grid
-        - @products.each do |product|
-          = link_to product_path(product.id), class: "product-box__link" do
+        - @product.each do |product|
+          = link_to "/products/#{product.id}", class: "product-box__link", method: :get do
             .product
-              %span.product__price
-                = "¥#{product.price.to_s(:delimited)}"
-              = image_tag product.images.first.image.url, class: 'product__img'
-              %p.product__text
-                = product.name
+              - if product.buyer_id.present?
+                .product__price-sold
+                  .product__price-sold__inner
+                    SOLD
+              = image_tag "#{product.images[0].image}", class: 'product__img'     
+              %span.product__price 
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__name 
+                %p 
+                  = product.name
               %span.product__icon ♡ 0
+        %end
 
-        -# = link_to('', class: "product-box__link") do
-        -#   .product
-        -#     %span.product__price ¥29900
-        -#     = image_tag 'product_img_15.png', class: 'product__img'
-        -#     %p.product__text 快眠　チェアー さとり
-        -#     %span.product__icon ♡ 6
-
+    .product-list-contents
+      %h2.product-list-contents__title ロレックス新着アイテム
+      .product-list-contents__grid
+        - @brand.each do |product|
+          = link_to "/products/#{product.id}", class: "product-box__link", method: :get do
+            .product
+              - if product.buyer_id.present?
+                .product__price-sold
+                  .product__price-sold__inner
+                    SOLD
+              = image_tag "#{product.images[0].image}", class: 'product__img'     
+              %span.product__price 
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__name 
+                %p 
+                  = product.name
+              %span.product__icon ♡ 0
+        %end
   %section.app-banner 
     .app-banner-contents
       %h2.app-banner-contents__subtitle だれでもカンタン、人生を変えるフリマアプリ
@@ -117,4 +133,4 @@
 = link_to('', class: "exhibit-btn__link") do
   .exhibit-btn
     %span.exhibit-btn__text 出品する
-    %i.fas.fa-camera  
+    %i.fas.fa-camera
