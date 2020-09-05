@@ -1,0 +1,13 @@
+.thumbnail-list{
+  margin: 0 auto;
+  display: flex;
+  flex-wrap:wrap;
+}
+.thumbnail-item{
+  opacity: .4;
+}
+
+.thumbnail-current{
+  opacity: 1;
+  transition: .3s opacity linear;
+}
