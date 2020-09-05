@@ -127,8 +127,38 @@
       }
     }
   }
-
 }
+.product-change-container{
+  margin: 0 auto;
+  width: 700px;
+  background: #fff;
+  .product-change-box{
+    margin: 24px 0;
+    padding: 8px 16px;
+    &__edit-btn{
+      background: #3CCACE;
+    }
+    &__center-text{
+      text-align: center;
+    }
+    &__delete-btn{
+      background: gray;
+    }
+    .btn-default{
+      text-decoration: none;
+      color:#fff;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      margin: 16px 0;
+      width: 100%;
+      line-height: 50px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+  }
+}
+  
 
 .product-detail-comment{
   margin: 8px auto;

@@ -1,5 +1,8 @@
 %header
   =render partial: 'layouts/header'
+  - if user_signed_in?
+    %span ログイン中
+    = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
 
 .product-container
   .product-infos
@@ -62,9 +65,12 @@
           %th.table-holder 発送日の目安
           %td.table-data
             = @shipment_date.name
+
+    - if user_signed_in? && @product.seller_id == current_user.id
     
-    = link_to '#', class: "product-buy-btn" do
-      購入画面に進む
+    - else
+      = link_to '#', class: "product-buy-btn" do
+        購入画面に進む
 
     .product-infos__description
       %p.product-infos__description__inner
@@ -85,14 +91,23 @@
         = link_to "https://www.mercari.com/jp/safe/description/", class: "product-promise-btn" do
           %i.fas.fa-lock
           %span あんしん・あんぜんへの取り組み
-          
-  .product-detail-comment
-    .comment-container
-      .comment-container__content
-        %form.comment-container__content__comment-form 
-          %p.warning-message 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %textarea.textarea-default
-          %button.comment-submit-btn コメントする
+
+  - if user_signed_in? && @product.seller_id == current_user.id
+    .product-change-container
+      .product-change-box
+        = link_to "商品の編集", edit_product_path(@product.id), class: "product-change-box__edit-btn btn-default"
+        %p.product-change-box__center-text 
+          or
+        = link_to "この商品を削除する", product_path(@product.id), method: :delete, class: "product-change-box__delete-btn btn-default"
+
+  - if user_signed_in?
+    .product-detail-comment
+      .comment-container
+        .comment-container__content
+          %form.comment-container__content__comment-form 
+            %p.warning-message 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %textarea.textarea-default
+            %button.comment-submit-btn コメントする
 
   .product-social-media
     %ul.product-social-media__box

@@ -16,7 +16,7 @@
 
 p "create Users"
 User.create!(
-  email: 'user1@example.com',
+  email: 'user2@example.com',
   nickname: 'パワプロくん',
   first_name: 'Junichiro',
   last_name: 'Fujiyoshi',
@@ -44,16 +44,25 @@ Product.create!(
   buyer_id: 2,
   seller_id: 1,
 )
+Product.create!(
+  name: 'パワプロ2019',
+  description:
+'パワプロくんです。
+  面白いですよ。
+  個人的にはおすすめゲームです。
+  
+  マイライフで選手を育成しましょう。',
+  price: 2500,
+  condition_id: 1,
+  shipping_cost_id: 1,
+  shipment_date_id: 1,
+  prefecture_id: 5,
+  category_id: 2,
+  buyer_id: 1,
+  seller_id: 2,
+)
 
 p "create Images"
-# # Image.create!(
-# #   image: open("#{Rails.root}/db/dummy_img/PAWAPURO.png"),
-# #   product_id: 1,
-# # )
-# # Image.create!(
-# #   image: open("#{Rails.root}/db/dummy_img/PAWAPURO_back.png"),
-# #   product_id: 1,
-# # )
 Image.create!(
   image: open("#{Rails.root}/db/dummy_img/Kingdom_1.jpeg"),
   product_id: 1,
@@ -81,4 +90,14 @@ Image.create!(
 Image.create!(
   image: open("#{Rails.root}/db/dummy_img/Kingdom_7.jpeg"),
   product_id: 1,
+)
+
+p "create Images"
+Image.create!(
+  image: open("#{Rails.root}/db/dummy_img/PAWAPURO.png"),
+  product_id: 2,
+)
+Image.create!(
+  image: open("#{Rails.root}/db/dummy_img/PAWAPURO_back.png"),
+  product_id: 2,
 )
