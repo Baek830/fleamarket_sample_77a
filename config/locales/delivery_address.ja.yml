@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      delivery_address: 商品送付先
+    attributes:
+      delivery_address:
+        first_name: お名前(全角)ファーストネーム
+        last_name: お名前(全角)ラストネーム
+        phonetic_first_name: お名前(カナ)ファーストネーム
+        phonetic_last_name: お名前(カナ)ラストネーム
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市区町村
+        ward: 番地
+        birthday: 生年月日

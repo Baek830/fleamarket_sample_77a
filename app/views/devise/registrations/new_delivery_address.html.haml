@@ -2,8 +2,21 @@
   = render 'layouts/form-header'
   .account__info__main
     = form_for @address do |form|
+      = render 'devise/shared/error_messages', resource: @address
       .account__info__main__content
-        .field__title 住所情報
+        .field__title 商品送付先入力
+        .field__form
+          .subject お名前(全角)
+          .required 必須
+        .naming
+          = form.text_field :last_name, class:"shortbox", placeholder: "例)山田"
+          = form.text_field :first_name, class:"shortbox", placeholder: "例)彩"
+        .field__form
+          .subject お名前(カナ)
+          .required 必須
+        .naming
+          = form.text_field :phonetic_last_name, class:"shortbox", placeholder: "例)ヤマダ"
+          = form.text_field :phonetic_first_name, class:"shortbox", placeholder: "例)アヤ"
         .field__form
           .subject 郵便番号
           .required 必須
@@ -11,7 +24,7 @@
         .field__form
           .subject 都道府県
           .required 必須
-        = form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
+        = form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: false}, {class: "field__selector"})
         .field__form
           .subject 市区町村
           .required 必須
