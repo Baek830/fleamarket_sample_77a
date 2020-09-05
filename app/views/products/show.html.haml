@@ -1,89 +1,80 @@
 %header
   =render partial: 'layouts/header'
+  - if user_signed_in?
+    %span ログイン中
+    = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
 
 .product-container
   .product-infos
     .product-infos__name
       = @product.name
-    .product-infos__main-content
-      .product-infos__main-content__image
-        .image-outer
-          = image_tag @product.images.first.image.url(:product_thumb), class: 'product-image'
-        .image-dots
-          - @product.images.each do |image|
-            .image-dots__dot
-              = image_tag image.image.url, class: 'dot-inner'
-      %table.product-infos__main-content__details-table
-        %tbody
-          %tr
-            %th.table-holder 出品者
-            %td.table-data
-              = link_to '#', class: "seller_name" do
-                竈門炭治郎
-          %tr
-            %th.table-holder カテゴリー
-            %td.table-data 
-              = @product.category.name
-          %tr
-            %th.table-holder ブランド
-            %td.table-data 
-              - if @product.brand.presence
-                = @product.brand
-              - else
-                %span 
-                  なし
-          %tr
-            %th.table-holder 商品の状態
-            %td.table-data
-              = @condition.name
-          %tr
-            %th.table-holder 配送料の負担
-            %td.table-data
-              = @shipping_cost.name
-          %tr
-            %th.table-holder 配送の方法
-            %td.table-data らくらくカマド便
-          %tr
-            %th.table-holder 配送元地域
-            %td.table-data
-              = @prefecture.name
-          %tr
-            %th.table-holder 発送日の目安
-            %td.table-data
-              = @shipment_date.name
+      
+    .product-infos__image
+      %ul.image-outer.slider
+        - @product.images.each do |image|
+          %li= image_tag image.image.url(:product_thumb), class: 'product-image slide-itme'
+        
+      %ul.image-dots.thumbnail-list
+        - @product.images.each do |image|
+          .image-dots__dot
+            = image_tag image.image.url, class: 'dot-inner thumbnail-item'
 
     .product-infos__price
       %span.product-infos__price__box
-        = @product.price
+        = "¥#{@product.price.to_s(:delimited)}"
       %span.product-infos__price__tax
         (税込)
       %span.product-infos__price__shipping-cost
         送料込み
+
+    %table.product-infos__details-table
+      %tbody
+        %tr
+          %th.table-holder 出品者
+          %td.table-data
+            = link_to '#', class: "seller_name" do
+              = @product.seller.nickname
+        %tr
+          %th.table-holder カテゴリー
+          %td.table-data 
+            = @product.category.name
+        %tr
+          %th.table-holder ブランド
+          %td.table-data 
+            - if @product.brand.presence
+              = @product.brand
+            - else
+              %span 
+                なし
+        %tr
+          %th.table-holder 商品の状態
+          %td.table-data
+            = @condition.name
+        %tr
+          %th.table-holder 配送料の負担
+          %td.table-data
+            = @shipping_cost.name
+        %tr
+          %th.table-holder 配送の方法
+          %td.table-data らくらくカマド便
+        %tr
+          %th.table-holder 配送元地域
+          %td.table-data
+            = @prefecture.name
+        %tr
+          %th.table-holder 発送日の目安
+          %td.table-data
+            = @shipment_date.name
+
+    - if user_signed_in? && @product.seller_id == current_user.id
     
-    = link_to '#', class: "product-buy-btn" do
-      購入画面に進む
+    - else
+      = link_to '#', class: "product-buy-btn" do
+        購入画面に進む
 
     .product-infos__description
-      %p.product-infos__description__inner  
-        この度は商品の閲覧誠にありがとうございます。
-        下記商品の詳細となりますので、ご参照いただければと存じます。
-        %br/
-        ◆商品詳細
-        ・鬼滅の刃全巻セット
-        ・キズ、汚れなし
-        ┗ 一度の鬼の血を浴びてしまいましたが、日航消毒済みです。
-        ・ブックカバー付き
-        ・炎の呼吸の指南書付き（煉獄さんに許可を得ました）
-        ・通常版（特装版はなし）
-        %br/
-        ご購入の際には、念のため今一度日輪等で裁断し、消毒を行いますので、
-        あらかじめコメントを頂ければと思います。
-        %br/
-
-        配送は善逸が雷の呼吸・壱ノ型を50連してお届けしますので、
-        神速の速さで配達可能となっております。
-        %br/
-        よろしくお願いします。
+      %p.product-infos__description__inner
+        = @product.description
 
     .product-btn-container
       .product-btn-container__left
@@ -100,14 +91,23 @@
         = link_to "https://www.mercari.com/jp/safe/description/", class: "product-promise-btn" do
           %i.fas.fa-lock
           %span あんしん・あんぜんへの取り組み
-          
-  .product-detail-comment
-    .comment-container
-      .comment-container__content
-        %form.comment-container__content__comment-form 
-          %p.warning-message 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %textarea.textarea-default
-          %button.comment-submit-btn コメントする
+
+  - if user_signed_in? && @product.seller_id == current_user.id
+    .product-change-container
+      .product-change-box
+        = link_to "商品の編集", edit_product_path(@product.id), class: "product-change-box__edit-btn btn-default"
+        %p.product-change-box__center-text 
+          or
+        = link_to "この商品を削除する", product_path(@product.id), method: :delete, class: "product-change-box__delete-btn btn-default"
+
+  - if user_signed_in?
+    .product-detail-comment
+      .comment-container
+        .comment-container__content
+          %form.comment-container__content__comment-form 
+            %p.warning-message 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %textarea.textarea-default
+            %button.comment-submit-btn コメントする
 
   .product-social-media
     %ul.product-social-media__box

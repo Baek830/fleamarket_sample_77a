@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.includes(:images).order('created_at DESC')
+    @product = Product.all.order("created_at DESC").limit(10)
+    @brand = Product.where(brand: 'ロレックス').order("created_at DESC").limit(10)
   end
 
   def new
@@ -40,6 +42,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.includes(:images).find(params[:id])
     @product.destroy
     redirect_to root_path, notice: '出品を削除しました'
   end

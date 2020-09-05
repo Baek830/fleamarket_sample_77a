@@ -1,7 +1,7 @@
 .container
   = render 'layouts/form-header'
   .sales__page
-    = form_with(model: @product, local: true, class: "sales__page__main") do |form|
+    = form_with model: @product, local: true, class: "sales__page__main" do |form|
       .sales__page__main__photos
         .field
           .field__label
