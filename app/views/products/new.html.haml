@@ -1,7 +1,7 @@
 .container
   = render 'layouts/form-header'
   .sales__page
-    = form_with(model: @product, local: true, class: "sales__page__main") do |form|
+    = form_with model: @product, local: true, class: "sales__page__main" do |form|
       .sales__page__main__photos
         .field
           .field__label
@@ -12,7 +12,7 @@
           .product-num-0#image-box__container
             = form.fields_for :images do |i|
               = i.file_field :image
-              %br/
+              -# %br/
               -# type: "file", name: "product[images_attributes][][image]", value:"", style: "display:none", id: "img-file"
               -# %label{for: "img-file"}
               -# = image_tag "upload_img.png", class: "file__field"
