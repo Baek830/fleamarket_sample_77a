@@ -11,9 +11,11 @@
         #image-box-1
           .product-num-0#image-box__container
             = form.fields_for :images do |i|
-              = i.file_field :image, type: 'file', name: "product[images_attributes][][image]]", value:"", style: "display:none", id: "img-file"
-              %label{for: "img-file"}
-                = image_tag "upload_img.png", class: "file__field"
+              = i.file_field :image
+              %br/
+              -# type: "file", name: "product[images_attributes][][image]", value:"", style: "display:none", id: "img-file"
+              -# %label{for: "img-file"}
+              -# = image_tag "upload_img.png", class: "file__field"
       .sales__page__main__product
         .field__label
           .name 商品名
@@ -29,7 +31,7 @@
         .field__label
           .name カテゴリー
           .required 必須
-        = form.collection_select(:category_id, Category.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
+        = form.select(:category_id, Category.all.map {|category|[category.name, category.id]}, {prompt: "選択してください"}, {class: "field__selector"})
 
         .field__label
           .name ブランド
@@ -39,24 +41,24 @@
         .field__label
           .name 商品の状態
           .required 必須
-        = form.collection_select(:condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
+        = form.select(:condition_id, Condition.all.map {|condition|[condition.name, condition.id]}, {prompt: "選択してください"}, {class: "field__selector"})
 
       .sales__page__main__shipment
         .text 配送について
         .field__label
           .name 配送料の負担
           .required 必須
-        = form.collection_select(:shipping_cost_id, ShippingCost.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
+        = form.select(:shipping_cost_id, ShippingCost.all.map {|shipping_cost|[shipping_cost.name, shipping_cost.id]},  {prompt: "選択してください"}, {class: "field__selector"})
 
         .field__label
           .name 発送元の地域
           .required 必須
-        = form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
+        = form.select(:prefecture_id, Prefecture.all.map {|prefecture|[prefecture.name, prefecture.id]}, {prompt: "選択してください"}, {class: "field__selector"})
 
         .field__label
           .name 発送までの日数
           .required 必須
-        = form.collection_select(:shipment_date_id, ShipmentDate.all, :id, :name, {prompt: "選択してください"}, {class: "field__selector"})
+        = form.select(:shipment_date_id, ShipmentDate.all.map {|shipment_date|[shipment_date.name, shipment_date.id]}, {prompt: "選択してください"}, {class: "field__selector"})
 
       .sales__page__main__price
         .text 価格 (¥300〜9,999,999)
