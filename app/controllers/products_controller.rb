@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_parents
 
   def index
     @product = Product.all.order("created_at DESC").limit(10)

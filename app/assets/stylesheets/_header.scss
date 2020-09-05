@@ -43,10 +43,44 @@
       padding-top: 15px;
       &__listsLeft {
         display: flex;
-        a {
-          color: #363636;
-          text-decoration: none;
-           margin-right: 30px;
+        &__item {
+          #category-btn {
+            color: #363636;
+            text-decoration: none;
+             margin-right: 30px;
+          }
+          #category-menu {
+            width: 200px;
+            display: none;
+            position: absolute;
+            z-index: 10;
+            // box-shadow:10px 10px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 5px 15px 0 rgba(64, 64, 64, 0.5);
+            .category-list {
+            // display: none;
+            height: 100%;
+            // border: 1px solid #34AEB3;
+            background-color: #fff;
+              &_parent {
+
+              }
+              .parent-btn {
+                min-width: 200px;
+                height: 50px;
+                color: #746e6e;
+                appearance: none;
+                border: none;
+                // outline: none;
+                background: transparent;
+                padding-left: 20px;
+                text-align: left;
+              }
+              & :hover {
+                background: #3CCACE;
+                color: #fff;
+              }
+            }
+          }
         }
       }
       &__listsRight {
@@ -58,5 +92,5 @@
         }
       }
     }
-  }  
+  } 
 }

@@ -9,8 +9,26 @@
 
     .header__contents__nav
       %ul.header__contents__nav__listsLeft
-        %li= link_to 'カテゴリー'
-        %li= link_to 'ブランド'
+        %li.header__contents__nav__listsLeft__item
+          = link_to categories_path, id: 'category-btn' do
+            カテゴリーから探す
+          #category-menu
+            %ul.category-list
+              - @parents.each do |parent|
+                %li.category_parent
+                  = link_to category_path(parent) do
+                    %input{type: "button", value: "#{parent.name}", name: "#{parent.id}", class: "parent-btn"}
+              %li.category_parent
+                = link_to categories_path do
+                  %input{type: "button", value: "全てのカテゴリー", id: "all_btn", class: "parent-btn"}
+            %ul.category-list-child
+            %ul.category-list-grandchild  
+
+        %li.header__contents__nav__listsLeft__item
+          = link_to 'ブランド'
       %ul.header__contents__nav__listsRight
         %li= link_to 'ログイン'
         %li= link_to '新規会員登録'
+
+
+
