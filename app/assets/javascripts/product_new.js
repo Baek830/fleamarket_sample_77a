@@ -39,7 +39,24 @@ $(document).on('turbolinks:load', ()=> {
 
     $(this).parent().remove();
     $(`img[data-index="${targetIndex}"]`).remove();
-    
+
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 });
+
+$(function(){
+  $('#product_price').on('input', function(){
+    const data = $('#product_price').val();
+    const profit = Math.round(data * 0.9)
+    const fee = (data - profit).toLocaleString();
+    $('.right_bar').html(fee)
+    $('.right_bar').prepend('¥')
+    $('.right_bar_2').html(profit)
+    $('.right_bar_2').prepend('¥')
+    $('#price').val(profit)
+    if(profit == '') {
+      $('.right_bar_2').html('');
+      $('.right_bar').html('');
+    }
+  })
+})
