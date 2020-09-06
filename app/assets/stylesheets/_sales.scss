@@ -33,6 +33,23 @@
   min-height: 100vh;
   position: relative;
   background-color: #f5f5f5;
+  .error_content {
+    margin: 20px 0;
+    .error_explanation {
+      margin: 0 auto;
+      padding: 20px 40px;
+      width: 618px;
+      border-radius: 2px;
+      border: 1px solid #d65f4c;
+      background-color: pink;
+      ul {
+        padding: 0;
+        li {
+          list-style: none;
+        }
+      }
+    }
+  }
   .sales__page {
     width: 100%;
     margin-bottom: 350px;
