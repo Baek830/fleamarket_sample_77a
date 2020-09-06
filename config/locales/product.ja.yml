@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      product: 商品
+    attributes:
+      product:
+        name: 商品名
+        description: 商品の説明
+        price: 販売価格
+        condition_id: 商品の状態
+        shipping_cost_id: 配送料の負担
+        shipment_date_id: 発送までの日数
+        prefecture_id: 発送元の地域
+        category: カテゴリー
+        images: 出品画像
