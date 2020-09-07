@@ -44,15 +44,13 @@ $(document).on('turbolinks:load', ()=> {
   });
 });
 
-$(function(){
+$(document).on('turbolinks:load',function(){
   $('#product_price').on('input', function(){
     const data = $('#product_price').val();
-    const profit = Math.round(data * 0.9)
-    const fee = (data - profit).toLocaleString();
+    const profit = Math.round(data * 0.9).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
+    const fee = Math.round(data * 0.1).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
     $('.right_bar').html(fee)
-    $('.right_bar').prepend('¥')
     $('.right_bar_2').html(profit)
-    $('.right_bar_2').prepend('¥')
     $('#price').val(profit)
     if(profit == '') {
       $('.right_bar_2').html('');
