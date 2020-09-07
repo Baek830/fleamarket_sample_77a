@@ -78,10 +78,15 @@
 
     .product-btn-container
       .product-btn-container__left
-        %button{type: "submit", class: 'product-btn product-like-btn'}
-          %i.far.fa-heart
-          %span いいね!
-          %span 0
+        - pre_like = @product.favorites.find { |favorite| favorite.user_id == current_user.id}
+        - if pre_like
+          %button.product-btn.product-like-btn
+            = button_to "いいね", product_favorite_path(@product, pre_like), method: :delete,class: "btn-design"
+            %i.fas.fa-heart
+        - else
+          %button.product-btn.product-like-btn
+            = button_to "いいね", product_favorites_path(@product), class: "btn-design"
+            %i.far.fa-heart
 
         %button{type: "submit", class: 'product-btn product-report-btn'}
           %i.far.fa-flag

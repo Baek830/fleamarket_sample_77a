@@ -9,8 +9,11 @@ Rails.application.routes.draw do
 
   root 'products#index'
   resources :products do
+    resources :favorites
     collection do
       get 'search'
     end
   end
+
+  
 end
