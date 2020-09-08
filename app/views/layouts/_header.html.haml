@@ -18,11 +18,11 @@
                 %li.category_parent
                   = link_to category_path(parent) do
                     %input{type: "button", value: "#{parent.name}", name: "#{parent.id}", class: "parent-btn"}
-              %li.category_parent
-                = link_to categories_path do
-                  %input{type: "button", value: "全てのカテゴリー", id: "all_btn", class: "parent-btn"}
+              -# %li.category_parent
+              -#   = link_to categories_path do
+              -#     %input{type: "button", value: "全てのカテゴリー", id: "all-btn", class: "parent-btn"}
             %ul.category-list-child
-            %ul.category-list-grandchild  
+            %ul.category-list-grandchild
 
         %li.header__contents__nav__listsLeft__item
           = link_to 'ブランド'
