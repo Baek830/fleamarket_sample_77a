@@ -7,10 +7,10 @@ FactoryBot.define do
     email                 { Faker::Internet.free_email }
     password              { password }
     password_confirmation { password }
-    last_name             { Faker::Name.last_name }
-    first_name            { Faker::Name.first_name }
-    phonetic_last_name    { Faker::Name.last_name }
-    phonetic_first_name   { Faker::Name.first_name }
+    last_name             { "山田" }
+    first_name            { "彩" }
+    phonetic_last_name    { "ヤマダ" }
+    phonetic_first_name   { "アヤ" }
     birthday              { Faker::Date.between(from: 2.days.ago, to: Date.today) }
 
   end

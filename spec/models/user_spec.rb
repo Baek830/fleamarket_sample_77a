@@ -79,5 +79,30 @@ describe User do
       user.valid?
       expect(user.errors[:birthday]).to include("を入力してください")
     end
+
+    it " phonetic_last_nameが半角カナの場合は登録できないこと " do
+      user = build(:user, phonetic_last_name: "ﾔﾏﾀﾞ")
+      user.valid?
+      expect(user.errors[:phonetic_last_name]).to include("は全角カタカナのみで入力して下さい")
+    end
+
+    it " phonetic_first_nameが半角カナの場合は登録できないこと " do
+      user = build(:user, phonetic_first_name: "ｱﾔ")
+      user.valid?
+      expect(user.errors[:phonetic_first_name]).to include("は全角カタカナのみで入力して下さい")
+    end
+
+    it " phonetic_last_nameが半角の場合は登録できないこと " do
+      user = build(:user, last_name: "ﾔﾏﾀﾞ")
+      user.valid?
+      expect(user.errors[:last_name]).to include("は全角のみで入力して下さい")
+    end
+
+    it " phonetic_first_nameが半角の場合は登録できないこと " do
+      user = build(:user, first_name: "ｱﾔ")
+      user.valid?
+      expect(user.errors[:first_name]).to include("は全角のみで入力して下さい")
+    end
+
   end
 end

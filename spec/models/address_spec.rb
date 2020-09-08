@@ -56,5 +56,29 @@ describe DeliveryAddress do
       expect(address.errors[:ward]).to include("を入力してください")
     end
 
+    it " phonetic_last_nameが半角カナの場合は登録できないこと " do
+      address = build(:DeliveryAddress, phonetic_last_name: "ﾔﾏﾀﾞ")
+      address.valid?
+      expect(address.errors[:phonetic_last_name]).to include("は全角カタカナのみで入力して下さい")
+    end
+
+    it " phonetic_first_nameが半角カナの場合は登録できないこと " do
+      address = build(:DeliveryAddress, phonetic_first_name: "ｱﾔ")
+      address.valid?
+      expect(address.errors[:phonetic_first_name]).to include("は全角カタカナのみで入力して下さい")
+    end
+
+    it " last_nameが半角の場合は登録できないこと " do
+      address = build(:DeliveryAddress, last_name: "ﾔﾏﾀﾞ")
+      address.valid?
+      expect(address.errors[:last_name]).to include("は全角のみで入力して下さい")
+    end
+
+    it " first_nameが半角の場合は登録できないこと " do
+      address = build(:DeliveryAddress, first_name: "ｱﾔ")
+      address.valid?
+      expect(address.errors[:first_name]).to include("は全角のみで入力して下さい")
+    end
+
   end
 end
