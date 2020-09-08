@@ -9,12 +9,17 @@
             .name 出品画像
             .required 必須
           .field__label-desc 最大10枚までアップロードできます
-        #image-box
-          #previews
-            - if @product.persisted?
-              = @product.images.each_with_index do |image, i|
-                = image_tag image.image.url, data: {index: i}, width: "100", height: "100"
           = form.fields_for :images do |i|
+            .clearfix
+              %ul#previews
+                %li.input
+                  %label.upload-label
+                    .upload-label__text
+                      ドラッグアンドドロップ
+                      %br
+                      またはクリックしてファイルをアップロード
+                      .input-area
+                        = image.file_field :name, class: "hidden image_upload"
             .js-file_group{"data-index" => "#{i.index}"}
               = i.file_field :image, class: 'js-file'
               %br/
