@@ -1,0 +1,51 @@
+.account__info
+  = render 'layouts/form-header'
+  .account__info__main
+    = form_for @address do |form|
+      = render 'devise/shared/error_messages', resource: @address
+      .account__info__main__content
+        .field__title 商品送付先入力
+        .field__form
+          .subject お名前(全角)
+          .required 必須
+        .naming
+          = form.text_field :last_name, class:"shortbox", placeholder: "例)山田"
+          = form.text_field :first_name, class:"shortbox", placeholder: "例)彩"
+        .field__form
+          .subject お名前(カナ)
+          .required 必須
+        .naming
+          = form.text_field :phonetic_last_name, class:"shortbox", placeholder: "例)ヤマダ"
+          = form.text_field :phonetic_first_name, class:"shortbox", placeholder: "例)アヤ"
+        .field__form
+          .subject 郵便番号
+          .required 必須
+        = form.text_field :postal_code, class: "field__input", placeholder: "例)123-4567"
+        .field__form
+          .subject 都道府県
+          .required 必須
+        = form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: false}, {class: "field__selector"})
+        .field__form
+          .subject 市区町村
+          .required 必須
+        = form.text_field :city, class:"field__input", placeholder: "例)横浜市緑区"
+        .field__form
+          .subject 番地
+          .required 必須
+        = form.text_field :ward, class:"field__input", placeholder: "例)青山1-1-1"
+        .field__form
+          .subject ビル・マンション名と部屋番号
+          .better 任意
+        = form.text_field :building, class:"field__input", placeholder: "例)柳ビル103"
+        .field__form
+          .subject 電話番号
+          .better  任意
+        = form.text_field :phone_number, class:"field__input", placeholder: "例)09012345678"
+        %br/
+        %br/
+        .field__guide ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+        %br/
+        %br/
+        .field__guide ※ 「新規登録」のボタンを押すことにより、 利用規約 に同意したものとみなします。
+        =form.submit "新規登録", class:"action"
+  = render 'layouts/form-footer'
