@@ -11,9 +11,16 @@
 
 // window.addEventListener("load", printHelloWithButton);
 
-// $(function(){
-//   $('.like-btn-inner').on('click', function(e){
-//     console.log('hoge');
-//     e.preventDefault()
-//   });
-// });
+$(function(){
+  $('.like-btn-inner').on('click', function(e){
+
+    e.preventDefault()
+  });
+});
+
+$(function(){
+  $('.dislike-btn-inner').on('click', function(e){
+
+    e.preventDefault()
+  });
+});
