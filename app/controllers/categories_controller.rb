@@ -10,8 +10,8 @@ class CategoriesController < ApplicationController
           @childrens = Category.find(params[:parent_id]).children
         elsif params[:children_id]
           @grandChilds = Category.find(params[:children_id]).children
-        elsif params[:gcchildren_id]
-          @parents = Category.where(id: params[:gcchildren_id])
+        # elsif params[:gcchildren_id]
+        #   @parents = Category.where(id: params[:gcchildren_id])
         end
       end
     end

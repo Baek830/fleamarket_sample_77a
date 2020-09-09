@@ -81,7 +81,7 @@
       %h2.product-list-contents__title 新着アイテム
       .product-list-contents__grid
         - @product.each do |product|
-          = link_to "/products/#{product.id}", class: "product-box__link", method: :get do
+          = link_to product_path(product.id), class: "product-box__link", method: :get do
             .product
               - if product.buyer_id.present?
                 .product__price-sold
@@ -100,7 +100,7 @@
       %h2.product-list-contents__title ロレックス新着アイテム
       .product-list-contents__grid
         - @brand.each do |product|
-          = link_to "/products/#{product.id}", class: "product-box__link", method: :get do
+          = link_to product_path(product.id), class: "product-box__link", method: :get do
             .product
               - if product.buyer_id.present?
                 .product__price-sold

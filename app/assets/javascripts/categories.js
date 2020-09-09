@@ -93,31 +93,31 @@ $(document).ready(function () {
     },
   }, '.child-btn');
 
-  // 孫カテゴリーを選択時
-  $(document).on({
-    mouseenter: function () {
-      let categoryGc = $(this).attr('name');
-      timeGc = setTimeout(function () {
-        $.ajax({
-          url: '/categories/search',
-          type: 'GET',
-          data: {
-            gcchildren_id: categoryGc
-          },
-          dataType: 'json'
-        })
-        .done(function (gc_result) {
-          let childcol = $('.category-list-child').find(`input[name="${gc_result[0].parent}"]`);
-          $(childcol).css('color', 'white');
-          $(childcol).css('background-color', '#b1e9eb');
-          $('#category-menu').css('max-height', '750px');
-        })
-        .fail(function () {
-          // alert("カテゴリーを選択してください");
-        });
-      })
-    },
-  }, '.gc-btn');
+  // // 孫カテゴリーを選択時
+  // $(document).on({
+  //   mouseenter: function () {
+  //     let categoryGc = $(this).attr('name');
+  //     timeGc = setTimeout(function () {
+  //       $.ajax({
+  //         url: '/categories/search',
+  //         type: 'GET',
+  //         data: {
+  //           gcchildren_id: categoryGc
+  //         },
+  //         dataType: 'json'
+  //       })
+  //       .done(function (gc_result) {
+  //         let childcol = $('.category-list-child').find(`input[name="${gc_result[0].parent}"]`);
+  //         $(childcol).css('color', 'white');
+  //         $(childcol).css('background-color', '#b1e9eb');
+  //         $('#category-menu').css('max-height', '750px');
+  //       })
+  //       .fail(function () {
+  //         // alert("カテゴリーを選択してください");
+  //       });
+  //     },400)
+  //   },
+  // }, '.gc-btn');
 
   // カテゴリーを非表示
   $(document).on({
@@ -137,26 +137,26 @@ $(document).ready(function () {
     },
   }, '#category-menu');
 
-   // カテゴリーボタンの処理
-   $(document).on({
-    mouseenter: function (e) {
-      e.stopPropagation();
-      e.preventDefault();
-      timeOpened = setTimeout(function () {
-        $('#category-menu').show();
-        $('.category-list').show();
-      });
-    },
-    mouseleave: function (e) {
-      e.stopPropagation();
-      e.preventDefault();
-      clearTimeout(timeOpened);
-      $(".category-list-grandchild").hide();
-      $(".category-list-child").hide();
-      $(".category-list").hide();
-      $("#category-menu").hide();
-      $(".category_child").remove();
-      $(".category_grandchild").remove();
-    }
-  }, '.header__contents__nav__listsLeft__item');
+  //  // カテゴリーボタンの処理
+  //  $(document).on({
+  //   mouseenter: function (e) {
+  //     e.stopPropagation();
+  //     e.preventDefault();
+  //     timeOpened = setTimeout(function () {
+  //       $('#category-menu').show();
+  //       $('.category-list').show();
+  //     });
+  //   },
+  //   mouseleave: function (e) {
+  //     e.stopPropagation();
+  //     e.preventDefault();
+  //     clearTimeout(timeOpened);
+  //     $(".category-list-grandchild").hide();
+  //     $(".category-list-child").hide();
+  //     $(".category-list").hide();
+  //     $("#category-menu").hide();
+  //     $(".category_child").remove();
+  //     $(".category_grandchild").remove();
+  //   }
+  // }, '.header__contents__nav__listsLeft__item');
 });
