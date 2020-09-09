@@ -63,7 +63,6 @@
             = @shipment_date.name
 
     - if user_signed_in? && @product.seller_id == current_user.id
-    
     - else
       = link_to '#', class: "product-buy-btn" do
         購入画面に進む
