@@ -16,9 +16,7 @@ describe User do
         expect(@user).to be_valid
       end
     end
-
-
-
+    
     context '新規登録がうまくいかないとき' do
       it " nicknameがない場合は登録できないこと " do
         @user.nickname = nil
