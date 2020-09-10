@@ -1,6 +1,6 @@
 class DeliveryAddress < ApplicationRecord
   belongs_to :user, optional: true
-  validates :first_name, :last_name, :prefecture_id, :postal_code, :city, :ward, presence: true
+  validates :prefecture_id, :postal_code, :city, :ward, presence: true
   validates :first_name, :last_name, presence: true,
             format: {
               with: /\A[ぁ-んァ-ン一-龥]/,

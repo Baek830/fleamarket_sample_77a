@@ -43,8 +43,11 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.includes(:images).find(params[:id])
-    @product.destroy
-    redirect_to root_path, notice: '出品を削除しました'
+    if @product.destroy
+      redirect_to root_path, notice: '出品を削除しました'
+    else
+      render :show, notice: '出品を削除できませんでした'
+    end
   end
 
   private
