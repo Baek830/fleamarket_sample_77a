@@ -30,12 +30,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_delivery_address and return
     end
     @user.delivery_addresses.build(@address.attributes)
-    @user.save
-    session["devise.regist_data"]["user"].clear
-    sign_in(:user, @user)
-    redirect_to root_path
+    if @user.save
+      session["devise.regist_data"]["user"].clear
+      sign_in(:user, @user)
+      redirect_to root_path
+    else
+      render :new
+    end
   end
-
+  
     protected
 
     def delivery_address_params
