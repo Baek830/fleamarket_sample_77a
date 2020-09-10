@@ -1,8 +1,5 @@
 %header
   =render partial: 'layouts/header'
-  - if user_signed_in?
-    %span ログイン中
-    = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
 
 .product-container
   .product-infos
