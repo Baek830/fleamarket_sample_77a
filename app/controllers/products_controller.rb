@@ -34,7 +34,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.includes(:images).find(params[:id])
     @condition = Condition.find(@product.condition_id)
     @shipping_cost = ShippingCost.find(@product.shipping_cost_id)
     @prefecture = Prefecture.find(@product.prefecture_id)
@@ -42,11 +41,10 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.includes(:images).find(params[:id])
     if @product.destroy
       redirect_to root_path, notice: '出品を削除しました'
     else
-      render :show, notice: '出品を削除できませんでした'
+      redirect_to root_path, alert: "削除が失敗しました"
     end
   end
 
@@ -56,6 +54,6 @@ class ProductsController < ApplicationController
   end
 
   def find_product
-    @product = Product.find(params[:id])
+    @product = Product.includes(:images).find(params[:id])
   end
 end
