@@ -19,7 +19,7 @@
                       %br
                       またはクリックしてファイルをアップロード
                       .input-area
-                        = image.file_field :name, class: "hidden image_upload"
+                        = i.file_field :name, class: "hidden image_upload"
             .js-file_group{"data-index" => "#{i.index}"}
               = i.file_field :image, class: 'js-file'
               %br/
