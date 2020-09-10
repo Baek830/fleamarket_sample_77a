@@ -1,12 +1,5 @@
 %header
   =render 'layouts/header'
-
-  - @product.each do |product|
-    .example-btn
-      = link_to "/products/#{product.id}", method: :get do
-        = product.name
-  %end
-
 %main
   %section.main-visual
     .main-contents
@@ -58,7 +51,7 @@
         .app-link__app-store-btn
           = link_to("＃") do
             = image_tag 'https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps', height: '60px', width: '155px'
- 
+
         .app-link__google-play-btn
           = link_to("＃") do
             = image_tag 'https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png', alt: 'Google Play で手に入れよう', height: '', width: '180px'
@@ -87,97 +80,40 @@
     .product-list-contents
       %h2.product-list-contents__title 新着アイテム
       .product-list-contents__grid
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥2990
-            = image_tag 'product_img_16.png', class: 'product__img'
-            %p.product__text ハンド扇風機　タイフーン！あの有名人も愛用しているとかいないとか。
-            %span.product__icon ♡ 0
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥29900
-            = image_tag 'product_img_15.png', class: 'product__img'
-            %p.product__text 快眠　チェアー さとり
-            %span.product__icon ♡ 6
-        = link_to('', class: "product-box__link") do  
-          .product
-            %span.product__price ¥990
-            = image_tag 'product_img_14.png', class: 'product__img'
-            %p.product__text 新着 快速シューズ　チーター
-            %span.product__icon ♡ 3
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥11900
-            = image_tag 'product_img_13.png', class: 'product__img'
-            %p.product__text 履き心地抜群！！ waraji3
-            %span.product__icon ♡ 5
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥190
-            = image_tag 'product_img_12.png', class: 'product__img'
-            %p.product__text おしゃれエプロン！！！ ブルーベリー
-            %span.product__icon ♡ 9
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥9900
-            = image_tag 'product_img_09.png', class: 'product__img'
-            %p.product__text 最強老人列伝 ここから伝説がはじまる。。。
-            %span.product__icon ♡ 0
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥32990
-            = image_tag 'product_img_03.png', class: 'product__img'
-            %p.product__text なんでも入ります！ブラックホール２ 
-            %span.product__icon ♡ 2
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥6
-            = image_tag 'product_img_04.png', class: 'product__img'
-            %p.product__text 【大人気！！】それは×！　ダメダメライダーZ 
-            %span.product__icon ♡ 4
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥190
-            = image_tag 'product_img_12.png', class: 'product__img'
-            %p.product__text おしゃれエプロン！！！ ブルーベリー
-            %span.product__icon ♡ 300
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥9900
-            = image_tag 'product_img_09.png', class: 'product__img'
-            %p.product__text 最強老人列伝 ここから伝説がはじまる。。。
-            %span.product__icon ♡ 2
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥32990
-            = image_tag 'product_img_03.png', class: 'product__img'
-            %p.product__text なんでも入ります！ブラックホール２ 
-            %span.product__icon ♡ 1
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥6
-            = image_tag 'product_img_04.png', class: 'product__img'
-            %p.product__text 【大人気！！】それは×！　ダメダメライダーZ 
-            %span.product__icon ♡ 30
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥2990
-            = image_tag 'product_img_16.png', class: 'product__img'
-            %p.product__text ハンド扇風機　タイフーン！あの有名人も愛用しているとかいないとか。
-            %span.product__icon ♡ 0
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥29900
-            = image_tag 'product_img_15.png', class: 'product__img'
-            %p.product__text 快眠　チェアー さとり
-            %span.product__icon ♡ 6
-        = link_to('', class: "product-box__link") do
-          .product
-            %span.product__price ¥990
-            = image_tag 'product_img_14.png', class: 'product__img'
-            %p.product__text 新着 快速シューズ　チーター
-            %span.product__icon ♡ 3
+        - @product.each do |product|
+          = link_to product_path(product.id), class: "product-box__link", method: :get do
+            .product
+              - if product.buyer_id.present?
+                .product__price-sold
+                  .product__price-sold__inner
+                    SOLD
+              = image_tag "#{product.images[0].image}", class: 'product__img'     
+              %span.product__price 
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__name 
+                %p 
+                  = product.name
+              %span.product__icon ♡ 0bu
+        %end
 
+    .product-list-contents
+      %h2.product-list-contents__title ロレックス新着アイテム
+      .product-list-contents__grid
+        - @brand.each do |product|
+          = link_to product_path(product.id), class: "product-box__link", method: :get do
+            .product
+              - if product.buyer_id.present?
+                .product__price-sold
+                  .product__price-sold__inner
+                    SOLD
+              = image_tag "#{product.images[0].image}", class: 'product__img'     
+              %span.product__price 
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__name 
+                %p 
+                  = product.name
+              %span.product__icon ♡ 0
+        %end
   %section.app-banner 
     .app-banner-contents
       %h2.app-banner-contents__subtitle だれでもカンタン、人生を変えるフリマアプリ
@@ -197,4 +133,4 @@
 = link_to('', class: "exhibit-btn__link") do
   .exhibit-btn
     %span.exhibit-btn__text 出品する
-    %i.fas.fa-camera  
+    %i.fas.fa-camera
