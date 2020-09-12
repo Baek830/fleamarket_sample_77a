@@ -7,13 +7,13 @@ class FavoritesController < ApplicationController
       flash[:notice] = "You can't like more than once"
     else
       @product.favorites.create(user_id: current_user.id)
-      if @product.favorites.save
-        respond_to do |format|
-          format.json
-        end
-      else
-        flash.now[:alert] = 'いいね出来ませんでした'
-      end
+      # if @product.favorites.save
+      #   respond_to do |format|
+      #     format.json
+      #   end
+      # else
+      #   flash.now[:alert] = 'いいね出来ませんでした'
+      # end
     end
     redirect_to product_path(@product)
   end
@@ -23,9 +23,9 @@ class FavoritesController < ApplicationController
       flash[:notice] = "Cannot unlike"
     else
       if @favorite.destroy
-        respond_to do |format|
-          format.json
-        end
+        # respond_to do |format|
+        #   format.json
+        # end
         redirect_to product_path(@product), notice: '出品を削除しました'
       else
         redirect_to product_path(@product), alert: "削除が失敗しました"
