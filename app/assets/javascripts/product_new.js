@@ -1,58 +1,92 @@
-$(document).on('turbolinks:load', ()=> {
-  const buildFileField = (num)=> {
-    const html = `<div data-index="${num}" class="js-file_group">
-                    <input class="js-file" type="file"
-                    name="product[images_attributes][${num}][image]"
-                    id="product_images_attributes_${num}_image"><br>
-                    <div class="js-remove">削除</div>
-                  </div>`;
-    return html;
-  }
-  const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
-    return html;
-  }
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  lastIndex = $('.js-file_group:last').data('index');
-  fileIndex.splice(0, lastIndex);
-
-  $('.hidden-destroy').hide();
-
-  $('#image-box').on('change', '.js-file', function(e) {
-    const targetIndex = $(this).parent().data('index');
-    const file = e.target.files[0];
-    const blobUrl = window.URL.createObjectURL(file);
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      img.setAttribute('image', blobUrl);
-    } else {
-      $('#previews').append(buildImg(targetIndex, blobUrl));
-      $('#image-box').append(buildFileField(fileIndex[0]));
-      fileIndex.shift();
-      fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-    }
+$(function () {
+  $(document).on('click', '.image_upload', function() {
+    var preview = $(
+      `<div class="image-preview__wapper">
+        <img class="preview">
+      </div>
+      <div class="image-preview_btn">
+        <div class="image-preview_btn_delete">削除</div>
+      </div>`
+    );
+    var append_input = $(
+      `<li class="input">
+        <label class="upload-label">
+          <i class="fas fa-plus fa-2x"></i>
+            <div class="input-area display-none">
+              <input class="hidden image_upload" type="file">
+            </div>
+          </div>
+        </label>
+      </li>`
+    );
+    $ul = $('#previews');
+    $li = $(this).parents('li');
+    $label = $(this).parents('.upload-label');
+    $inputs = $ul.find('.image_upload');
+    $('.image_upload').on('change', function (e) {
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = function(e) {
+        $(preview).find('.preview').attr('src', e.target.result);
+      }
+      $li.append(preview);
+      $('#previews li').css({
+        'width': `116px`
+      })
+      $label.css('display', 'none');
+      $li.removeClass('input');
+      $li.addClass('image-preview');
+      $lis = $ul.find('.image-preview');
+      
+      if ($lis.length < 10) {
+        $ul.append(append_input)
+        $('#previews li:last-child').css({
+          'width':`116px`
+        })
+      }
+      $inputs.each(function (num, input) {
+        $(input).removeAttr('name');
+        $(input).attr({
+          name: "product[images_attributes][" + num + "][image]",
+          id: "images_attributes_" + num + "_image"
+        });
+      });
+    });
   });
 
-  $('#image-box').on('click', '.js-remove', function() {
-    const targetIndex = $(this).parent().data('index');
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    if (hiddenCheck) hiddenCheck.prop('checked', true);
-
-    $(this).parent().remove();
-    $(`img[data-index="${targetIndex}"]`).remove();
-
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+  $(document).on('click', '.image-preview_btn_delete', function () {
+    var append_input = $(`<li class="input">
+                            <label class="upload-label">
+                              <div class="uploas-label__text">
+                                <i class="fas fa-plus fa-2x"></i>
+                                  <div class="input-area display-none">
+                                    <input class="hidden image_upload" type="file">
+                                  </div>
+                              </div>
+                            </label>
+                          </li>`);
+    $ul = $('previews')
+    $lis = $ul.find('.image-preview');
+    $li = $(this).parents('.image-preview');
+    $li.remove();
+    $lis = $ul.find('.image-preview');
+    if ($lis.length == 9) {
+      $ul.append(append_input)
+    }
+    $('#previews li:last-child').css({
+      'width': `116px`
+    })
   });
 });
 
-$(function(){
+
+$(document).on('turbolinks:load',function(){
   $('#product_price').on('input', function(){
     const data = $('#product_price').val();
-    const profit = Math.round(data * 0.9)
-    const fee = (data - profit).toLocaleString();
+    const profit = Math.round(data * 0.9).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
+    const fee = Math.round(data * 0.1).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
     $('.right_bar').html(fee)
-    $('.right_bar').prepend('¥')
     $('.right_bar_2').html(profit)
-    $('.right_bar_2').prepend('¥')
     $('#price').val(profit)
     if(profit == '') {
       $('.right_bar_2').html('');
