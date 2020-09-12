@@ -10,15 +10,17 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.images.new
+    @product.images.build
   end
 
   def create
     @product = Product.new(product_params)
-    if @product.save
-      redirect_to root_path, notice: '出品しました'
-    else
-      render 'new', notice: '出品に失敗しました'
+    respond_to do |format|
+      if @product.save
+        format.html {redirect_to @product, notice: '出品しました'}
+      else
+        format.html { render :new, notice: '出品に失敗しました'}
+      end
     end
   end
 
