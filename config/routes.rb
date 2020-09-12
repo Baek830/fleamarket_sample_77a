@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
     get 'delivery_addresses', to: 'users/registrations#new_delivery_address'
     post 'delivery_addresses', to: 'users/registrations#create_delivery_address'
   end
+
+  resources :users, only: [:show]
 
   root 'products#index'
   resources :products do
