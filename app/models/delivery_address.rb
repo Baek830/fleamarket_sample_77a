@@ -13,7 +13,7 @@ class DeliveryAddress < ApplicationRecord
             }
   validates :postal_code,
             format: {
-              with: /\A\d{7}\z/
+              with: /\A\d{7}\z/,
               message: "はハイフンなし7桁で入力して下さい"
             }
   extend ActiveHash::Associations::ActiveRecordExtensions
