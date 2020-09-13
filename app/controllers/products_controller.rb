@@ -13,7 +13,18 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.new
   end
+# --------------------------------------------
+  #jsonで親の名前で検索し、紐づく小カテゴリーの配列を取得
+  def category_children
+    @category_children = Category.find(params[:parent_name]).children
+  end
 
+  #jsonで子カテゴリーに紐づく孫カテゴリーの配列を取得
+  def category_grandchildren
+    # @category_grandchildren = Category.find("#{params[:child_id]}").children
+    @category_grandchildren = Category.find(params[:child_id]).children
+  end
+# --------------------------------------------
   def create
     @product = Product.new(product_params)
     if @product.save

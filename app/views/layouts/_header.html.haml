@@ -10,7 +10,7 @@
     .header__contents__nav
       %ul.header__contents__nav__listsLeft
         %li.header__contents__nav__listsLeft__item
-          = link_to categories_path, id: 'category-btn' do
+          = link_to root_path, id: "category-btn", "data-turbolinks": false do
             カテゴリーから探す
           #category-menu
             %ul.category-list

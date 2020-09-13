@@ -31,7 +31,13 @@
         .field__label
           .name カテゴリー
           .required 必須
-        = form.select(:category_id, Category.all.map {|category|[category.name, category.id]}, {prompt: "選択してください"}, {class: "field__selector"})
+        -# 親カテゴリー表示
+        = form.select :category_id, ( @parents.map{|c| [c[:name], c[:id]]}), {prompt: "選択してください"}, {class: "field__selector", id: "parent_category"}
+        -# = form.select(:category_id, Category.all.map {|category|[category.name, category.id]}, {prompt: "選択してください"}, {class: "field__selector"})
+        -#親カテゴリー選択によって子カテゴリー表示
+        .category-select-children#children_box
+        -#子カテゴリー選択によって孫カテゴリー表示
+        .category-select-grandchildren#grandchildren_box
 
         .field__label
           .name ブランド
