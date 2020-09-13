@@ -1,16 +1,16 @@
 .account__info
   = render 'layouts/form-header'
   .account__info__main
-    %form
-    .account__info__main__content
-      .field__title ログイン
-      .field__form
-        .subject email
-        .required 必須
-      %input.field__input{:placeholder => "メールアドレス", :type => "text"}/
-      .field__form
-        .subject パスワード
-        .required 必須
-      %input.field__input{:placeholder => "パスワード", :type => "text"}/
-      .action ログイン
+    = form_for(@user, url: user_session_path) do |form|
+      = render 'devise/shared/error_messages', resource: @user
+      .account__info__main__content
+        .field__signup__info
+          アカウントをお持ちでない方はこちら
+        .field__signup
+          = link_to "新規会員登録", new_user_registration_path
+        .field__form
+        = form.email_field :email, class: "field__input", placeholder: "メールアドレス"
+        .field__form
+        = form.password_field :password, class: "field__input", placeholder: "パスワード"
+        = form.submit "ログイン", class:"action"
   = render 'layouts/form-footer'

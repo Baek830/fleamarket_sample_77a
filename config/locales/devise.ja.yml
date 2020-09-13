@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: email
+        password: パスワード
+        password_confirmation: パスワード(確認用)
+        first_name: お名前(全角)ファーストネーム
+        last_name: お名前(全角)ラストネーム
+        phonetic_first_name: お名前(カナ)ファーストネーム
+        phonetic_last_name: お名前(カナ)ラストネーム
+        birthday: 生年月日

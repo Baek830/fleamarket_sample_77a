@@ -33,6 +33,23 @@
   min-height: 100vh;
   position: relative;
   background-color: #f5f5f5;
+  .error_content {
+    margin: 0 auto 20px;
+    .error_explanation {
+      margin: 0 auto;
+      padding: 20px 40px;
+      width: 618px;
+      border-radius: 2px;
+      border: 1px solid #d65f4c;
+      background-color: pink;
+      ul {
+        padding: 0;
+        li {
+          list-style: none;
+        }
+      }
+    }
+  }
   .sales__page {
     width: 100%;
     margin-bottom: 350px;
@@ -58,15 +75,6 @@
       &__photos {
         padding: 40px;
         border-bottom: solid 1px #ccc;
-        .file__field {
-          width: 100%;
-          border: dotted 1px #ccc;
-          background-color: #f5f5f5;
-          cursor: pointer;
-        }
-        input {
-          display: none;
-        }
         .field__label {
           display: flex;
           &-name {
@@ -76,6 +84,55 @@
           &-desc {
             font-size: 12px;
             padding-bottom: 10px;
+          }
+        }
+        #previews {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          .image-preview {
+            margin: 8px 2px 0;
+            padding: 0 1px;
+            border: solid 1px rgb(204, 204, 204);
+          }
+          .image-preview__wapper {
+            width: 116px;
+            height: 116px;
+            .preview {
+              width: 116px;
+              height: 116px;
+            }
+          }
+          .image-preview_btn {
+            text-align: center;
+            padding: 8px;
+            border-top: 1px solid #cccccc;
+            cursor: pointer;
+            font-size: 12px;
+            &:hover{
+              transition: 0.5s;
+              background-color: #cccccc;
+            }
+          }
+          .input {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            .upload-label {
+              margin: 8px 3px 0;
+              width: 100%;
+              height: 150px;
+              background-color: rgb(245, 245, 245);
+              border: dashed 1px rgb(204, 204, 204);
+              align-items: center;
+              cursor: pointer;
+              display: flex;
+              justify-content: center;
+
+              .input-area {
+                display: none;
+              }
+            }
           }
         }
       }
@@ -152,11 +209,13 @@
           justify-content: space-between;
           padding-bottom: 25px;
           border-bottom: 1px solid #ccc;
-        }    
+          font-size: 14px;
+        }
         .sales-profit {
           display: flex;
           justify-content: space-between;
           padding: 25px 0;
+          font-size: 14px;
         }
       }
       &__button {
