@@ -10,7 +10,7 @@
     height: 100%;
     .mypage-nav {
       margin: 0px 40px 0px 0px;
-      li :hover {
+      & li :hover {
         opacity: 0.5;
       }
       &__list-item {
@@ -41,10 +41,27 @@
       background-color: #3ccace;
       height: 200px;
     }
+
     .mypage-tab-container-notification-todo {
       background-color: #fff;
       height: 570px;
+      .mypage-tab {
+        line-height: 72px;
+        display: flex;
+        & li :hover {
+          opacity: 0.5;
+        }
+        &__menu-item {
+          width: 350px;
+          font-size: 16px;
+          color: #333;
+          text-align: center;
+          display: block;
+          text-decoration: none;
+        }
+      }
     }
+
     .mypage-tab-container {
       margin: 40px 0px 0px 0px;
       background-color: #fff;
@@ -54,6 +71,21 @@
         background-color: #fafafa;
         font-size: 16px;
         line-height: 72px;
+      }
+      .mypage-tab {
+        line-height: 72px;
+        display: flex;
+        & li :hover {
+          opacity: 0.5;
+        }
+        &__menu-item {
+          width: 350px;
+          font-size: 16px;
+          color: #333;
+          text-align: center;
+          display: block;
+          text-decoration: none;
+        }
       }
     }
   }
