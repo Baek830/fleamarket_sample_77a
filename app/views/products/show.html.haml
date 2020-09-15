@@ -79,7 +79,7 @@
     - if user_signed_in?
       .product-btn-container
         .product-btn-container__left
-          %button.product-favorite-btn
+          .product-btn-container__left__favorite-function
             = render partial: 'favoriteFunction', locals: {product: @product}
 
           %button{type: "submit", class: 'default-btn product-report-btn'}
