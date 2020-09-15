@@ -11,6 +11,9 @@
 @import "slick";
 @import "slick-theme";
 @import "common";
+@import "categories";
+@import "category_function";
+
 
 @mixin logo() {
   width: 120px;

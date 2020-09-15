@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :set_parents
 
   def index
     @products = Product.includes(:images).order('created_at DESC')
@@ -12,6 +13,14 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.new
   end
+
+  def category_children
+    @category_children = Category.find(params[:parent_name]).children
+  end
+
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
+  end  
 
   def create
     @product = Product.new(product_params)
@@ -69,4 +78,5 @@ class ProductsController < ApplicationController
   def find_product
     @product = Product.includes(:images).find(params[:id])
   end
+  
 end
