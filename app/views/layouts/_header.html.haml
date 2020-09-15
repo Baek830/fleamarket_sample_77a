@@ -13,7 +13,7 @@
         %li= link_to 'ブランド'
       %ul.header__contents__nav__listsRight
         - if user_signed_in?
-          %li= link_to 'いいね！一覧', "#"
+          %li= link_to 'いいね！一覧', favorite_user_path(current_user)
           %li= link_to 'お知らせ', "#"
           %li= link_to 'やることリスト', "#"
           %li= link_to 'マイページ', user_path(id: current_user.id)

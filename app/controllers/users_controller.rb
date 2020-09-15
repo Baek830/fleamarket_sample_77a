@@ -15,6 +15,9 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def favorite
+  end
+
   def move_to_products_index
     redirect_to root_path unless user_signed_in?
   end
