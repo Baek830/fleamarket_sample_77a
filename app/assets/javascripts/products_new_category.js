@@ -1,4 +1,4 @@
-$(function(){
+$('turbolinks:render', function(){
   // 子カテゴリー、孫カテゴリー用に、selectボックスのoptionの入れ物を定義
   function appendOpction(category){
     let html = 

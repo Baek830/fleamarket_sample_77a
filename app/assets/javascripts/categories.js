@@ -1,4 +1,4 @@
-$(function(){
+$('turbolinks:render', function(){
   // 非同期にてヘッダーのカテゴリーを表示
   function childBuild(children) {
     let child_category = `

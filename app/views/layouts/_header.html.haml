@@ -20,6 +20,9 @@
                     %input{type: "button", value: "#{parent.name}", name: "#{parent.id}", class: "parent_btn"}
             %ul.categoryTree-child
             %ul.categoryTree-grandchild
+
+          %li.header__contents__nav__listsLeft__item
+            = link_to 'ブランド'    
             
       %ul.header__contents__nav__listsRight
         - if user_signed_in?
