@@ -11,4 +11,9 @@ class User < ApplicationRecord
           validates :nickname, :first_name, :last_name, :phonetic_first_name, :phonetic_last_name, :birthday ,presence: true
           has_many :delivery_addresses, dependent: :destroy
           accepts_nested_attributes_for :delivery_addresses
+
+def favorited_by?(product_id)
+  favorites.where(product_id: product_id).exists?
+end
+
 end

@@ -1,0 +1,11 @@
+- if current_user.favorited_by?(product.id)
+  %td= link_to 'いいね外す', destroy_favorite_path(product), method: :DELETE, remote: true
+  = product.favorites.count
+  %i.fas.fa-heart
+
+- else
+  %td= link_to 'いいねする', create_favorite_path(product), method: :POST, remote: true
+  = product.favorites.count
+  %i.far.fa-heart
+
+

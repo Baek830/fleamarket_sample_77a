@@ -76,26 +76,20 @@
       %p.product-infos__description__inner
         = @product.description
 
-    .product-btn-container
-      .product-btn-container__left
-        -# - pre_like = @product.favorites.find { |favorite| favorite.user_id == current_user.id}
-        -# - if pre_like
-        -#   %button.default-btn.product-dislike-btn
-        -#     = button_to "いいね", product_favorite_path(@product, pre_like), method: :delete,class: "dislike-btn-inner"
-        -#     %i.fas.fa-heart
-        -# - else
-        %button.default-btn.product-like-btn
-          = button_to "いいね", product_favorites_path(@product), class: "like-btn-inner"
-          %i.far.fa-heart.heart
+    - if user_signed_in?
+      .product-btn-container
+        .product-btn-container__left
+          %button.product-favorite-btn
+            = render partial: 'favoriteFunction', locals: {product: @product}
 
-        %button{type: "submit", class: 'default-btn product-report-btn'}
-          %i.far.fa-flag
-          %span 不適切な商品の報告
+          %button{type: "submit", class: 'default-btn product-report-btn'}
+            %i.far.fa-flag
+            %span 不適切な商品の報告
 
-      .product-btn-container__right
-        = link_to "https://www.mercari.com/jp/safe/description/", class: "product-promise-btn" do
-          %i.fas.fa-lock
-          %span あんしん・あんぜんへの取り組み
+        .product-btn-container__right
+          = link_to "https://www.mercari.com/jp/safe/description/", class: "product-promise-btn" do
+            %i.fas.fa-lock
+            %span あんしん・あんぜんへの取り組み
 
   - if user_signed_in? && @product.seller_id == current_user.id
     .product-change-container
