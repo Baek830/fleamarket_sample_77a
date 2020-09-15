@@ -6,16 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# p "create Categories"
-# Category.create!(
-#   name: 'コミック'
-# )
-# Category.create!(
-#   name: 'ゲーム'
-# )
-# Category.create!(
-#   name: 'その他'
-# )
+p "create Categories"
+Category.create!(
+  name: 'コミック'
+)
+Category.create!(
+  name: 'ゲーム'
+)
+Category.create!(
+  name: 'その他'
+)
 
 # p "create Users"
 # User.create!(

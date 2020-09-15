@@ -8,7 +8,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
-          validates :nickname, :first_name, :last_name, :phonetic_first_name, :phonetic_last_name, :birthday ,presence: true
+          validates :nickname, :birthday , presence: true
+          validates :first_name, :last_name, presence: true,
+                    format: {
+                      with: /\A[ぁ-んァ-ン一-龥]/,
+                      message: "は全角のみで入力して下さい"
+                    }
+          validates :phonetic_first_name, :phonetic_last_name, presence: true,
+                    format: {
+                      with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
+                      message: "は全角カタカナのみで入力して下さい"
+                    }
           has_many :delivery_addresses, dependent: :destroy
           accepts_nested_attributes_for :delivery_addresses
 

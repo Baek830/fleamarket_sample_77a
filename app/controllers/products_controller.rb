@@ -16,9 +16,10 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to root_path, notice: '出品しました'
+      redirect_to @product, notice: '出品しました'
     else
-      render 'new', notice: '出品に失敗しました'
+      @product.images.new
+      render :new, notice: '出品に失敗しました'
     end
   end
 
@@ -34,7 +35,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.includes(:images).find(params[:id])
     @condition = Condition.find(@product.condition_id)
     @shipping_cost = ShippingCost.find(@product.shipping_cost_id)
     @prefecture = Prefecture.find(@product.prefecture_id)
@@ -51,7 +51,19 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :brand, :condition_id, :shipping_cost_id, :shipment_date_id, :prefecture_id, :category_id, images_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:product).permit(
+      :name,
+      :description,
+      :price, 
+      :brand,
+      :condition_id, 
+      :shipping_cost_id, 
+      :shipment_date_id, 
+      :prefecture_id, 
+      :category_id, 
+      images_attributes: [:image, :_destroy, :id]
+      )
+      .merge(seller_id: current_user.id)
   end
 
   def find_product

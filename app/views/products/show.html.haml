@@ -1,8 +1,5 @@
 %header
   =render partial: 'layouts/header'
-  - if user_signed_in?
-    %span ログイン中
-    = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
 
 .product-container
   .product-infos
@@ -66,9 +63,7 @@
           %td.table-data
             = @shipment_date.name
 
-    - if user_signed_in? && @product.seller_id == current_user.id
-    
-    - else
+    - if user_signed_in? && @product.seller_id != current_user.id
       = link_to '#', class: "product-buy-btn" do
         購入画面に進む
 
