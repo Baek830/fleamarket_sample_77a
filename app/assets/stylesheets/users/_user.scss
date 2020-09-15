@@ -5,41 +5,33 @@
   display: flex;
   justify-content: center;
 
-  &__side-menu {
-    width: 280px;
-    height: 100%;
-    .mypage-nav {
-      margin: 0px 40px 0px 0px;
-      & li :hover {
-        opacity: 0.5;
-      }
-      &__list-item {
-        font-size: 14px;
-        padding: 16px;
-        line-height: 16px;
-        background:#fff;
-        position: relative;
-        display: block;
-        text-decoration: none;
-        border-top: 1px solid #eee;
-        .fas {
-          position: absolute;
-          top: 16px;
-          right: 16px;
-        }
-      }
-    }
-    h3 {
-      margin: 40px 0px 0px 0px;
-    }
-  }
-
   &__main-contents{
     height: 100%;
     width: 700px;
     .mypage-user-icon {
       background-color: #3ccace;
-      height: 200px;
+      height: 180px;
+      text-align: center;
+      padding-top: 20px;
+      & a :hover {
+        opacity: 0.5;
+      }
+      .mypage-user-link {
+        text-decoration: none;
+        color: #333;
+        .mypage-number {
+          display: flex;
+          justify-content: center;
+          margin: 0px auto;
+          .number.list {
+            margin-left: 16px;
+          }
+          .number {
+            margin: 8px 0px 0px 0px;
+            font-size: 14px;
+          }
+        }
+      }
     }
 
     .mypage-tab-container-notification-todo {

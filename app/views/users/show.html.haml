@@ -1,114 +1,24 @@
 %header
   =render 'layouts/header'
 %main.main-container
-  .main-container__side-menu
-    %nav.mypage-nav
-      %ul.mypage-nav__list
-        %li
-          = link_to "#", class: "mypage-nav__list-item" do
-            マイページ
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            お知らせ
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            やることリスト
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            いいね！一覧
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            出品する
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            下記き一覧
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            出品した商品-出品中
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            出品した商品-取引中
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            出品した商品-売却済み
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            購入した商品-取引中
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            購入した商品-過去の取引
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            ニュース一覧
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            評価一覧
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            ガイド
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            お問い合わせ
-            %i.fas.fa-angle-right
-
-      %h3.mypage-nav-head メルペイ
-      %ul.mypage-nav-list
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            売上・振込申請
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            ポイント
-            %i.fas.fa-angle-right
-
-      %h3.mypage-nav-head 設定
-      %ul.mypage-nav-list
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            プロフィール
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            発送元・お届け先住所変更
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            支払い方法
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            メール/パスワード
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            本人情報
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            電話番号の確認
-            %i.fas.fa-angle-right
-        %li
-          =link_to "#", class: "mypage-nav__list-item" do
-            ログアウト
-            %i.fas.fa-angle-right
+  = render 'layouts/side-menu'
 
   .main-container__main-contents
     %section.mypage-user-icon
+      = link_to "#", class: "mypage-user-link" do
+        %figure
+          = image_tag 'member_photo_noimage_thumb.png', height: '60px', width: '60px'
+          %h2
+            = @user.nickname
+        .mypage-number
+          %h3.number
+            評価
+            %span.bold
+              0
+          %h3.number.list
+            出品数
+            %span.bold
+              = @sale_item.count
 
     %section.mypage-tab-container-notification-todo
       %ul.mypage-tab
@@ -128,7 +38,6 @@
         %li
           =link_to "#", class: "mypage-tab__menu-item" do
             %h3 過去の取引
-
 
 .app-banner 
   .app-banner-contents

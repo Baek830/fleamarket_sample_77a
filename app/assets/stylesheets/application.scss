@@ -11,7 +11,9 @@
 @import "slick";
 @import "slick-theme";
 @import "common";
-@import "users";
+@import "users/user";
+@import "users/side-menu";
+@import "users/logout";
 
 @mixin logo() {
   width: 120px;

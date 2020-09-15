@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     post 'delivery_addresses', to: 'users/registrations#create_delivery_address'
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      get "logout"
+    end
+  end
 
   root 'products#index'
   resources :products do
