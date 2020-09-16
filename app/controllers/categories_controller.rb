@@ -2,10 +2,6 @@ class CategoriesController < ApplicationController
   before_action :set_parents
   before_action :set_category, only: :show
 
-  # def index
-  #   @parents = Category.all.order("id ASC").limit(13)
-  # end
-
   def search
     respond_to do |format|
       format.html

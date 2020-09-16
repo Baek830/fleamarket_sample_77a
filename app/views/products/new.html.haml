@@ -33,7 +33,7 @@
           .name カテゴリー
           .required 必須
         -# 親カテゴリー表示
-        = form.select :category_id, ( @parents.map{|c| [c[:name], c[:id]]}), {prompt: "選択してください"}, {class: "field__selector", id: "parent_category"}
+        = form.select :category_id, options_for_select(@parents.map{|c| [c[:name], c[:id]]}), {include_blank: "選択してください"}, {class: "field__selector", id: "parent_category"}
         -#親カテゴリー選択によって子カテゴリー表示
         .category-select-children#children_box
         -#子カテゴリー選択によって孫カテゴリー表示

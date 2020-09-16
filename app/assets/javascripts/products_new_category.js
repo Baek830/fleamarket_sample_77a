@@ -34,7 +34,8 @@ $('turbolinks:render', function(){
     if (parentCategory != "") {
       $.ajax( {
         type: 'GET',
-        url: 'category_children',
+        // url: 'category_children',
+        url: '/products/category_children',
         data: {parent_name: parentCategory},
         dataType: 'json'
       })
@@ -64,7 +65,7 @@ $('turbolinks:render', function(){
     // 子カテゴリーが初期値出ない場合
     if (childId != ""){
       $.ajax({
-        url: 'category_grandchildren',
+        url: '/products/category_grandchildren',
         type: 'GET',
         data: { child_id: childId },
         datatype: 'json'

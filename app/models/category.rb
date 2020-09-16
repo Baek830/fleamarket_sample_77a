@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   has_many :products
-  has_ancestry
+  has_ancestry 
 
   def set_products
     # 親カテゴリーの場合
