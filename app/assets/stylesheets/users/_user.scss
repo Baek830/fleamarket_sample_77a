@@ -36,12 +36,22 @@
 
     .mypage-tab-container-notification-todo {
       background-color: #fff;
-      height: 570px;
+      // height: 570px;
       .mypage-tab {
         line-height: 72px;
         display: flex;
         & li :hover {
           opacity: 0.5;
+        }
+        &__menu-item.active {
+          width: 350px;
+          font-size: 16px;
+          color: #333;
+          text-align: center;
+          display: block;
+          text-decoration: none;
+          background-color: #fff;
+          border-top: 2px solid #ea352d;
         }
         &__menu-item {
           width: 350px;
@@ -50,6 +60,17 @@
           text-align: center;
           display: block;
           text-decoration: none;
+          background-color: #EEEEEE;
+        }
+      }
+      .mypage-content {
+        height: 498px;
+        width: 700px;
+        &__detail.show {
+          display: block;
+        }
+        &__detail {
+          display: none;
         }
       }
     }
