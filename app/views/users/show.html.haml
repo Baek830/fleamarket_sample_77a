@@ -1,0 +1,60 @@
+%header
+  =render 'layouts/header'
+%main.main-container
+  = render 'layouts/side-menu'
+
+  .main-container__main-contents
+    %section.mypage-user-icon
+      = link_to "#", class: "mypage-user-link" do
+        %figure
+          = image_tag 'member_photo_noimage_thumb.png', height: '60px', width: '60px'
+          %h2
+            = @user.nickname
+        .mypage-number
+          %h3.number
+            評価
+            %span.bold
+              0
+          %h3.number.list
+            出品数
+            %span.bold
+              = @sale_item.count
+
+    %section.mypage-tab-container-notification-todo
+      %ul.mypage-tab
+        %li
+          =link_to "#", class: "mypage-tab__menu-item active" do
+            %h3 お知らせ
+        %li
+          =link_to "#", class: "mypage-tab__menu-item" do
+            %h3 やることリスト
+
+    %section.mypage-tab-container
+      %h2.maypage-tab-head 購入した商品
+      %ul.mypage-tab
+        %li
+          =link_to "#", class: "mypage-tab__menu-item active" do
+            %h3 取引中
+        %li
+          =link_to "#", class: "mypage-tab__menu-item" do
+            %h3 過去の取引
+
+.app-banner 
+  .app-banner-contents
+    %h2.app-banner-contents__subtitle だれでもカンタン、人生を変えるフリマアプリ
+    %p.app-banner-contents__text 今すぐ無料ダウンロード！！
+    .app-link
+      .app-link__app-store-btn
+        = link_to("＃") do
+          = image_tag 'https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps', height: '60px', width: '155px'
+
+      .app-link__google-play-btn
+        = link_to("＃") do
+          = image_tag 'https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png', alt: 'Google Play で手に入れよう', height: '', width: '180px'
+%footer
+  =render 'layouts/footer'
+
+= link_to new_product_path, class: "exhibit-btn__link" do
+  .exhibit-btn
+    %span.exhibit-btn__text 出品する
+    %i.fas.fa-camera

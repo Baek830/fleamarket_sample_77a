@@ -1,0 +1,28 @@
+.main-container__side-menu {
+  width: 280px;
+  height: 100%;
+  .mypage-nav {
+    margin: 0px 40px 0px 0px;
+    & li :hover {
+      opacity: 0.5;
+    }
+    &__list-item {
+      font-size: 14px;
+      padding: 16px;
+      line-height: 16px;
+      background:#fff;
+      position: relative;
+      display: block;
+      text-decoration: none;
+      border-top: 1px solid #eee;
+      .fas {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+      }
+    }
+  }
+  h3 {
+    margin: 40px 0px 0px 0px;
+  }
+}
