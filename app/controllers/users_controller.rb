@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def favorite
+    @products = Product.where(id: product_id = Favorite.where(user_id: current_user.id).select(:product_id)).order('created_at DESC').page(params[:page]).per(20)
   end
 
   def move_to_products_index

@@ -1,6 +1,5 @@
 class FavoritesController < ApplicationController
   before_action :find_product
-  # before_action :find_favorite, only: [:destroy]
 
 def create
   @favorite = Favorite.create(user_id: current_user.id, product_id: @product.id)

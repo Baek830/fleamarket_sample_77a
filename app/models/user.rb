@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :selling_products, -> { where("buyer_id is NULL")}, class_name: "Product", foreign_key: "seller_id"
   has_many :sold_products, -> { where("buyer_id is not NULL")}, class_name: "Product", foreign_key: "seller_id"
   has_many :favorites, dependent: :destroy
+  has_many :favorite_products, through: :favorites, source: :product
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
