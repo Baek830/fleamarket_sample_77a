@@ -36,7 +36,6 @@
 
     .mypage-tab-container-notification-todo {
       background-color: #fff;
-      // height: 570px;
       .mypage-tab {
         line-height: 72px;
         display: flex;
@@ -64,10 +63,30 @@
         }
       }
       .mypage-content {
-        height: 498px;
         width: 700px;
         &__detail.show {
           display: block;
+          .message {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px;
+            border-bottom: 2px solid #f5f5f5;
+            .fas {
+              line-height: 42px;
+            }
+            .message-content {
+              text-decoration: none;
+              .message-list {
+                height: 56px;
+                margin: 0 auto;
+                background: #eee;
+                color: #333;
+                line-height: 56px;
+                text-align: center;
+                width: 670px;
+              }
+            }
+          }
         }
         &__detail {
           display: none;
@@ -79,6 +98,7 @@
       margin: 40px 0px 0px 0px;
       background-color: #fff;
       height: 380px;
+      border-bottom: 2px solid #f5f5f5;
       h2.maypage-tab-head {
         padding: 0px 16px;
         background-color: #fafafa;
@@ -91,13 +111,36 @@
         & li :hover {
           opacity: 0.5;
         }
-        &__menu-item {
+        &__menu-buy-item.active {
           width: 350px;
           font-size: 16px;
           color: #333;
           text-align: center;
           display: block;
           text-decoration: none;
+          background-color: #fff;
+          border-top: 2px solid #ea352d;
+        }
+        &__menu-buy-item {
+          width: 350px;
+          font-size: 16px;
+          color: #333;
+          text-align: center;
+          display: block;
+          text-decoration: none;
+          background-color: #EEEEEE;
+        }
+      }
+      .mypage-content {
+        width: 700px;
+        &__item.show {
+          display: block;
+          .message {
+            padding: 16px;
+          }
+        }
+        &__item {
+          display: none;
         }
       }
     }

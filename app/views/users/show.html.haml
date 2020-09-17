@@ -30,19 +30,76 @@
             %h3 やることリスト
       .mypage-content
         .mypage-content__detail.show
-          今日のお知らせです。天気がいいです。
+          %ul
+            %li.message
+              .message-content
+                事務局から個人別メッセージ「ログイン通知」
+                %br
+                ⌛︎2日前
+              %i.fas.fa-angle-right
+            %li.message
+              .message-content
+                事務局から個人別メッセージ「ログイン通知」
+                %br
+                ⌛︎3日前
+              %i.fas.fa-angle-right
+            %li.message
+              .message-content
+                最大1,000円分のポイントがもらえるキャンペーン開催中！今すぐ参加使用♪
+                %br
+                ⌛︎5日前
+              %i.fas.fa-angle-right
+            %li.message
+              .message-content
+                事務局から個人メッセージ「ログイン通知」
+                %br
+                ⌛︎7日前
+              %i.fas.fa-angle-right
+            %li.message
+              .message-content
+                いまだけポイント倍増！メルペイスマート払いで最大P2,000もらえる
+                %br
+                ⌛︎10日前
+              %i.fas.fa-angle-right
+            %li.message
+              = link_to "#", class: "message-content" do
+                .message-list
+                  一覧を見る
         .mypage-content__detail
-          Todoリストです。売り上げ100万目標！！
+          %ul
+            %li.message
+              .message-content
+                Todoリストは特になし。
+                %br
+                ⌛︎1日前
+              %i.fas.fa-angle-right
+            %li.message
+              = link_to "#", class: "message-content" do
+                .message-list
+                  一覧を見る
 
     %section.mypage-tab-container
       %h2.maypage-tab-head 購入した商品
       %ul.mypage-tab
         %li
-          =link_to "#", class: "mypage-tab__menu-item active" do
+          =link_to "#", class: "mypage-tab__menu-buy-item active" do
             %h3 取引中
         %li
-          =link_to "#", class: "mypage-tab__menu-item" do
+          =link_to "#", class: "mypage-tab__menu-buy-item" do
             %h3 過去の取引
+      .mypage-content
+        .mypage-content__item.show
+          %ul
+            %li.message
+              .message-content
+                取引中の商品はありません
+        .mypage-content__item
+          %ul
+            %li.message
+              .message-content
+                過去に取引した商品はありません
+
+
 
 .app-banner 
   .app-banner-contents
