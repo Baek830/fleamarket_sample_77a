@@ -9,7 +9,7 @@
  
       .product-list-contents__grid
         - @products.each do |product|
-          = link_to "/products/#{product.id}", class: "product-box__link", method: :get do
+          = link_to product_path(product.id), class: "product-box__link", method: :get do
             .product
               = image_tag "#{product.images[0].image}", class: 'product__img'
               %span.product__price 
