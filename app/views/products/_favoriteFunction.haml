@@ -1,13 +1,12 @@
 - if current_user.favorited_by?(product.id)
   %button.default-btn.product-dislike-btn.red-effect
     %i.fas.fa-heart
-    %td= link_to 'いいね', destroy_favorite_path(product), method: :DELETE, remote: true, class: "btn-link red-effect"
+    %td= link_to 'いいね', product_favorite_path(product, favorite.id), method: :DELETE, remote: true, class: "btn-link red-effect"
     = product.favorites.count
-
 - else
   %button.default-btn.product-like-btn
     %i.far.fa-heart
-    %td= link_to 'いいね', create_favorite_path(product), method: :POST, remote: true, class: "btn-link"
+    %td= link_to 'いいね', product_favorites_path(product), method: :POST, remote: true, class: "btn-link"
     = product.favorites.count
 
 

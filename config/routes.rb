@@ -17,13 +17,11 @@ Rails.application.routes.draw do
 
   root 'products#index'
   resources :products do
-    collection do
-      get 'search'
+    resources :favorites, only: [:create, :destroy] do
+      collection do
+        get 'search'
+      end
     end
   end
-
-  post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
-  delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
-
   
 end

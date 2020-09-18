@@ -75,7 +75,7 @@
       .product-btn-container
         .product-btn-container__left
           .product-btn-container__left__favorite-function
-            = render partial: 'favoriteFunction', locals: {product: @product}
+            = render partial: 'favoriteFunction', locals: {product: @product, favorite: @favorite}
 
           %button{type: "submit", class: 'default-btn product-report-btn'}
             %i.far.fa-flag
