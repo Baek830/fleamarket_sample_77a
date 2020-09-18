@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/show'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # 恐縮ですが、藤吉担当のルーティングはここからしたとなります
   root 'products#index'
   resources :products do
     resources :favorites, only: [:create, :destroy] do
