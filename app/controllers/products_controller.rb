@@ -23,12 +23,16 @@ class ProductsController < ApplicationController
   end  
 
   def create
-    @product = Product.new(product_params)
+    @product = Product.create(product_params)
     if @product.save
-      redirect_to @product, notice: '出品しました'
+      redirect_to @product
     else
-      @product.images.new
-      render :new, notice: '出品に失敗しました'
+      unless @product.images.present?
+        @product.images.new
+        render :new
+      else
+        render :new
+      end
     end
   end
 
