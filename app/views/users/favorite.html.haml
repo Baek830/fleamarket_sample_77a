@@ -1,0 +1,36 @@
+%header
+  =render 'layouts/header'
+%main.main-container
+  = render 'layouts/side-menu'
+  .mypage-list-content
+    - if @products.presence 
+      %section.mypage-list-chapter
+        %h2.mypage-list-chapter__title
+          いいね！一覧
+        %ul.mypage-product-list
+          - @products.each do |product|
+            %li.mypage-product-list__item
+              = link_to product_path(product), class: "mypage-product-list__item__link" do
+                %figure
+                  = image_tag "#{product.images[0].image}", width: 48, height: 48
+                .mypage-product-list__item__link__body
+                  .mypage-product-text
+                    = product.name
+                  .mypage-product-text
+                    = "¥#{product.price.to_s(:delimited)}"
+                %i.fas.fa-angle-double-right.arrow-right
+    - else
+      .no-favorite-products
+        %span.no-favorite-products__text いいねした商品はありません
+    = paginate(@products)
+
+.app-banner 
+  = render 'app-banner'
+
+%footer
+  =render 'layouts/footer'
+
+= link_to new_product_path, class: "exhibit-btn__link" do
+  .exhibit-btn
+    %span.exhibit-btn__text 出品する
+    %i.fas.fa-camera

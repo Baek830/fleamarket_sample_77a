@@ -71,21 +71,20 @@
       %p.product-infos__description__inner
         = @product.description
 
-    .product-btn-container
-      .product-btn-container__left
-        %button{type: "submit", class: 'product-btn product-like-btn'}
-          %i.far.fa-heart
-          %span いいね!
-          %span 0
+    - if user_signed_in?
+      .product-btn-container
+        .product-btn-container__left
+          .product-btn-container__left__favorite-function
+            = render partial: 'favoriteFunction', locals: {product: @product, favorite: @favorite}
 
-        %button{type: "submit", class: 'product-btn product-report-btn'}
-          %i.far.fa-flag
-          %span 不適切な商品の報告
+          %button{type: "submit", class: 'default-btn product-report-btn'}
+            %i.far.fa-flag
+            %span 不適切な商品の報告
 
-      .product-btn-container__right
-        = link_to "https://www.mercari.com/jp/safe/description/", class: "product-promise-btn" do
-          %i.fas.fa-lock
-          %span あんしん・あんぜんへの取り組み
+        .product-btn-container__right
+          = link_to "https://www.mercari.com/jp/safe/description/", class: "product-promise-btn" do
+            %i.fas.fa-lock
+            %span あんしん・あんぜんへの取り組み
 
   - if user_signed_in? && @product.seller_id == current_user.id
     .product-change-container
