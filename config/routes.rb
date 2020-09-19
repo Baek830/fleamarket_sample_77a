@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # 恐縮ですが、藤吉担当のルーティングはここからしたとなります
   root 'products#index'
   resources :products do
     resources :favorites, only: [:create, :destroy] do
