@@ -88,4 +88,5 @@ gem 'faker'
 gem 'ancestry'
 gem 'fog-aws'
 gem 'kaminari'
+gem 'payjp'
 

@@ -1,0 +1,43 @@
+%header
+  = render 'layouts/form-header'
+
+.purchaset-container
+  .purchaset-container__title
+    購入内容の確認
+    .purchaset-prodct__area
+      .purchaset-prodct__area--left
+        .purchaset-prodct__img
+          - @product.images.each do |image|
+            = image_tag image.image.url, class: 'prodct-img'
+      .purchaset-prodct__area--rigth 
+        .purchaset-prodct__name
+          = @product.name
+        .purchaset-prodct__price
+          %span.purchaset-prodct__price--box
+            = "¥#{@product.price.to_s(:delimited)}"
+          %span.purchaset-prodct__price--tax
+            (税込)
+          %span.purchaset-prodct__price--shipping-cost
+            送料込み
+  
+  .payment__area
+    .payment__area__title
+      支払い金額
+      .payment__area__price
+        %span.payment__area__price--box
+          = "¥#{@product.price.to_s(:delimited)}"
+  
+  .payment-method__area
+    .payment-method__area__tilte
+      支払い方法
+    .payment-method__area__credit
+      - if @card
+        = render template: ''
+      - else
+        = link_to
+        ※登録してください
+
+        
+      
+%footer
+  = render 'layouts/form-footer'
