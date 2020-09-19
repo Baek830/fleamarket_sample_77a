@@ -34,7 +34,6 @@ $('turbolinks:render', function(){
     if (parentCategory != "") {
       $.ajax( {
         type: 'GET',
-        // url: 'category_children',
         url: '/products/category_children',
         data: {parent_name: parentCategory},
         dataType: 'json'
