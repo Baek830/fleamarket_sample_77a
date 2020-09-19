@@ -182,7 +182,38 @@
   width: 700px;
   background: white;
   .comment-container{
-    &__content{
+    .comment-box{
+      padding: 24px;
+
+    }
+    .comment-content{
+      &__comment-list {
+        &__item {
+          margin-top: 15px;
+          .comment-username {
+            text-decoration: none;
+          }
+          .comment-body {
+            width: 600px;
+            padding: 0 16px 16px 16px;
+            background-color: #b2ebf2;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            &__text {
+              white-space: pre-wrap;
+            }
+            &__delete-btn {
+              position: absolute;
+              text-decoration: none;
+              color: #546e7a;
+              bottom: 16px;
+              right: 16px;
+            }
+          }
+        }
+      }
       padding: 24px;
       &__comment-form{
         .warning-message{

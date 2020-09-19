@@ -97,11 +97,25 @@
   - if user_signed_in?
     .product-detail-comment
       .comment-container
-        .comment-container__content
-          %form.comment-container__content__comment-form 
+        .comment-content
+          - if @comments.presence
+            %ul.comment-content__coment-list
+              - @comments.each do |comment|
+                %li.comment-content__comment-list__item
+                  = link_to "#", class: "comment-username" do
+                    = comment.user.nickname
+                  .comment-body
+                    %p.comment-body__text
+                      = comment.content
+                    - if current_user.id === @product.seller_id
+                      = link_to product_comment_path(@product, comment), method: :DELETE, class: "comment-body__delete-btn" do
+                        %i.fas.fa-trash-alt
+
+        .comment-content
+          = form_with model: [@product, @comment], local: true, class: "comment-content__comment-form " do |form|
             %p.warning-message 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %textarea.textarea-default
-            %button.comment-submit-btn コメントする
+            = form.text_area :content, class: "textarea-default"
+            = form.submit "コメントする", class: "comment-submit-btn"
 
   .product-social-media
     %ul.product-social-media__box
