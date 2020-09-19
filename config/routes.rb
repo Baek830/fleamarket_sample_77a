@@ -18,11 +18,11 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :products do
     resources :favorites, only: [:create, :destroy] do
-      collection do
-        get 'search'
-        get 'category_children'
-        get 'category_grandchildren'
-      end
+    end
+    collection do
+      get 'search'
+      get 'category_children'
+      get 'category_grandchildren'
     end
   end
 
@@ -33,5 +33,4 @@ Rails.application.routes.draw do
     end
   end
 
-  
 end
