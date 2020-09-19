@@ -1,0 +1,44 @@
+.mypage-list-content{
+  width: 700px;
+  .mypage-list-chapter{
+    background: #fff;
+    &__title{
+      font-size: 24px;
+      padding: 8px 24px;
+      border-bottom: 1px solid #f5f5f5;
+      text-align: center;
+    }
+    .mypage-product-list{
+      list-style: none;
+      &__item{
+        border-bottom: 1px solid #eee;
+        &__link{
+          display: block;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: #333;
+          padding: 16px;
+          &__body{
+            width: 600px;
+            margin: 0 40px 0 20px;
+            font-size: 14px;
+            .mypage-product-text{
+              line-height: 1.5;
+            }
+          }
+        }
+      }
+    }
+  }
+  .no-favorite-products{
+    background: #fff;
+    text-align: center;
+    color: #bdbdbd;
+    &__text{
+      line-height: 300px;
+      padding: 30px 30px;
+      border: 1px solid #eee;
+    }
+  }
+}
