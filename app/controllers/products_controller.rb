@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.images.new
+    @images = @product.images.new
   end
 
   def category_children
@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
   end  
 
   def create
-    @product = Product.create(product_params)
+    @product = Product.new(product_params)
     if @product.save
       redirect_to @product
     else
@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
       :shipment_date_id, 
       :prefecture_id, 
       :category_id, 
-      images_attributes: [:image, :_destroy, :id]
+      [images_attributes: [:image]]
       )
       .merge(seller_id: current_user.id)
   end

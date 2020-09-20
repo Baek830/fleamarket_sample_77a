@@ -9,14 +9,30 @@
             .name 出品画像
             .required 必須
           .field__label-desc 最大10枚までアップロードできます
-          = form.fields_for :images do |image|
-            %ul#previews
-              %li.input
-                %label.upload-label
-                  .upload-label__text
-                    %i.fas.fa-camera.fa-2x
-                  .input-area
-                    = image.file_field :image, class: "hidden image_upload"
+          .post__drop__box__container
+            .prev-content
+              - @product.images.each do |image|
+                .preview-box
+                  .upper-box
+                    = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                  .lower-box
+                    .update-box
+                      %label.edit-btn 編集
+                    .delete-box
+                      .delete-btn
+                        %span 削除
+            .label-content
+
+              = form.label :"images_attributes_#{@product.images.length}_image", class: "label-box", id: "label-box--#{@product.images.length}" do
+                %pre.label-box__text-visible クリックしてファイルをアップロード
+            .hidden-content
+              = form.fields_for :images do |i|
+                = i.file_field :image, class: "hidden-field"
+                = i.check_box:_destroy, class: "hidden-checkbox"
+
+              - @product.images.length.upto(4) do |i|
+                %input{name: "product[images_attributes][#{i}][image]", id: "product_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+
       .sales__page__main__product
         .field__label
           .name 商品名

@@ -1,83 +1,77 @@
-$(function () {
-  $(document).on('click', '.image_upload', function() {
-    var preview = $(
-      `<div class="image-preview__wapper">
-        <img class="preview">
-      </div>
-      <div class="image-preview_btn">
-        <div class="image-preview_btn_delete">削除</div>
-      </div>`
-    );
-    var append_input = $(
-      `<li class="input">
-        <label class="upload-label">
-          <i class="fas fa-plus fa-2x"></i>
-            <div class="input-area display-none">
-              <input class="hidden image_upload" type="file">
-            </div>
-          </div>
-        </label>
-      </li>`
-    );
-    $ul = $('#previews');
-    $li = $(this).parents('li');
-    $label = $(this).parents('.upload-label');
-    $inputs = $ul.find('.image_upload');
-    $('.image_upload').on('change', function (e) {
+$(document).on('turbolinks:load', function(){
+  $(function(){
+    function buildHTML(count) {
+      let html = `<div class="preview-box" id="preview-box__${count}">
+                      <div class="upper-box">
+                        <img src="" alt="preview">
+                      </div>
+                      <div class="lower-box">
+                        <div class="update-box">
+                          <label class="edit_btn">編集</label>
+                        </div>
+                        <div class="delete-box" id="delete_btn_${count}">
+                          <span>削除</span>
+                        </div>
+                      </div>
+                    </div>`
+      return html;
+    }
+
+    function setLabel() {
+      var prevContent = $('.label-content').prev();
+      labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+      $('.label-content').css('width', labelWidth);
+    }
+
+    $(document).on('change', '.hidden-field', function() {
+      setLabel();
+      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      $('.label-box').attr({id: `label-box--${id}`, for: `product_images_attributes_${id}_image`});
+      var file = this.files[0];
       var reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      reader.onload = function(e) {
-        $(preview).find('.preview').attr('src', e.target.result);
+      reader.readAsDataURL(file);
+      reader.onload = function() {
+        var image = this.result;
+        if ($(`#preview-box__${id}`).length == 0) {
+          var count = $('.preview-box').length;
+          var html = buildHTML(id);
+          var prevContent = $('.label-content').prev();
+          $(prevContent).append(html);
+        }
+        $(`#preview-box__${id} img`).attr('src', `${image}`);
+        var count = $('.preview-box').length;
+        if (count == 5) {
+          $('.label-content').hide();
+        }
+
+        setLabel();
+        if(count < 5) {
+          $('.label-box').attr({id: `label-box--${count}`, for: `product_images_attributes_${count}_image`});
+        }
       }
-      $li.append(preview);
-      $('#previews li').css({
-        'width': `116px`
-      })
-      $label.css('display', 'none');
-      $li.removeClass('input');
-      $li.addClass('image-preview');
-      $lis = $ul.find('.image-preview');
-      
-      if ($lis.length < 10) {
-        $ul.append(append_input)
-        $('#previews li:last-child').css({
-          'width':`116px`
-        })
+    });
+
+    $(document).on('click', '.delete-box', function() {
+      var count = $('.preview-box').length;
+      setLabel(count);
+      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      $(`#preview-box__${id}`).remove();
+      console.log("new")
+      $(`#product_images_attributes_${id}_image`).val("");
+
+      var count = $('.preview-box').length;
+
+      if (count == 4) {
+        $('.label-content').show();
       }
-      $inputs.each(function (num, input) {
-        $(input).removeAttr('name');
-        $(input).attr({
-          name: "product[images_attributes][" + num + "][image]",
-          id: "images_attributes_" + num + "_image"
-        });
-      });
+      setLabel(count);
+
+      if(id < 5) {
+        $('.label-box').attr({id: `label-box--${id}`, for: `product_images_attributes_${id}_image`});
+      }
     });
   });
-
-  $(document).on('click', '.image-preview_btn_delete', function () {
-    var append_input = $(`<li class="input">
-                            <label class="upload-label">
-                              <div class="uploas-label__text">
-                                <i class="fas fa-plus fa-2x"></i>
-                                  <div class="input-area display-none">
-                                    <input class="hidden image_upload" type="file">
-                                  </div>
-                              </div>
-                            </label>
-                          </li>`);
-    $ul = $('previews')
-    $lis = $ul.find('.image-preview');
-    $li = $(this).parents('.image-preview');
-    $li.remove();
-    $lis = $ul.find('.image-preview');
-    if ($lis.length == 9) {
-      $ul.append(append_input)
-    }
-    $('#previews li:last-child').css({
-      'width': `116px`
-    })
-  });
-});
+})
 
 
 $(document).on('turbolinks:load',function(){
