@@ -1,0 +1,20 @@
+-# - comments.each do |comment|
+-#   %li.comment-content__comment-list__item
+-#     = link_to "#", class: "comment-username" do
+-#       = comment.user.nickname
+-#     .comment-body
+-#       %p.comment-body__text
+-#         = comment.content
+-#       - if current_user.id === product.seller_id
+-#         = link_to product_comment_path(product, comment.id), method: :DELETE, class: "comment-body__delete-btn" do
+-#           %i.fas.fa-trash-alt
+
+-# %li.comment-content__comment-list__item
+-#   = link_to "#", class: "comment-username" do
+-#     -# = comments.user.nickname
+-#   .comment-body
+-#     %p.comment-body__text
+-#       -# = comments.content
+-#     -# - if current_user.id === comments.product.seller_id
+-#       = link_to product_comment_path(comments.id), method: :DELETE, class: "comment-body__delete-btn" do
+-#         %i.fas.fa-trash-alt

@@ -48,9 +48,8 @@ class ProductsController < ApplicationController
     if user_signed_in? 
       @favorite = Favorite.find_by(user_id: current_user.id, product_id: @product.id)
     end
-
     @comment = Comment.new
-    @comments = @product.comments.includes(:user)
+    @comments = Comment.includes(:user).where(product_id: @product.id)
     @condition = Condition.find(@product.condition_id)
     @shipping_cost = ShippingCost.find(@product.shipping_cost_id)
     @prefecture = Prefecture.find(@product.prefecture_id)
