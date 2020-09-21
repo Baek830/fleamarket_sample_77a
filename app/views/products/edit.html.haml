@@ -16,15 +16,14 @@
                   .upper-box
                     = image_tag image.image.url, width: "112", height: "112", alt: "preview"
                   .lower-box
-                    .update-box
-                      %label.edit-btn 編集
                     .delete-box
                       .delete-btn
                         %span 削除
             .label-content
 
               = form.label :"images_attributes_#{@product.images.length}_image", class: "label-box", id: "label-box--#{@product.images.length}" do
-                %pre.label-box__text-visible クリックしてファイルをアップロード
+                %pre.label-box__text-visible
+                  %i.fas.fa-camera.fa-2x
             .hidden-content
               = form.fields_for :images do |i|
                 = i.file_field :image, class: "hidden-field"
