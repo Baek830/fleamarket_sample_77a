@@ -64,7 +64,7 @@
             = @shipment_date.name
 
     - if user_signed_in? && @product.seller_id != current_user.id
-      = link_to '#', class: "product-buy-btn" do
+      = link_to purchase_product_path, class: "product-buy-btn" do
         購入画面に進む
 
     .product-infos__description
