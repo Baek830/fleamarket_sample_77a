@@ -13,18 +13,21 @@
           .subject email
           .required 必須
         = form.email_field :email, class: "field__input", placeholder: "PC・携帯どちらでも可"
-        .field__form
-          .subject パスワード
-          .required 必須
-        = form.password_field :password, class: "field__input", placeholder: "7文字以上の半角英数字"
-        .field__guide ＊ 半角英数字７文字以上で設定して下さい
-        .field__form
-          .subject 再度パスワード
-          .required 必須
-        = form.password_field :password_confirmation, class: "field__input", placeholder: "7文字以上の半角英数字"
-        .field__display
-          = check_box_tag :check
-          = label_tag :check, "パスワードを表示する"
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
+          .field__form
+            .subject パスワード
+            .required 必須
+          = form.password_field :password, class: "field__input", placeholder: "7文字以上の半角英数字"
+          .field__guide ＊ 半角英数字７文字以上で設定して下さい
+          .field__form
+            .subject 再度パスワード
+            .required 必須
+          = form.password_field :password_confirmation, class: "field__input", placeholder: "7文字以上の半角英数字"
+          .field__display
+            = check_box_tag :check
+            = label_tag :check, "パスワードを表示する"
         %br/
         %br/
         .field__subtitle 本人確認

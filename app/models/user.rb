@@ -37,7 +37,7 @@ def self.from_omniauth(auth)
     sns.user = user
     sns.save
   end
-  user
+  { user: user, sns: sns }
 end
 
 def favorited_by?(product_id)
