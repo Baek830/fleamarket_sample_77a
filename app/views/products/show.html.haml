@@ -97,19 +97,34 @@
   - if user_signed_in?
     .product-detail-comment
       .comment-container
-        .comment-content
-          - if @comments.presence
+        - if @comments.presence
+          .comment-content
             %ul.comment-content__coment-list
               - @comments.each do |comment|
-                %li.comment-content__comment-list__item
-                  = link_to "#", class: "comment-username" do
-                    = comment.user.nickname
-                  .comment-body
-                    %p.comment-body__text
-                      = comment.content
-                    - if current_user.id === @product.seller_id
-                      = link_to product_comment_path(@product, comment), method: :DELETE, class: "comment-body__delete-btn" do
-                        %i.fas.fa-trash-alt
+                - if comment.user.id === current_user.id
+                  %li.comment-content__comment-list__item
+                    = link_to user_path(id: current_user.id), class: "comment-username" do
+                      = comment.user.nickname
+                      - if comment.user.id === @product.seller_id
+                        %span.seller 出品者
+                    .comment-body
+                      %p.comment-body__text
+                        = comment.content
+                      - if current_user.id === @product.seller_id
+                        = link_to product_comment_path(@product, comment), method: :DELETE, data: {confirm: "コメントを削除しますか？"}, class: "comment-body__delete-btn" do
+                          %i.fas.fa-trash-alt
+                - else 
+                  %li.comment-content__comment-list__item
+                    = link_to user_path(id: comment.user.id), class: "comment-username otherusers-name" do
+                      - if comment.user.id === @product.seller_id
+                        %span.seller-otherusers 出品者
+                      = comment.user.nickname
+                    .comment-body.comment-body-otherusers
+                      %p.comment-body__text
+                        = comment.content
+                      - if current_user.id === @product.seller_id
+                        = link_to product_comment_path(@product, comment), method: :DELETE, data: {confirm: "コメントを削除しますか？"}, class: "comment-body__delete-btn" do
+                          %i.fas.fa-trash-alt
 
         .comment-content
           = form_with model: [@product, @comment], local: true, class: "comment-content__comment-form " do |form|
