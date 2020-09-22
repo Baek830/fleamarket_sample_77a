@@ -145,6 +145,7 @@ main {
         padding: 40px 0;
         width: 100%;
         height: auto;
+        letter-spacing: 1px;
         .payment-method__area {
           width: 50%;
           margin: 0 auto;
@@ -153,12 +154,10 @@ main {
             text-align: left;
             margin-bottom: 10px;
             font-weight: bold;
-            letter-spacing: 1px;
           }
           &__credit {
             font-size: 13px;
             text-align: left;
-            letter-spacing: 1px;
             padding-top: 10px;
             .card-number {
               margin-top: 5px;
@@ -204,10 +203,6 @@ main {
             text-align: right;
             font-size: 14px;
           }
-          // .important-points {
-          //   padding-top: 40px;
-          //   font-size: 12px;
-          // }
         }
       }
       .purchaset-box {
