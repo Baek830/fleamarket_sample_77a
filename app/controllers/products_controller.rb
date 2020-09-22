@@ -61,8 +61,8 @@ class ProductsController < ApplicationController
   end
 
   def purchase
+    @address = DeliveryAddress.where(user_id: current_user.id).first
     @product = Product.find(params[:id])
-    
   end
 # ------------------
   def done

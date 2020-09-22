@@ -1,43 +1,125 @@
 %header
   = render 'layouts/form-header'
 
-.purchaset-container
-  .purchaset-container__title
-    購入内容の確認
-    .purchaset-prodct__area
-      .purchaset-prodct__area--left
-        .purchaset-prodct__img
-          - @product.images.each do |image|
-            = image_tag image.image.url, class: 'prodct-img'
-      .purchaset-prodct__area--rigth 
-        .purchaset-prodct__name
-          = @product.name
-        .purchaset-prodct__price
-          %span.purchaset-prodct__price--box
-            = "¥#{@product.price.to_s(:delimited)}"
-          %span.purchaset-prodct__price--tax
-            (税込)
-          %span.purchaset-prodct__price--shipping-cost
-            送料込み
-  
-  .payment__area
-    .payment__area__title
-      支払い金額
-      .payment__area__price
-        %span.payment__area__price--box
-          = "¥#{@product.price.to_s(:delimited)}"
-  
-  .payment-method__area
-    .payment-method__area__tilte
-      支払い方法
-    .payment-method__area__credit
-      - if @card
-        = render template: ''
-      - else
-        = link_to
-        ※登録してください
+%main
+  .purchaset-container
+    .purchaset-container__title
+      購入内容の確認
+    .contents-border
+    .purchaset-container__inner
+      .purchaset-prodct__area
+        .purchaset-prodct__area--left
+          .prodct-img-box
+            - @product.images.each do |image|
+              = image_tag image.image.url, class: 'prodct-img'
+        .purchaset-prodct__area--rigth 
+          .purchaset-prodct__name
+            = @product.name
+          .purchaset-prodct__price
+            .purchaset-prodct__price__box
+              .price__shipping-cost
+                送料込み
+              .price__tax
+                (税込)
+              .payment--price
+                = "¥#{@product.price.to_s(:delimited)}"
+      .contents-border
 
+      .payment-container
+        .payment__area
+          .payment__area__title
+            支払い金額
+          .payment__area__price
+            = "¥#{@product.price.to_s(:delimited)}"
         
-      
+        .point__area
+          .point-info
+            %span.point-check-box
+            = image_tag 'furima_logo.png', width: '25px', class: 'point-logo'
+            ポイント
+          .point-number
+            所持ポイント : P0
+        
+        .furima-balance__area
+          .balance-info
+            %span.balance-check-box
+            フリペイ残高の使用
+          .balance-number
+            残高 : ¥0
+        .important-points
+          ※同時に選択した場合、フリマポイント → フリペイ残高の順でお支払いに適用されます
+
+
+      .contents-border
+
+      .payment-method-container
+        .payment-method__area
+          .payment-method__area__tilte
+            支払い方法
+          .payment-method__area__credit
+            クレジットカード
+            .card-number
+              ************9999
+            .expiration-date
+              有効期限 99 / 99
+            .card-logo
+              = image_tag 'logo_visa.gif', width: '40px', class: 'card-logo-img'
+
+            -# 下記、実装時に使用
+            -# - if @card
+            -#   = render template: 'products/cards/create'
+            -# - else
+            -#   = link_to class:"payment-method__area__credit__link" do
+                -# 下記クレジットカード登録なしの場合に表示
+                -# .registration-info
+                -#   %i.far.fa-plus-square 
+                -#     登録してください
+
+                    -# new_product_card_path(@product) ,method: :get,
+          .payment-method__area__registration-info 
+            = link_to '#', class: "registratio-link" do
+              変更する
+              %i.fas.fa-angle-right
+
+      .contents-border
+
+      .delivery-address-container
+        .delivery-address__area
+          .delivery-address__area__tilte
+            配送先
+
+          .delivery-address__details
+            %p.postal-number
+            = "〒#{@address.postal_code}"
+            %p.address
+            = "#{@address.prefecture.name}"
+            = "#{@address.city}"
+            = "#{@address.ward}"
+            = "#{@address.building}"
+            %p.receiver-name
+            = @address.last_name
+            = @address.first_name
+          .delivery-address__registration-info
+            = link_to '#', class: "registratio-link" do
+              変更する
+              %i.fas.fa-angle-right
+
+        .important-points
+          %p ※郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。<br>出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+      .contents-border
+
+      .purchaset-box
+        = submit_tag("購入する", class: "purchaset__btn")
+
 %footer
-  = render 'layouts/form-footer'
+  .footer__area
+    %ul.footer__area__text
+      %li プライバシーポリシー
+      %li 利用規約
+      %li 特定商取引に関する表記
+    .footer__logo
+      = link_to (image_tag "logo-white.png", class: "footer__logo--img"), root_path
+      %p © FURIMA
+
+-# %footer
+-#   = render 'layouts/form-footer'

@@ -1,0 +1,273 @@
+main { 
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  padding-bottom: 100px;
+  color: #484848;
+  .purchaset-container {
+    max-width: 700px;
+    background-color: white;
+    margin: 0 auto;
+    height: 100%;
+    padding-top: 40px;
+
+    text-align: center;
+    &__title {
+      font-size: 24px;
+      font-weight: bold;
+      padding-bottom: 40px;
+      letter-spacing: 1px;
+    }
+    &__inner {
+        width: 100%;
+        height: 100%;
+        padding: 40px 0;
+
+      .purchaset-prodct__area {
+        width: 50%;
+        display: flex;
+        margin: 0 auto;
+        padding-bottom: 40px;
+        &--left {
+          width: 110px;
+          .prodct-img-box {
+
+            .prodct-img {
+              width: 100px;
+              height: 100px;
+              border-radius: 5%;
+              display: block;
+            }
+          }
+        }
+        &--rigth {
+          width: 230px;
+          height: 100px;
+          margin-left: 10px;
+          position: relative;
+          .purchaset-prodct__name {
+            font-size: 13px;
+            text-align: left;
+            margin-bottom: 20px;
+
+          }
+          .purchaset-prodct__price {
+         
+
+            &__box {
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              font-size: 13px;
+              display: flex;
+              letter-spacing: 1px;
+
+              .price__shipping-cost {
+                margin-right: 3px;
+              }
+              .price__tax {
+                margin-right: 3px;
+              }
+              .payment--price {
+                font-weight: bold;
+  
+              }
+
+            }
+
+          }
+        }
+      }
+      .payment-container {
+        width: 100%;
+        padding: 40px 0;
+        .payment__area {
+          display: flex;
+          justify-content: space-between;
+          width: 50%;
+          height: 60px;
+          margin: 0 auto;
+
+          &__title {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+          }
+          &__price {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px; 
+            transform : scale(1.0, 1.2);
+          }
+        }
+        .point__area {
+          width: 50%;
+          display: flex;
+          justify-content: space-between;
+          font-size: 12px;
+          margin: 0 auto;
+          line-height: 20px;
+          .point-info {
+            display: flex;
+            .point-check-box {
+              width: 18px;
+              height: 18px;
+              display: block;
+              background-color: #bababa;
+              border-radius: 25%;
+            }
+            .point-logo {
+              padding-top: 1px;
+            }
+          }
+        }
+        .furima-balance__area {
+          width: 50%;
+          display: flex;
+          justify-content: space-between;
+          font-size: 12px;
+          margin: 0 auto 10px;
+          line-height: 20px;
+          padding-top: 10px;
+          .balance-info {
+            display: flex;
+            .balance-check-box {
+              width: 18px;
+              height: 18px;
+              display: block;
+              background-color: #bababa;
+              border-radius: 25%;
+            }
+          }
+        }
+      }
+      .payment-method-container {
+        padding: 40px 0;
+        width: 100%;
+        height: auto;
+        .payment-method__area {
+          width: 50%;
+          margin: 0 auto;
+          font-size: 14px;
+          &__tilte {
+            text-align: left;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+          }
+          &__credit {
+            font-size: 13px;
+            text-align: left;
+            letter-spacing: 1px;
+            padding-top: 10px;
+            .card-number {
+              margin-top: 5px;
+              font-size: 13px;
+            }
+            .expiration-date {
+              font-size: 13px;
+              margin-bottom: 5px;
+            }
+          }
+          // カード登録時に使用
+          // &__credit {
+          //   text-align: left;
+          //   padding-left: 20px;
+          //   a {
+          //     color: #008fef;
+          //   }
+          //   a:hover {
+          //     color: #78b7e1;
+          //   }
+          // }
+          &__registration-info {
+            text-align: right;
+            font-size: 14px;
+          }
+        }
+      }
+      .delivery-address-container {
+        padding: 40px 0;
+        .delivery-address__area {
+          width: 50%;
+          margin: 0 auto 40px;
+          text-align: left;
+          font-size: 14px;
+          letter-spacing: 1px;
+          &__tilte {
+            text-align: left;
+            margin-bottom: 20px;
+            font-weight: bold;
+
+          }
+          .delivery-address__registration-info {
+            text-align: right;
+            font-size: 14px;
+          }
+          // .important-points {
+          //   padding-top: 40px;
+          //   font-size: 12px;
+          // }
+        }
+      }
+      .purchaset-box {
+        padding-top: 40px;
+        width: 50%;
+        margin: 0 auto;
+        .purchaset__btn {
+          width: 100%;
+          height: 50px;
+          border-style: none;
+          background-color: #3ccace;
+          border-radius: 5px;
+          color: #fff;
+          letter-spacing: 1px;
+          cursor: pointer;
+        }
+      }
+    } 
+    .contents-border {
+      max-width: 60%;
+      height: 1px;
+      border-bottom: 1px solid #e5e5e5;
+      margin: 0 auto;
+    }
+    .registratio-link {
+      text-decoration: none;
+      color: #008fef;
+    }
+    a:hover {
+      color: #78b7e1;
+    }
+    .important-points {
+      width: 50%;
+      font-size: 12px;
+      margin: 0 auto;
+      text-align: left;
+    }
+  }
+}
+
+.footer__area {
+  width: 100%;
+  height: 200px;
+  background-color: #222222;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  &__text {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    li {
+      margin: 40px 20px;
+    }
+  }
+  .footer__logo {
+    padding-bottom: 0;
+    &--img {
+    width: 120px;
+    height: 33px;
+    }
+  }
+}
