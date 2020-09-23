@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
-  # has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :condition

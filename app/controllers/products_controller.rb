@@ -45,7 +45,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @favorite = Favorite.find_by(user_id: current_user.id, product_id: @product.id)
+    #ここのifはコントローラーに書かない方がいいかも。。。
+    if user_signed_in? 
+      @favorite = Favorite.find_by(user_id: current_user.id, product_id: @product.id)
+    end
+
+    @comment = Comment.new
+    @comments = @product.comments.includes(:user)
     @condition = Condition.find(@product.condition_id)
     @shipping_cost = ShippingCost.find(@product.shipping_cost_id)
     @prefecture = Prefecture.find(@product.prefecture_id)
