@@ -1,16 +1,34 @@
-.account__info
+.account__new
   = render 'layouts/form-header'
-  .account__info__main
-    = form_for(@user, url: user_session_path) do |form|
-      = render 'devise/shared/error_messages', resource: @user
-      .account__info__main__content
-        .field__signup__info
+  = form_for(@user, url: user_session_path) do |form|
+    .account__new__main
+      .account__new__main__content
+        .field__info-account
           アカウントをお持ちでない方はこちら
         .field__signup
           = link_to "新規会員登録", new_user_registration_path
-        .field__form
-        = form.email_field :email, class: "field__input", placeholder: "メールアドレス"
-        .field__form
-        = form.password_field :password, class: "field__input", placeholder: "パスワード"
-        = form.submit "ログイン", class:"action"
+        .field__btn
+          .field__signup-google
+            =link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn-def--google" do
+              %i.fab.fa-google
+              %span
+              Googleでログイン
+          .field__signup-facebook
+            =link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn-def--facebook" do
+              %i.fab.fa-facebook-square
+              %span
+              Facebookでログイン
+          .field__signup-apple
+            =link_to "#", method: :post, class: "btn-def--apple" do
+              %i.fab.fa-apple
+              %span
+              Appleでログイン
+          .field-text
+            .field__form
+            = form.email_field :email, class: "field__input", placeholder: "メールアドレス"
+            .field__form
+            = form.password_field :password, class: "field__input", placeholder: "パスワード"
+            = form.submit "ログイン", class:"action"
+          .psw-forget
+            =link_to "パスワードをお忘れの方", "#"
   = render 'layouts/form-footer'
