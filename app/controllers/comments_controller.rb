@@ -2,12 +2,15 @@ class CommentsController < ApplicationController
   before_action :find_product
 
   def create
-    Comment.create(comment_params)
-    redirect_to product_path(@product)
+    if Comment.create(comment_params)
+      redirect_to product_path(@product)
+    else
+      redirect_to product_path(@product), alert: "コメントが送信できませんでした"
+    end
   end
 
   def destroy
-    @comment = Comment.find_by(product_id: @product.id, id: params[:id])
+    @comment = Comment.find(params[:id])
     if @comment.destroy
       redirect_to product_path(@product), notice: 'コメントを削除しました'
     else
