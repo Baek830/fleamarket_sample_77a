@@ -79,6 +79,9 @@ $(document).on('turbolinks:load', function(){
         }
         $(`#preview-box__${id} img`).attr('src', `${image}`);
         var count = $('.preview-box').length;
+        if (count >= 6) {
+          $('.label-content').append();
+        }
         if (count == 10) {
           $('.label-content').hide();
         }

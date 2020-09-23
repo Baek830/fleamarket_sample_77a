@@ -29,7 +29,7 @@
                 = i.file_field :image, class: "hidden-field"
                 = i.check_box:_destroy, class: "hidden-checkbox"
 
-              - @product.images.length.upto(4) do |i|
+              - @product.images.length.upto(9) do |i|
                 %input{name: "product[images_attributes][#{i}][image]", id: "product_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
 
       .sales__page__main__product
