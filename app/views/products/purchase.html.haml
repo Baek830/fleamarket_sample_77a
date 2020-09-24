@@ -10,8 +10,7 @@
       .purchaset-prodct__area
         .purchaset-prodct__area--left
           .prodct-img-box
-            - @product.images.each do |image|
-              = image_tag image.image.url, class: 'prodct-img'
+            = image_tag "#{@product.images[0].image}", class: 'prodct-img' 
         .purchaset-prodct__area--rigth 
           .purchaset-prodct__name
             = @product.name
@@ -120,6 +119,3 @@
     .footer__logo
       = link_to (image_tag "logo-white.png", class: "footer__logo--img"), root_path
       %p © FURIMA
-
--# %footer
--#   = render 'layouts/form-footer'
