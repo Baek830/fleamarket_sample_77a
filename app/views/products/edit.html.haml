@@ -9,8 +9,8 @@
             .name 出品画像
             .required 必須
           .field__label-desc 最大10枚までアップロードできます
-          .post__drop__box__container
-            .prev-content
+          %ul.post__drop__box__container
+            %li.prev-content
               - @product.images.each do |image|
                 .preview-box
                   .upper-box

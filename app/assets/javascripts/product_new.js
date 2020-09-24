@@ -17,7 +17,6 @@ $(document).on('turbolinks:load', function(){
 
     if (window.location.href.match(/\/products\/\d+\/edit/)){
       var count = $('.preview-box').length;
-      // var prevContent = $('.label-content').prev();
       $('.preview-box').each(function(index, box){
         $(box).attr('id', `preview-box__${index}`);
       })
@@ -40,7 +39,6 @@ $(document).on('turbolinks:load', function(){
 
     function setLabel() {
       var count = $('.preview-box').length;
-      // var prevContent = $('.label-content').prev();
       $('.preview-box').each(function(index, box){
         $(box).attr('id', `preview-box__${index}`);
       })
@@ -55,6 +53,7 @@ $(document).on('turbolinks:load', function(){
       }
       else if (count <= 9){
         $('.label-content').css({'width': `calc(100% - (20% * (${count} - 5)))`});
+        $('.prev-content').append($('.label-content'));
       }
       if (count == 10) {
         $('.label-content').hide();
@@ -74,14 +73,11 @@ $(document).on('turbolinks:load', function(){
         if ($(`#preview-box__${id}`).length == 0) {
           var count = $('.preview-box').length;
           var html = buildHTML(id);
-          var prevContent = $('.label-content').prev();
-          $(prevContent).append(html);
+          $('.prev-content').append(html);
         }
         $(`#preview-box__${id} img`).attr('src', `${image}`);
         var count = $('.preview-box').length;
-        if (count >= 6) {
-          $('.label-content').append();
-        }
+        $('.prev-content').append($('.label-content'));
         if (count == 10) {
           $('.label-content').hide();
         }
