@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.images.new
+    @images = @product.images.new
   end
 
   def category_children
@@ -26,10 +26,14 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to @product, notice: '出品しました'
+      redirect_to @product
     else
-      @product.images.new
-      render :new, notice: '出品に失敗しました'
+      unless @product.images.present?
+        @product.images.new
+        render :new
+      else
+        render :new
+      end
     end
   end
   
@@ -87,7 +91,7 @@ class ProductsController < ApplicationController
       :shipment_date_id, 
       :prefecture_id, 
       :category_id, 
-      images_attributes: [:image, :_destroy, :id]
+      [images_attributes: [:image, :_destroy, :id]]
       )
       .merge(seller_id: current_user.id)
   end
