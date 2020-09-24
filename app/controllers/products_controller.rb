@@ -93,4 +93,5 @@ class ProductsController < ApplicationController
   # def set_product_purchase
   #   @product = Product.find(params[:id])
   # end
+
 end
