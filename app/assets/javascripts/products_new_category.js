@@ -57,6 +57,13 @@ $('turbolinks:render', function(){
     }
   });
 
+  // if (window.location.href.match(/\/products\/\d+\/edit/)){
+  //   $(document).on("change", "#parent_category", function(){
+  //     $("#children_box").empty();
+  //     $("#grandchildren_box").empty();
+  //   })
+  // }
+
   // 子カテゴリー選択によるイベント発火
   $(document).on('change', '#children_box', function(){
     // 選択された子カテゴリーidを取得
