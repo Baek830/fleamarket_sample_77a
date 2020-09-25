@@ -64,7 +64,7 @@
             = @shipment_date.name
 
     - if user_signed_in? && @product.seller_id != current_user.id
-      = link_to '#', class: "product-buy-btn" do
+      = link_to purchase_product_path, class: "product-buy-btn" do
         購入画面に進む
 
     .product-infos__description
@@ -97,11 +97,40 @@
   - if user_signed_in?
     .product-detail-comment
       .comment-container
-        .comment-container__content
-          %form.comment-container__content__comment-form 
+        - if @comments.presence
+          .comment-content
+            %ul.comment-content__coment-list
+              - @comments.each do |comment|
+                - if comment.user.id === current_user.id
+                  %li.comment-content__comment-list__item
+                    = link_to user_path(id: current_user.id), class: "comment-username" do
+                      = comment.user.nickname
+                      - if comment.user.id === @product.seller_id
+                        %span.seller 出品者
+                    .comment-body
+                      %p.comment-body__text
+                        = comment.content
+                      - if current_user.id === @product.seller_id
+                        = link_to product_comment_path(@product, comment), method: :DELETE, data: {confirm: "コメントを削除しますか？"}, class: "comment-body__delete-btn" do
+                          %i.fas.fa-trash-alt
+                - else 
+                  %li.comment-content__comment-list__item
+                    = link_to user_path(id: comment.user.id), class: "comment-username otherusers-name" do
+                      - if comment.user.id === @product.seller_id
+                        %span.seller-otherusers 出品者
+                      = comment.user.nickname
+                    .comment-body.comment-body-otherusers
+                      %p.comment-body__text
+                        = comment.content
+                      - if current_user.id === @product.seller_id
+                        = link_to product_comment_path(@product, comment), method: :DELETE, data: {confirm: "コメントを削除しますか？"}, class: "comment-body__delete-btn" do
+                          %i.fas.fa-trash-alt
+
+        .comment-content
+          = form_with model: [@product, @comment], local: true, class: "comment-content__comment-form " do |form|
             %p.warning-message 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %textarea.textarea-default
-            %button.comment-submit-btn コメントする
+            = form.text_area :content, class: "textarea-default"
+            = form.submit "コメントする", class: "comment-submit-btn"
 
   .product-social-media
     %ul.product-social-media__box

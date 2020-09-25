@@ -17,12 +17,17 @@ Rails.application.routes.draw do
 
   root 'products#index'
   resources :products do
-    resources :favorites, only: [:create, :destroy] do
-    end
+    resources :favorites, only: [:create, :destroy] 
+    resources :comments, only: [:create, :destroy]
     collection do
+      get  'done', to:'items#done'
       get 'search'
       get 'category_children'
       get 'category_grandchildren'
+    end
+    member do
+      get "purchase"
+      post "pay"
     end
   end
 
