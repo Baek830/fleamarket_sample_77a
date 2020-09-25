@@ -5,8 +5,8 @@ class ProductsController < ApplicationController
   # before_action :set_product_purchase, only: [:purchase]
   
   def index
-    @products = Product.includes(:images).order('created_at DESC')
-    @product = Product.all.order("created_at DESC").limit(10)
+    @products = Product.includes(:images).order('created_at DESC').limit(10)
+    # @product = Product.all.order("created_at DESC").limit(10)
     @brand = Product.where(brand: 'ロレックス').order("created_at DESC").limit(10)
   end
 
@@ -45,7 +45,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    #ここのifはコントローラーに書かない方がいいかも。。。
     if user_signed_in? 
       @favorite = Favorite.find_by(user_id: current_user.id, product_id: @product.id)
     end
@@ -64,6 +63,10 @@ class ProductsController < ApplicationController
     else
       redirect_to root_path, alert: "削除が失敗しました"
     end
+  end
+
+  def search
+    @products = Product.search(params[:keyword])
   end
 
   def purchase
