@@ -15,4 +15,9 @@ class Product < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :shipment_date
   
+  def self.search(search)
+    return Product.all unless search
+    Product.where('name LIKE(?)', "%#{search}%")
+  end
+
 end
