@@ -92,7 +92,7 @@
         = link_to "商品の編集", edit_product_path(@product.id), class: "product-change-box__edit-btn btn-default"
         %p.product-change-box__center-text 
           or
-        = link_to "この商品を削除する", product_path(@product.id), method: :delete, class: "product-change-box__delete-btn btn-default"
+        = link_to "この商品を削除する", product_path(@product.id), method: :delete,  data: {confirm: "商品を削除しますか？"}, class: "product-change-box__delete-btn btn-default"
 
   - if user_signed_in?
     .product-detail-comment
