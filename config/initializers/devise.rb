@@ -310,4 +310,5 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
   config.omniauth :facebook,'',''
   config.omniauth :google_oauth2,'',''
+  config.omniauth :twitter,'',''
 end

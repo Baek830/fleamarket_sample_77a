@@ -1,7 +1,6 @@
-@mixin snsbtn($background-color: #fff) {
-  border: 1px solid #0099e8;
+@mixin snsbtn($background-color: #fff, $border-color: black) {
+  border: 1px solid $border-color;
   background-color: $background-color;
-  border: solid 1px;
   height: 50px;
   border-radius: 4px;
   width: 343px;
@@ -86,7 +85,7 @@
         }
       }
       &__facebook {
-        @include snsbtn(#385185);
+        @include snsbtn(#385185, #385185);
         .btn-def--facebook {
           @include sns-inside();
           .fab {
@@ -94,9 +93,9 @@
           }
         }
       }
-      &__apple {
-        @include snsbtn(#000);
-        .btn-def--apple {
+      &__twitter {
+        @include snsbtn(#55acee, #55acee);
+        .btn-def--twitter {
           @include sns-inside();
           .fab {
             @include fab();

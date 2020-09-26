@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
+  def twitter
+    authorization
+  end
   
   def facebook
     authorization

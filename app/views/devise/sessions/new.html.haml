@@ -18,11 +18,11 @@
               %i.fab.fa-facebook-square
               %span
               Facebookでログイン
-          .field-signup-btn__apple
-            =link_to "#", method: :post, class: "btn-def--apple" do
-              %i.fab.fa-apple
+          .field-signup-btn__twitter
+            =link_to user_twitter_omniauth_authorize_path, method: :post, class: "btn-def--twitter" do
+              %i.fab.fa-twitter-square
               %span
-              Appleでログイン
+              Twitterでログイン
           .field-text
             = form.email_field :email, class: "field-text__input", placeholder: "メールアドレス"
             = form.password_field :password, class: "field-text__input", placeholder: "パスワード"

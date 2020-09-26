@@ -1,5 +1,5 @@
-@mixin snsbtn($background-color: #ea352d) {
-  border: 1px solid #0099e8;
+@mixin snsbtn($background-color: #ea352d, $border-color: #ea352d) {
+  border: $border-color 1px solid;
   background-color: $background-color;
   border: none;
   height: 50px;
@@ -66,8 +66,8 @@
         }
       }
       .field__signup-google {
-        @include snsbtn(#fff);
-        border: solid 1px;
+        @include snsbtn(#fff, black);
+        border: 1px solid black;
         .btn-def--google {
           @include sns-inside(black);
           .fab {
@@ -79,7 +79,7 @@
         }
       }
       .field__signup-facebook {
-        @include snsbtn(#385185);
+        @include snsbtn(#385185, #385185);
         .btn-def--facebook {
           @include sns-inside();
           .fab {
@@ -87,9 +87,9 @@
           }
         }
       }
-      .field__signup-apple {
-        @include snsbtn(#000);
-        .btn-def--apple {
+      .field__signup-twitter {
+        @include snsbtn(#55acee, #55acee);
+        .btn-def--twitter {
           @include sns-inside();
           .fab {
             @include fab-far();
