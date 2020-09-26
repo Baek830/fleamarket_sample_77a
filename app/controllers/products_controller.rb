@@ -38,6 +38,14 @@ class ProductsController < ApplicationController
   end
   
   def edit
+    @grandchild_category = @product.category
+    @child_category = @grandchild_category.parent
+    @category_parent = @child_category.parent
+
+    @category = Category.find(params[:id])
+    @category_children = @product.category.parent.parent.children
+    @category_grandchildren = @product.category.parent.children
+
   end
 
   def update
