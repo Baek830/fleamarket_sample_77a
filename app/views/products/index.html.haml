@@ -7,10 +7,10 @@
       %p.main-contents__text FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
       .app-link
         .app-link__app-store-btn
-          = link_to("＃") do
+          = link_to root_path do
             = image_tag 'https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps', height: '60px', width: '155px'
         .app-link__google-play-btn
-          = link_to("＃") do
+          = link_to root_path do
             = image_tag 'https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png', alt: 'Google Play で手に入れよう', height: '', width: '180px'
 
   %section.top-introduction
@@ -78,22 +78,7 @@
   %section.product-list
     .product-list-contents
       %h2.product-list-contents__title 新着アイテム
-      .product-list-contents__grid
-        - @products.each do |product|
-          = link_to product_path(product.id), class: "product-box__link", method: :get do
-            .product
-              - if product.buyer_id.present?
-                .product__price-sold
-                  .product__price-sold__inner
-                    SOLD
-              = image_tag "#{product.images[0].image}", class: 'product__img'     
-              %span.product__price 
-                = "¥ #{product.price.to_s(:delimited)}"
-              .product__name 
-                %p 
-                  = product.name
-              %span.product__icon ♡ 0bu
-        %end
+      = render partial: 'layouts/products-list', locals: {products: @products}
 
     .product-list-contents
       %h2.product-list-contents__title ロレックス新着アイテム
@@ -119,11 +104,11 @@
       %p.app-banner-contents__text 今すぐ無料ダウンロード！！
       .app-link
         .app-link__app-store-btn
-          = link_to("＃") do
+          = link_to root_path do
             = image_tag 'https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps', height: '60px', width: '155px'
 
         .app-link__google-play-btn
-          = link_to("＃") do
+          = link_to root_path do
             = image_tag 'https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png', alt: 'Google Play で手に入れよう', height: '', width: '180px'
 
 %footer
