@@ -9,14 +9,25 @@
             .name 出品画像
             .required 必須
           .field__label-desc 最大10枚までアップロードできます
-          = form.fields_for :images do |image|
-            %ul#previews
-              %li.input
-                %label.upload-label
-                  .upload-label__text
-                    %i.fas.fa-camera.fa-2x
-                  .input-area
-                    = image.file_field :image, class: "hidden image_upload"
+          %ul.post__drop__box__container
+            %li.prev-content
+            .label-content
+              %label{for: "product_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                %pre.label-box__text-visible
+                  %i.fas.fa-camera.fa-2x
+            .hidden-content
+              = form.fields_for :images do |i|
+                = i.file_field :image, class: "hidden-field"
+                %input{class:"hidden-field", type: "file", name: "product[images_attributes][1][image]", id: "product_images_attributes_1_image" }
+                %input{class:"hidden-field", type: "file", name: "product[images_attributes][2][image]", id: "product_images_attributes_2_image" }
+                %input{class:"hidden-field", type: "file", name: "product[images_attributes][3][image]", id: "product_images_attributes_3_image" }
+                %input{class:"hidden-field", type: "file", name: "product[images_attributes][4][image]", id: "product_images_attributes_4_image" }
+                %input{class:"hidden-field", type: "file", name: "product[images_attributes][5][image]", id: "product_images_attributes_5_image" }
+                %input{class:"hidden-field", type: "file", name: "product[images_attributes][6][image]", id: "product_images_attributes_6_image" }
+                %input{class:"hidden-field", type: "file", name: "product[images_attributes][7][image]", id: "product_images_attributes_7_image" }
+                %input{class:"hidden-field", type: "file", name: "product[images_attributes][8][image]", id: "product_images_attributes_8_image" }
+                %input{class:"hidden-field", type: "file", name: "product[images_attributes][9][image]", id: "product_images_attributes_9_image" }
+
       .sales__page__main__product
         .field__label
           .name 商品名
@@ -33,7 +44,7 @@
           .name カテゴリー
           .required 必須
         -# 親カテゴリー表示
-        = form.select :category_id, options_for_select(@parents.map{|c| [c[:name], c[:id]]}), {include_blank: "選択してください"}, {class: "field__selector", id: "parent_category"}
+        = form.select(:category_id, @parents.map {|condition|[condition.name, condition.id]}, {prompt: "選択してください"}, {class: "field__selector", id: "parent_category"})
         -#親カテゴリー選択によって子カテゴリー表示
         .category-select-children#children_box
         -#子カテゴリー選択によって孫カテゴリー表示

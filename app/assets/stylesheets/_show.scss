@@ -182,7 +182,63 @@
   width: 700px;
   background: white;
   .comment-container{
-    &__content{
+    .comment-content{
+      &__comment-list {
+        &__item {
+          position: relative;
+          margin-top: 20px;
+          overflow: hidden;
+          .comment-username {
+            text-decoration: none;
+            color: #0097a7;
+            float: right;
+            margin-bottom: 3px;
+            .seller {
+              background: #e0f7fa;
+              padding: 5px;
+              font-weight: bold;
+              border-radius: 5px;
+            }
+          }
+          .otherusers-name{
+            color: black;
+            float: left;
+            .seller-otherusers{
+              background: #e0e0e0;
+              padding: 5px;
+              font-weight: bold;
+              border-radius: 5px;
+            }
+          }
+          .comment-body {
+            width: 600px;
+            padding: 0 16px 16px 16px;
+            background-color: #e0f7fa;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            float: right;
+            &__text {
+              white-space: pre-wrap;
+            }
+            &__delete-btn {
+              position: absolute;
+              text-decoration: none;
+              color: #546e7a;
+              bottom: 16px;
+              right: 16px;
+            }
+          }
+          .comment-body-otherusers{
+            background: #e0e0e0;
+            float: left;
+          }
+        }
+        &__item-otherusers{
+
+        }
+      }
       padding: 24px;
       &__comment-form{
         .warning-message{
@@ -211,6 +267,9 @@
           text-align: center;
           background: #3CCACE;
           color: #ffffff;
+          border-style: none;
+          outline: none;
+          cursor: pointer;
         }
       }
     }

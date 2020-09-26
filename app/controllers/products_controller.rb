@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_parents
-
+  # before_action :set_product_purchase, only: [:purchase]
+  
   def index
     @products = Product.includes(:images).order('created_at DESC')
     @product = Product.all.order("created_at DESC").limit(10)
@@ -11,7 +12,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.images.new
+    @images = @product.images.new
   end
 
   def category_children
@@ -25,13 +26,17 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to @product, notice: '出品しました'
+      redirect_to @product
     else
-      @product.images.new
-      render :new, notice: '出品に失敗しました'
+      unless @product.images.present?
+        @product.images.new
+        render :new
+      else
+        render :new
+      end
     end
   end
-
+  
   def edit
   end
 
@@ -44,7 +49,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @favorite = Favorite.find_by(user_id: current_user.id, product_id: @product.id)
+    #ここのifはコントローラーに書かない方がいいかも。。。
+    if user_signed_in? 
+      @favorite = Favorite.find_by(user_id: current_user.id, product_id: @product.id)
+    end
+
+    @comment = Comment.new
+    @comments = @product.comments.includes(:user)
     @condition = Condition.find(@product.condition_id)
     @shipping_cost = ShippingCost.find(@product.shipping_cost_id)
     @prefecture = Prefecture.find(@product.prefecture_id)
@@ -59,6 +70,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def purchase
+    @address = DeliveryAddress.where(user_id: current_user.id).first
+    @product = Product.find(params[:id])
+  end
+# ------------------
+  def done
+
+  end
+# -------------------
   private
   def product_params
     params.require(:product).permit(
@@ -71,7 +91,7 @@ class ProductsController < ApplicationController
       :shipment_date_id, 
       :prefecture_id, 
       :category_id, 
-      images_attributes: [:image, :_destroy, :id]
+      [images_attributes: [:image, :_destroy, :id]]
       )
       .merge(seller_id: current_user.id)
   end
@@ -80,4 +100,7 @@ class ProductsController < ApplicationController
     @product = Product.includes(:images).find(params[:id])
   end
   
+  # def set_product_purchase
+  #   @product = Product.find(params[:id])
+  # end
 end
