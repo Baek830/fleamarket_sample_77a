@@ -15,12 +15,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :products do
+    resources :searches, only: :index
+  end
+
   root 'products#index'
   resources :products do
     resources :favorites, only: [:create, :destroy] 
     resources :comments, only: [:create, :destroy]
     collection do
-      get 'search'
       get 'done', to:'items#done'
       get 'category_children'
       get 'category_grandchildren'
