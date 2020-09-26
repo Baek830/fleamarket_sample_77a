@@ -1,7 +1,9 @@
 %header
   =render 'layouts/header'
 
-%h1 ここは検索結果を表示します
+.product-list
+  .product-list-contents
+    = render partial: 'layouts/products-list', locals: {products: @products}
 
 %footer
   .app-banner 
