@@ -38,23 +38,14 @@ class ProductsController < ApplicationController
   end
   
   def edit
-    grandchild_category = @product.category
-    child_category = grandchild_category.parent
+    @grandchild_category = @product.category
+    @child_category = @grandchild_category.parent
+    @category_parent = @child_category.parent
 
-    @category_parent_array = []
-    @parents.each do |parent|
-      @category_parent_array << parent.name
-    end
+    @category = Category.find(params[:id])
+    @category_children = @product.category.parent.parent.children
+    @category_grandchildren = @product.category.parent.children
 
-    @category_children_array = []
-    Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children
-    end
-
-    @category_grandchildren_array = []
-    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren
-    end
   end
 
   def update

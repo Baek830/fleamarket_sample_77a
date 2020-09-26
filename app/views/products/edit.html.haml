@@ -46,11 +46,17 @@
         .field__label
           .name カテゴリー
           .required 必須
-        = form.select :category_id, @category_parent_array,{selected: @product.category.parent.parent.name}, {class: "field__selector", id: "parent_category"}
+        = form.select :category_id, options_for_select( @parents.map{|condition|[condition[:name], condition[:id]]}, {selected: @product.category.parent.parent.id}),{} , {class: "field__selector", id: "parent_category"}
+        -# -#親カテゴリー選択によって子カテゴリー表示
+        -# .category-select-children#children_box
+        -# -#子カテゴリー選択によって孫カテゴリー表示
+        -# .category-select-grandchildren#grandchildren_box
+
+        -# = form.select :parent_name, @category_parent,{selected: @product.category.parent.parent.name}, {class: "field__selector", id: "parent_category"}
         .category-select-children#children_box
-          =form.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @product.category.parent.id}), {}, {class: "field__selector", id: "children_category"}
+          =form.select :child_id, options_for_select(@category_children.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @product.category.parent.id}), {}, {class: "field__selector", id: "children_category"}
         .category-select-grandchildren#grandchildren_box
-          = form.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @product.category.id}),{}, {class: "field__selector", id: "grandchild_category"}
+          = form.select :category_id, options_for_select(@category_grandchildren.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @product.category.id}),{}, {class: "field__selector", id: "grandchild_category"}
 
         .field__label
           .name ブランド
