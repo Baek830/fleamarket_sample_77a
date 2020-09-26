@@ -3,7 +3,7 @@
     .header__contents__main
       = link_to image_tag('logo.png', class: "header__contents__main__headerLogo"), root_path
       .header__contents__main__searchBox
-        = form_with(url: search_products_path, local: true, class: "header__contents__main__searchBox__form") do |form|
+        = form_with(url: products_searches_path, local: true, method: :get, class: "header__contents__main__searchBox__form") do |form|
           = form.text_field :keyword, placeholder: "キーワードから探す", class: "header__contents__main__searchBox__form__textBox"
           = form.submit "検索", class: "header__contents__main__searchBox__form__submitBtn"
           -# %input.header__contents__main__searchBox__form__submitBtn{src: asset_path('icon-search-1.png'), type: "image"}
