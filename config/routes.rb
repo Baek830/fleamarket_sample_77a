@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy] 
     resources :comments, only: [:create, :destroy]
     collection do
-      get  'done', to:'items#done'
       get 'search'
+      get 'done', to:'items#done'
       get 'category_children'
       get 'category_grandchildren'
     end
