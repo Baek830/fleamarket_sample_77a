@@ -65,10 +65,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def search
-    @products = Product.search(params[:keyword])
-  end
-
   def purchase
     @address = DeliveryAddress.where(user_id: current_user.id).first
     @product = Product.find(params[:id])
