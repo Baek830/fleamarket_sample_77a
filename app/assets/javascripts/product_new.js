@@ -125,10 +125,10 @@ $(document).on('turbolinks:load', function(){
 
 
 $(document).on('turbolinks:load',function(){
-  $('#product_price').on('input', function(){
-    const data = $('#product_price').val();
-    const profit = Math.round(data * 0.9).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
-    const fee = Math.round(data * 0.1).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
+  $('#field__input-price').on('input', function(){
+    let data = $(this).val();
+    let profit = Math.round(data * 0.9).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
+    let fee = Math.round(data * 0.1).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
     $('.right_bar').html(fee)
     $('.right_bar_2').html(profit)
     $('#price').val(profit)

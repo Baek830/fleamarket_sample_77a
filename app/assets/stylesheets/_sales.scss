@@ -71,7 +71,11 @@
         font-size: 14px;
         font-weight: 600;
       }
-      
+      .error-message {
+        font-size: 14px;
+        color: #ff0211;
+        margin-top: 16px;
+      }
       &__photos {
         padding: 40px;
         border-bottom: solid 1px #ccc;
@@ -238,10 +242,14 @@
             }
           }
         }
+        .error-message {
+          text-align: right;
+          display: none;
+        }
         .sales-comission {
           display: flex;
           justify-content: space-between;
-          padding-bottom: 25px;
+          padding: 25px 0;
           border-bottom: 1px solid #ccc;
           font-size: 14px;
         }
