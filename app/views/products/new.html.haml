@@ -1,6 +1,6 @@
 .container
   = render 'layouts/form-header'
-  -# = render 'devise/shared/error_messages', resource: @product
+  = render 'devise/shared/error_messages', resource: @product
   .sales__page
     = form_with model: @product, local: true, class: "sales__page__main", id: "form" do |form|
       .sales__page__main__photos

@@ -94,10 +94,21 @@ $(document).on('turbolinks:load', function(){
     });
 
     $(document).on('click', '.delete-box', function() {
+      function buildErrorMessage(id, message){
+        let html = `<div class="error-message" id="${id}">
+                      <p>${message}</p>
+                    </div>`
+        return html;
+      }
       var count = $('.preview-box').length;
       setLabel(count);
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       $(`#preview-box__${id}`).remove();
+
+      if ($('.delete-box').length == 0) {
+        $('.field').append(buildErrorMessage('photo', '画像がありません'));
+      };
+      
 
       if ($(`#product_images_attributes_${id}__destroy`).length == 0) {
         $(`#product_images_attributes_${id}_image`).val("");

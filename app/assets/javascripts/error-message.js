@@ -8,6 +8,13 @@ $(function(){
   function deleteErrorMessage(id){
     $(`#${id}`).text('');
   }
+  $('input[type=file]').on('change', function(){
+    if ($('#preview-box__0').width == 0) {
+      $('.field').append(buildErrorMessage('photo', '画像がありません'));
+    } else {
+      deleteErrorMessage('photo');
+    }
+  });
   $('#field__input-product-name').on('input', function() {
     let productName = $(this).val();
     if (productName == '') {
@@ -99,16 +106,3 @@ $(function(){
   });
 })
 
-$(function() {
-  $('form').submit(function() {
-    let productCategory = $('#parent_category').val();
-    return false;
-    if (productCategory == '') {
-      $('.product-category-wrapper').append(buildErrorMessage('category', '選択してください'));
-      $('#parent_category').css({'borderColor': '#ff0211'});
-      $('#children_category').css({'borderColor': '#ff0211'});
-      $('#grandchildren_category').css({'borderColor': '#ff0211'});
-      return false;
-    }
-  });
-});
