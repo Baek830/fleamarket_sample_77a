@@ -57,6 +57,7 @@ $('turbolinks:render', function(){
     }
   });
 
+
   // 子カテゴリー選択によるイベント発火
   $(document).on('change', '#children_box', function(){
     // 選択された子カテゴリーidを取得
