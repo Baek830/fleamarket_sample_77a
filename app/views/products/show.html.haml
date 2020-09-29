@@ -6,6 +6,10 @@
     .product-infos__name
       = @product.name
       
+    - if @product.buyer_id.present?
+      .product-infos__sold
+        .product-infos__sold__inner
+          SOLD  
     .product-infos__image
       %ul.image-outer.slider
         - @product.images.each do |image|
@@ -63,9 +67,11 @@
           %td.table-data
             = @shipment_date.name
 
-    - if user_signed_in? && @product.seller_id != current_user.id
-      = link_to purchase_product_path, class: "product-buy-btn" do
-        購入画面に進む
+    - if @product.buyer_id.nil?
+
+      - if user_signed_in? && @product.seller_id != current_user.id
+        = link_to purchase_product_path, class: "product-buy-btn" do
+          購入画面に進む
 
     .product-infos__description
       %p.product-infos__description__inner
@@ -86,13 +92,14 @@
             %i.fas.fa-lock
             %span あんしん・あんぜんへの取り組み
 
-  - if user_signed_in? && @product.seller_id == current_user.id
-    .product-change-container
-      .product-change-box
-        = link_to "商品の編集", edit_product_path(@product.id), class: "product-change-box__edit-btn btn-default"
-        %p.product-change-box__center-text 
-          or
-        = link_to "この商品を削除する", product_path(@product.id), method: :delete, class: "product-change-box__delete-btn btn-default"
+  - if @product.buyer_id.nil?
+    - if user_signed_in? && @product.seller_id == current_user.id
+      .product-change-container
+        .product-change-box
+          = link_to "商品の編集", edit_product_path(@product.id), class: "product-change-box__edit-btn btn-default"
+          %p.product-change-box__center-text 
+            or
+          = link_to "この商品を削除する", product_path(@product.id), method: :delete, class: "product-change-box__delete-btn btn-default"
 
   - if user_signed_in?
     .product-detail-comment

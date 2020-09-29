@@ -1,10 +1,10 @@
-main { 
+.purchase-contents { 
   width: 100%;
   height: 100%;
   background-color: #f5f5f5;
   padding-bottom: 100px;
   color: #484848;
-  .purchaset-container {
+  .purchase-container {
     max-width: 700px;
     background-color: white;
     margin: 0 auto;
@@ -23,16 +23,16 @@ main {
         height: 100%;
         padding: 40px 0;
 
-      .purchaset-prodct__area {
+      .purchase-product__area {
         width: 50%;
         display: flex;
         margin: 0 auto;
         padding-bottom: 40px;
         &--left {
           width: 110px;
-          .prodct-img-box {
+          .product-img-box {
 
-            .prodct-img {
+            .product-img {
               width: 100px;
               height: 100px;
               border-radius: 5%;
@@ -45,13 +45,13 @@ main {
           height: 100px;
           margin-left: 10px;
           position: relative;
-          .purchaset-prodct__name {
+          .purchase-product__name {
             font-size: 13px;
             text-align: left;
             margin-bottom: 20px;
 
           }
-          .purchaset-prodct__price {
+          .purchase-product__price {
          
 
             &__box {
@@ -137,6 +137,7 @@ main {
               display: block;
               background-color: #bababa;
               border-radius: 25%;
+              margin-right: 5px;
             }
           }
         }
@@ -167,6 +168,22 @@ main {
               font-size: 13px;
               margin-bottom: 5px;
             }
+          }
+          .new-card {
+            margin-top: 15px;
+            // &__btn {
+            //   text-decoration: none;
+            //   color: #008fef;
+            // }
+            // a:hover {
+            //   color: #78b7e1;
+            // }
+            // #payjp_checkout_box input[type=button]{
+            //   background-color: white;
+            //   ・・・
+            //   }
+            
+            
           }
           // カード登録時に使用
           // &__credit {
@@ -205,11 +222,11 @@ main {
           }
         }
       }
-      .purchaset-box {
+      .purchase-box {
         padding-top: 40px;
         width: 50%;
         margin: 0 auto;
-        .purchaset__btn {
+        .purchase__btn {
           width: 100%;
           height: 50px;
           border-style: none;
@@ -218,6 +235,7 @@ main {
           color: #fff;
           letter-spacing: 1px;
           cursor: pointer;
+          outline: none;
         }
       }
     } 

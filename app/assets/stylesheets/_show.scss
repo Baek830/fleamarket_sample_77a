@@ -8,12 +8,36 @@
   width: 620px;
   margin: 40px auto 0;
   padding: 24px 40px 40px;
+  position: relative;
   &__name{
     background: white;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+  }
+  &__sold {
+    width: 0;
+    height: 0;
+    border-width: 200px 200px 0 0;
+    border-color: #ea352d transparent transparent transparent;
+    display: block;
+    position: absolute;
+    top: 80px;
+    left: 125px;
+    z-index: 1;
+    border-style: solid;
+      &__inner {
+      font-size: 45px;
+      position: absolute;
+      top: -160px;
+      left: 10px;
+      z-index: 2;
+      color: #fff;
+      transform: rotate(-45deg);
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
   }
   &__image{
     background: #fafafa;

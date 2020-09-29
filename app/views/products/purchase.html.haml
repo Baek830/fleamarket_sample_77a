@@ -1,22 +1,21 @@
 %header
   = render 'layouts/form-header'
 
-%main
-  .purchaset-container
-    .purchaset-container__title
+.purchase-contents
+  .purchase-container
+    .purchase-container__title
       購入内容の確認
     .contents-border
-    .purchaset-container__inner
-      .purchaset-prodct__area
-        .purchaset-prodct__area--left
-          .prodct-img-box
-            - @product.images.each do |image|
-              = image_tag image.image.url, class: 'prodct-img'
-        .purchaset-prodct__area--rigth 
-          .purchaset-prodct__name
+    .purchase-container__inner
+      .purchase-product__area
+        .purchase-product__area--left
+          .product-img-box
+            = image_tag "#{@product.images[0].image}", class: 'product-img'
+        .purchase-product__area--rigth 
+          .purchase-product__name
             = @product.name
-          .purchaset-prodct__price
-            .purchaset-prodct__price__box
+          .purchase-product__price
+            .purchase-product__price__box
               .price__shipping-cost
                 送料込み
               .price__tax
@@ -52,38 +51,6 @@
 
       .contents-border
 
-      .payment-method-container
-        .payment-method__area
-          .payment-method__area__tilte
-            支払い方法
-          .payment-method__area__credit
-            クレジットカード
-            .card-number
-              ************9999
-            .expiration-date
-              有効期限 99 / 99
-            .card-logo
-              = image_tag 'logo_visa.gif', width: '40px', class: 'card-logo-img'
-
-            -# 下記、実装時に使用
-            -# - if @card
-            -#   = render template: 'products/cards/create'
-            -# - else
-            -#   = link_to class:"payment-method__area__credit__link" do
-                -# 下記クレジットカード登録なしの場合に表示
-                -# .registration-info
-                -#   %i.far.fa-plus-square 
-                -#     登録してください
-
-                    -# new_product_card_path(@product) ,method: :get,
-              
-          .payment-method__area__registration-info 
-            = link_to '#', class: "registratio-link" do
-              変更する
-              %i.fas.fa-angle-right
-
-      .contents-border
-
       .delivery-address-container
         .delivery-address__area
           .delivery-address__area__tilte
@@ -107,10 +74,104 @@
 
         .important-points
           %p ※郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。<br>出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+
+
+
+      -# .payment-method-container
+      -#   .payment-method__area
+      -#     .payment-method__area__tilte
+      -#       支払い方法
+      -#     .payment-method__area__credit
+      -#       クレジットカード
+      -#       - if @card.present?
+      -#         .card-info
+      -#           %p.card-info__area__number
+      -#             = "**** **** **** " + "#{@card_info.last4}"
+      -#           %p.card-info__area__period 
+      -#             有効期限
+      -#             = @exp_month + " / " + @exp_year
+      -#           .card-info__area__brand
+      -#             = image_tag "#{@card_image}",width:'35',height:'30'
+
+      -#           .payment-method__area__registration-info 
+      -#             = link_to '#', class: "registratio-link" do
+      -#               変更する
+      -#               %i.fas.fa-angle-right
+
+      -#       - else
+      -#         .new-card
+      -#           = form_tag(action: :pay, method: :post) do
+      -#             %script.payjp-button{"data-submit-text": "カード番号を登録して閉じる", "data-text": "カード情報を入力してください", "data-key" => "pk_test_7b773292083cfc83d995662f", :src => "https://checkout.pay.jp/", :type => "text/javascript"}
+
+      -#           -# %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript" ,"data-text": "購入する" ,"data-key": "pk_test_(7b773292083cfc83d995662f)",}
+      -#         -# .new-card
+      -#         -#   = link_to new_card_path, class:"new-card__btn" do
+      -#         -#     %i.far.fa-plus-square 
+      -#         -#     登録してください
+
       .contents-border
 
-      .purchaset-box
-        = submit_tag("購入する", class: "purchaset__btn")
+      .payment-method-container
+        .payment-method__area
+          .payment-method__area__tilte
+            支払い方法
+          .payment-method__area__credit
+            クレジットカード
+            - if @card.present?
+              .card-info
+                %p.card-info__area__number
+                  = "**** **** **** " + "#{@card_info.last4}"
+                %p.card-info__area__period 
+                  有効期限
+                  = @exp_month + " / " + @exp_year
+                .card-info__area__brand
+                  = image_tag "#{@card_image}",width:'35',height:'30'
+
+                .payment-method__area__registration-info 
+                  = link_to new_card_path, class: "registratio-link" do
+                    変更する
+                    %i.fas.fa-angle-right
+
+            - else
+              .new-card
+                = form_tag(action: :pay, method: :post) do
+                  %script.payjp-button{"data-submit-text": "購入する", "data-text": "カード情報を入力する", "data-key" => "pk_test_7b773292083cfc83d995662f", :src => "https://checkout.pay.jp/", :type => "text/javascript"}
+
+                -# %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript" ,"data-text": "購入する" ,"data-key": "pk_test_(7b773292083cfc83d995662f)",}
+              -# .new-card
+              -#   = link_to new_card_path, class:"new-card__btn" do
+              -#     %i.far.fa-plus-square 
+              -#     登録してください
+                
+      -# .delivery-address-container
+      -#   .delivery-address__area
+      -#     .delivery-address__area__tilte
+      -#       配送先
+
+      -#     .delivery-address__details
+      -#       %p.postal-number
+      -#       = "〒#{@address.postal_code}"
+      -#       %p.address
+      -#       = "#{@address.prefecture.name}"
+      -#       = "#{@address.city}"
+      -#       = "#{@address.ward}"
+      -#       = "#{@address.building}"
+      -#       %p.receiver-name
+      -#       = @address.last_name
+      -#       = @address.first_name
+      -#     .delivery-address__registration-info
+      -#       = link_to '#', class: "registratio-link" do
+      -#         変更する
+      -#         %i.fas.fa-angle-right
+
+      -#   .important-points
+      -#     %p ※郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。<br>出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+      .contents-border
+
+      .purchase-box
+        - if @card.present?
+          = form_tag(action: :pay, method: :post) do
+            %button.purchase__btn 購入する
 
 %footer
   .footer__area

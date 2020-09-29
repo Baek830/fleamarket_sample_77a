@@ -17,7 +17,10 @@
 @import "users/side-menu";
 @import "users/logout";
 @import "users/mypage-product-list";
-@import "purchaset";
+@import "purchase";
+@import "cards/card-register";
+@import "cards/crad-index";
+
 
 @mixin logo() {
   width: 120px;
@@ -68,5 +71,21 @@
       padding-left: 15px;
       color: white;
     }
+  }
+}
+
+// flash用
+
+.notifications {
+  color: white;
+  text-align: center;  
+
+  .notice {
+    background-color: #3CCACE;
+    ;
+  }
+
+  .alert {
+    background-color: rgb(251, 115, 57);
   }
 }
