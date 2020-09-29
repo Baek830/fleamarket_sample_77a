@@ -17,6 +17,9 @@
 @import "users/side-menu";
 @import "users/logout";
 @import "users/mypage-product-list";
+@import "users/new";
+@import "sessions.scss";
+
 @import "purchaset";
 
 @mixin logo() {
