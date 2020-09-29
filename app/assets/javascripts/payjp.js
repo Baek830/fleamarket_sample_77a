@@ -19,6 +19,7 @@ $(document).on('turbolinks:load',function(){
       exp_year: $("#exp_year").val(),
     };
 
+    // PAYJPに登録するためのトークン作成
     Payjp.createToken(card, function(status, response) {
       if (response.error){
         // エラーがある場合処理しない
