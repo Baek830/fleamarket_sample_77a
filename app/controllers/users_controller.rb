@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :move_to_products_index, only: [:show, :edit, :logout]
+  before_action :set_parents
 
   def show
     @user = User.find(params[:id])
@@ -16,6 +17,8 @@ class UsersController < ApplicationController
   end
 
   def favorite
+    @products = Product.where(id: product_id = Favorite.where(user_id: current_user.id)
+    .select(:product_id)).page(params[:page]).per(20)
   end
 
   def move_to_products_index

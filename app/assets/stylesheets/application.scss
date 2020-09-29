@@ -10,10 +10,14 @@
 @import "errors_messages";
 @import "slick";
 @import "slick-theme";
-@import "common";
+@import "slick-common";
+@import "categories";
+@import "category_function";
 @import "users/user";
 @import "users/side-menu";
 @import "users/logout";
+@import "users/mypage-product-list";
+@import "purchaset";
 
 @mixin logo() {
   width: 120px;

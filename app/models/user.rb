@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :bought_products, class_name: "Product", foreign_key: "buyer_id"
   has_many :selling_products, -> { where("buyer_id is NULL")}, class_name: "Product", foreign_key: "seller_id"
   has_many :sold_products, -> { where("buyer_id is not NULL")}, class_name: "Product", foreign_key: "seller_id"
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_products, through: :favorites, source: :product
+  has_many :comments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -20,4 +23,9 @@ class User < ApplicationRecord
                     }
           has_many :delivery_addresses, dependent: :destroy
           accepts_nested_attributes_for :delivery_addresses
+
+def favorited_by?(product_id)
+  favorites.where(product_id: product_id).exists?
+end
+
 end

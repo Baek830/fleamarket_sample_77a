@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/show'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -17,8 +17,25 @@ Rails.application.routes.draw do
 
   root 'products#index'
   resources :products do
+    resources :favorites, only: [:create, :destroy] 
+    resources :comments, only: [:create, :destroy]
     collection do
+      get  'done', to:'items#done'
       get 'search'
+      get 'category_children'
+      get 'category_grandchildren'
+    end
+    member do
+      get "purchase"
+      post "pay"
     end
   end
+
+  root 'categories#index'
+  resources :categories do
+    collection do
+      get :search
+    end
+  end
+
 end

@@ -9,14 +9,18 @@
             .name 出品画像
             .required 必須
           .field__label-desc 最大10枚までアップロードできます
-          = form.fields_for :images do |image|
-            %ul#previews
-              %li.input
-                %label.upload-label
-                  .upload-label__text
-                    %i.fas.fa-camera.fa-2x
-                  .input-area
-                    = image.file_field :image, class: "hidden image_upload"
+          %ul.post__drop__box__container
+            %li.prev-content
+            .label-content
+              %label{for: "product_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                %pre.label-box__text-visible
+                  %i.fas.fa-camera.fa-2x
+            .hidden-content
+              = form.fields_for :images do |i|
+                = i.file_field :image, class: "hidden-field"
+              - @product.images.length.upto(9) do |i|
+                %input{name: "product[images_attributes][#{i}][image]", id: "product_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+
       .sales__page__main__product
         .field__label
           .name 商品名
@@ -32,7 +36,12 @@
         .field__label
           .name カテゴリー
           .required 必須
-        = form.select(:category_id, Category.all.map {|category|[category.name, category.id]}, {prompt: "選択してください"}, {class: "field__selector"})
+        -# 親カテゴリー表示
+        = form.select :category_id, options_for_select( @parents.map{|condition|[condition[:name], condition[:id]]}), {include_blank: "選択してください"}, {class: "field__selector", id: "parent_category"}
+        -#親カテゴリー選択によって子カテゴリー表示
+        .category-select-children#children_box
+        -#子カテゴリー選択によって孫カテゴリー表示
+        .category-select-grandchildren#grandchildren_box
 
         .field__label
           .name ブランド
@@ -77,7 +86,7 @@
           .name 販売利益
           .right_bar_2
       .sales__page__main__button
-        = form.submit "次へ進む", class: "next" 
+        = form.submit "出品", class: "next" 
         -# = link_to "下書きに保存", "#", class: "pending" 
         = link_to "もどる", root_path, class: "back" 
         .agreement 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。

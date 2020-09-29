@@ -2,22 +2,31 @@
   =render 'layouts/header'
 %main.main-container
   = render 'layouts/side-menu'
-
-  .main-container-logout
-    .main-container-logout__btn
+  .mypage-list-content
+    - if @products.presence 
+      %section.mypage-list-chapter
+        %h2.mypage-list-chapter__title
+          いいね！一覧
+        %ul.mypage-product-list
+          - @products.each do |product|
+            %li.mypage-product-list__item
+              = link_to product_path(product), class: "mypage-product-list__item__link" do
+                %figure
+                  = image_tag "#{product.images[0].image}", width: 48, height: 48
+                .mypage-product-list__item__link__body
+                  .mypage-product-text
+                    = product.name
+                  .mypage-product-text
+                    = "¥#{product.price.to_s(:delimited)}"
+                %i.fas.fa-angle-double-right.arrow-right
+    - else
+      .no-favorite-products
+        %span.no-favorite-products__text いいねした商品はありません
+    = paginate(@products)
 
 .app-banner 
-  .app-banner-contents
-    %h2.app-banner-contents__subtitle だれでもカンタン、人生を変えるフリマアプリ
-    %p.app-banner-contents__text 今すぐ無料ダウンロード！！
-    .app-link
-      .app-link__app-store-btn
-        = link_to("＃") do
-          = image_tag 'https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps', height: '60px', width: '155px'
+  = render 'app-banner'
 
-      .app-link__google-play-btn
-        = link_to("＃") do
-          = image_tag 'https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png', alt: 'Google Play で手に入れよう', height: '', width: '180px'
 %footer
   =render 'layouts/footer'
 
