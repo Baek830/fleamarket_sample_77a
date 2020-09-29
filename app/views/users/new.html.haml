@@ -1,0 +1,32 @@
+.account__new
+  = render 'layouts/form-header'
+  .account__new__main
+    .account__new__main__content
+      .field__info
+        新規会員登録
+      .field__botton
+        .field__signup-mail.hover
+          =link_to new_user_registration_path, class: "btn-def--mail","data-turbolinks": false do
+            %i.far.fa-envelope
+            %span
+            メールアドレスで登録する
+        .field__signup-google
+          =link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn-def--google" do
+            %i.fab.fa-google
+            %span
+            Googleで登録する
+        .field__signup-facebook
+          =link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn-def--facebook" do
+            %i.fab.fa-facebook-square
+            %span
+            Facebookで登録する
+        .field__signup-twitter
+          =link_to user_twitter_omniauth_authorize_path, method: :post, class: "btn-def--twitter" do
+            %i.fab.fa-twitter-square
+            %span
+            Twitterで登録する
+        .field__signup-info
+          登録することで、利用規約とプライバシーポリシーに
+          %br
+          同意したものとみなされます。
+  = render 'layouts/form-footer'
