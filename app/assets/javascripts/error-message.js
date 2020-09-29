@@ -9,13 +9,11 @@ $(function(){
     $(`#${id}`).text('');
   }
   $('input[type=file]').on('change', function(){
-    if ($('#preview-box__0').width == 0) {
-      $('.field').append(buildErrorMessage('photo', '画像がありません'));
-    } else {
+    if ($('#preview-box__0').width != 0) {
       deleteErrorMessage('photo');
     }
   });
-  $('#field__input-product-name').on('input', function() {
+  $('#field__input-product-name').on('keyup', function() {
     let productName = $(this).val();
     if (productName == '') {
       $('.product-name-wrapper').append(buildErrorMessage('name', '入力してください'));
@@ -25,7 +23,7 @@ $(function(){
       $(this).css({'borderColor': '#ccc'});
     }
   });
-  $('.field__text-box').on('input', function() {
+  $('.field__text-box').on('keyup', function() {
     let productDscr = $(this).val();
     if (productDscr == '') {
       $('.product-dscr-wrapper').append(buildErrorMessage('dscr','入力してください'));
