@@ -171,31 +171,11 @@
           }
           .new-card {
             margin-top: 15px;
-            // &__btn {
-            //   text-decoration: none;
-            //   color: #008fef;
-            // }
-            // a:hover {
-            //   color: #78b7e1;
-            // }
-            // #payjp_checkout_box input[type=button]{
-            //   background-color: white;
-            //   ・・・
-            //   }
+            #payjp_checkout_box input[type=button]{
+            border-radius: 5px;
             
-            
+            }
           }
-          // カード登録時に使用
-          // &__credit {
-          //   text-align: left;
-          //   padding-left: 20px;
-          //   a {
-          //     color: #008fef;
-          //   }
-          //   a:hover {
-          //     color: #78b7e1;
-          //   }
-          // }
           &__registration-info {
             text-align: right;
             font-size: 14px;
