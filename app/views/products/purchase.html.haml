@@ -6,6 +6,7 @@
     .purchase-container__title
       購入内容の確認
     .contents-border
+
     .purchase-container__inner
       .purchase-product__area
         .purchase-product__area--left
@@ -13,6 +14,7 @@
             = image_tag "#{@product.images[0].image}", class: 'product-img'
         .purchase-product__area--rigth 
           .purchase-product__name
+
             = @product.name
           .purchase-product__price
             .purchase-product__price__box
@@ -181,4 +183,6 @@
       %li 特定商取引に関する表記
     .footer__logo
       = link_to (image_tag "logo-white.png", class: "footer__logo--img"), root_path
+      
       %p © FURIMA
+

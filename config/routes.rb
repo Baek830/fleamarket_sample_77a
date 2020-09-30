@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations',
   }
   devise_scope :user do
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
     post 'delivery_addresses', to: 'users/registrations#create_delivery_address'
   end
 
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:new, :show, :edit, :update] do
     member do
       get "logout"
       get "favorite"
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
 
   root 'products#index'
   resources :products do
-    resources :favorites, only: [:create, :destroy] do
-    end
+    resources :favorites, only: [:create, :destroy] 
+    resources :comments, only: [:create, :destroy]
     collection do
       get  'done', to:'items#done'
       get 'search'
