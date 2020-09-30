@@ -1,16 +1,11 @@
 $(document).on('turbolinks:load',function(){
   
-  // PAY.JPの公開鍵をセット
   Payjp.setPublicKey('pk_test_7b773292083cfc83d995662f');
 
-  //formのsubmitを止めるために, クレジットカード登録のformを定義
   let form = $(".form");
 
   $("#charge-form").click(function(){
-    // submitが完了する前に、formを止める
     form.find("input[type=submit]").prop("disabled", true);
-    // submitを止められたので、PAY.JPの登録に必要な処理をする
-    // formで入力された、カード情報を取得
 
     let card = {
       number: $("#card_number").val(),
@@ -21,14 +16,13 @@ $(document).on('turbolinks:load',function(){
 
     Payjp.createToken(card, function(status, response) {
       if (response.error){
-        // エラーがある場合処理しない
+  
         form.find('.payment-errors').text(response.error.message);
         form.find('button').prop('disabled', false);
         $('#charge-form').removeAttr("disabled");
       }
       else {
-        // エラーなく問題なく進めた場合
-        // formで取得したカード情報を削除して、Appにカード情報を残さない
+
         $("#card_number").removeAttr("name");
         $("#cvc").removeAttr("name");
         $("#exp_month").removeAttr("name");
