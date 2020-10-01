@@ -42,8 +42,7 @@ class CardsController < ApplicationController
   end
 
   def new
-    #cardがすでに登録済みの場合は、indexページへ
-    @card = Card.where(user_id: current_user.id).first
+    @card = Card.find_by(user_id: current_user.id)
     redirect_to action: "index" if @card.present? 
   end
 
@@ -95,7 +94,7 @@ class CardsController < ApplicationController
   private
 
   def set_card
-    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+    @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
   end
   
 end

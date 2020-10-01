@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_parents
+  before_action :set_product, only: [:purchase, :pay]
+  before_action :set_card, only: [:purchase, :pay]
   
   def index
     @products = Product.includes(:images).order('created_at DESC')
@@ -78,9 +80,7 @@ class ProductsController < ApplicationController
   end
 
   def purchase
-    @address = DeliveryAddress.where(user_id: current_user.id).first
-    @product = Product.find(params[:id])
-    @card = Card.where(user_id: current_user.id).first
+    @address = DeliveryAddress.find_by(user_id: current_user.id)
 
     if @card.present?
       # 登録している場合,PAY.JPからカード情報を取得する
@@ -116,13 +116,9 @@ class ProductsController < ApplicationController
   end
 
   def pay
-    @product = Product.find(params[:id])
-    @card = Card.where(user_id: current_user.id).first
-
+ 
     if current_user.cards.present?
-      # ログインユーザーがクレジットカード登録済みの場合の処理
-      # ログインユーザーのクレジットカード情報を引っ張ってくる
-      @card = Card.find_by(user_id: current_user.id)
+      
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       #登録したカードでの、クレジットカード決済処理
       Payjp::Charge.create(
@@ -171,6 +167,14 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.includes(:images).find(params[:id])
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
   end
 
 end
