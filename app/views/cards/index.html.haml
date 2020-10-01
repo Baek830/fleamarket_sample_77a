@@ -1,0 +1,58 @@
+%header
+  =render partial: 'layouts/header'
+
+%main.main-container
+  = render partial: 'layouts/side-menu'
+
+  .cards-register-contents
+    %h2.cards-register-contents__title
+      支払い方法
+
+    .title-bottom-border
+
+    .card__contents 
+      %section.card__contents__group
+        %h3 クレジットカード
+        - if @card.present?
+          .card-info
+            .card-info__area
+              %p.card-info__area__number
+                = "**** **** **** " + @card_info.last4
+              %p.card-info__area__period 
+                有効期限
+                = @exp_month + " / " + @exp_year
+              .card-info__area__brand
+                = image_tag "#{@card_image}",width:'35',height:'30'
+
+            = button_to "削除する", card_path(@card), method: :delete, class:"card-info__delete-btn"
+
+          .btn-bottom-border
+
+          .info-box
+            = link_to '#', class: "info-link" do
+              支払い方法について
+              %i.fas.fa-angle-right
+
+        - else
+          .new-card
+            = link_to new_card_path, class:"new-card-btn" do
+              %i.far.fa-plus-square 
+              新規カードを登録する
+
+          .btn-bottom-border
+
+          .info-box
+            = link_to '#', class: "info-link" do
+              支払い方法について
+              %i.fas.fa-angle-right
+
+.app-banner 
+  = render 'users/app-banner'
+
+%footer
+  =render 'layouts/footer'
+
+= link_to new_product_path, class: "exhibit-btn__link" do
+  .exhibit-btn
+    %span.exhibit-btn__text 出品する
+    %i.fas.fa-camera
