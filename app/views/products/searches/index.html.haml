@@ -1,8 +1,14 @@
 %header
   =render 'layouts/header'
 
-.product-list
+.search-result-list
   .product-list-contents
+    .search-result-title
+      - if @keyword.presence
+        %h2= @keyword
+        %span の検索結果
+      - else
+        %h2 検索結果
     = render partial: 'layouts/products-list', locals: {products: @products}
 
 %footer
