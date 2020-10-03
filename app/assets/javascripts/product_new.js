@@ -23,17 +23,25 @@ $(document).on('turbolinks:load', function(){
       $('.delete-box').each(function(index, box){
         $(box).attr('id', `delete_btn_${index}`);
       })
-      if (count < 5) {
+      if (count == 0) {
+        $('.label-content').css({'width': `100%`});
+        $('#photo').css({'display': 'block'});
+      }
+      else if (count < 5) {
         $('.label-content').css({'width': `calc(100% - (20% * ${count}))`});
+        $('#photo').css({'display': 'none'});
       }
       else if (count == 5){
         $('.label-content').css({'width': `100%`});
+        $('#photo').css({'display': 'none'});
       }
       else if (count <= 9){
         $('.label-content').css({'width': `calc(100% - (20% * (${count} - 5)))`});
+        $('#photo').css({'display': 'none'});
       }
       if (count == 10) {
         $('.label-content').hide();
+        $('#photo').css({'display': 'none'});
       }
     }
 
@@ -45,18 +53,26 @@ $(document).on('turbolinks:load', function(){
       $('.delete-box').each(function(index, box){
         $(box).attr('id', `delete_btn_${index}`);
       })
-      if (count < 5) {
+      if (count == 0) {
+        $('.label-content').css({'width': `100%`});
+        $('#photo').css({'display': 'block'});
+      }
+      else if (count < 5) {
         $('.label-content').css({'width': `calc(100% - (20% * ${count}))`});
+        $('#photo').css({'display': 'none'});
       }
       else if (count == 5){
         $('.label-content').css({'width': `100%`});
+        $('#photo').css({'display': 'none'});
       }
       else if (count <= 9){
         $('.label-content').css({'width': `calc(100% - (20% * (${count} - 5)))`});
         $('.prev-content').append($('.label-content'));
+        $('#photo').css({'display': 'none'});
       }
       if (count == 10) {
         $('.label-content').hide();
+        $('#photo').css({'display': 'none'});
       }
 
     }
@@ -99,6 +115,13 @@ $(document).on('turbolinks:load', function(){
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       $(`#preview-box__${id}`).remove();
 
+      if ($('.delete-box').length == 0) {
+        $('#photo').css({'display': 'block'});
+      } else {
+        $('#photo').css({'display': 'none'});
+      };
+      
+
       if ($(`#product_images_attributes_${id}__destroy`).length == 0) {
         $(`#product_images_attributes_${id}_image`).val("");
         var count = $('.preview-box').length;
@@ -125,10 +148,10 @@ $(document).on('turbolinks:load', function(){
 
 
 $(document).on('turbolinks:load',function(){
-  $('#product_price').on('input', function(){
-    const data = $('#product_price').val();
-    const profit = Math.round(data * 0.9).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
-    const fee = Math.round(data * 0.1).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
+  $('#field__input-price').on('input', function(){
+    let data = $(this).val();
+    let profit = Math.round(data * 0.9).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
+    let fee = Math.round(data * 0.1).toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
     $('.right_bar').html(fee)
     $('.right_bar_2').html(profit)
     $('#price').val(profit)
