@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :products
+  has_many :cards
   has_many :bought_products, class_name: "Product", foreign_key: "buyer_id"
   has_many :selling_products, -> { where("buyer_id is NULL")}, class_name: "Product", foreign_key: "seller_id"
   has_many :sold_products, -> { where("buyer_id is not NULL")}, class_name: "Product", foreign_key: "seller_id"

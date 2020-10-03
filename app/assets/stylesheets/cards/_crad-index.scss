@@ -1,0 +1,68 @@
+.card__contents  {
+  
+  &__group {
+    max-width: 300px;
+    margin: 0 auto;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+    }
+    .card-info{
+      font-size: 14px;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+
+      &__area {
+
+        &__number {
+
+
+        }
+        &__period {
+          display: flex;
+  
+        }
+        &__brand {
+          margin-top: 5px;  
+        }
+      }
+      .card-info__delete-btn {
+        background-color: #fff;
+        color: #d54444;
+        border: 1px solid #d54444;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        outline: none;
+      }
+    }
+    .new-card {
+      .new-card-btn {
+        text-decoration: none;
+        font-size: 14px;
+        color: #008fef;
+      }
+    }
+    .btn-bottom-border {
+      max-width: 300px;
+      border-bottom: 1px solid #e5e5e5;
+      margin: 40px auto 20px;
+    }
+    .info-box {
+      text-align: right;
+      .info-link {
+        width: 300px;
+        font-size: 14px;
+        color: #008fef;
+        text-decoration: none;
+      }
+    }
+  }
+}
