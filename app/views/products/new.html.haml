@@ -20,6 +20,7 @@
                 = i.file_field :image, class: "hidden-field"
               - @product.images.length.upto(9) do |i|
                 %input{name: "product[images_attributes][#{i}][image]", id: "product_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+        .error-message#photo 画像がありません
 
       .sales__page__main__product
         .product-name-wrapper
@@ -96,7 +97,6 @@
           .right_bar_2
       .sales__page__main__button
         = form.submit "出品", class: "next", id: "next"
-        -# = link_to "下書きに保存", "#", class: "pending" 
         = link_to "もどる", root_path, class: "back" 
         .agreement 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
   = render 'layouts/form-footer'

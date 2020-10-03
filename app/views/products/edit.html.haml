@@ -30,70 +30,74 @@
 
               - @product.images.length.upto(9) do |i|
                 %input{name: "product[images_attributes][#{i}][image]", id: "product_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+        .error-message#photo 画像がありません
 
       .sales__page__main__product
-        .field__label
-          .name 商品名
-          .required 必須
-        = form.text_field :name, {class: "field__input"}
-        .field__label
-          .name 商品の説明
-          .required 必須
-        = form.text_area :description, class: "field__text-box", placeholder: "商品の説明（必須 1,000文字以内）&#13;&#10;（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。".html_safe
+        .product-name-wrapper
+          .field__label
+            .name 商品名
+            .required 必須
+          = form.text_field :name, {class: "field__input", id: "field__input-product-name"}
+        .product-dscr-wrapper
+          .field__label
+            .name 商品の説明
+            .required 必須
+          = form.text_area :description, class: "field__text-box", placeholder: "商品の説明（必須 1,000文字以内）&#13;&#10;（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。".html_safe
 
       .sales__page__main__details
         .text 商品の詳細
         .field__label
           .name カテゴリー
           .required 必須
-        = form.select :category_id, options_for_select( @parents.map{|condition|[condition[:name], condition[:id]]}, {selected: @product.category.parent.parent.id}),{} , {class: "field__selector", id: "parent_category"}
-        -# -#親カテゴリー選択によって子カテゴリー表示
-        -# .category-select-children#children_box
-        -# -#子カテゴリー選択によって孫カテゴリー表示
-        -# .category-select-grandchildren#grandchildren_box
-
-        -# = form.select :parent_name, @category_parent,{selected: @product.category.parent.parent.name}, {class: "field__selector", id: "parent_category"}
-        .category-select-children#children_box
-          =form.select :child_id, options_for_select(@category_children.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @product.category.parent.id}), {}, {class: "field__selector", id: "children_category"}
-        .category-select-grandchildren#grandchildren_box
-          = form.select :category_id, options_for_select(@category_grandchildren.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @product.category.id}),{}, {class: "field__selector", id: "grandchild_category"}
+        .product-category-wrapper
+          = form.select :category_id, options_for_select( @parents.map{|condition|[condition[:name], condition[:id]]}, {selected: @product.category.parent.parent.id}),{} , {class: "field__selector", id: "parent_category"}
+          .category-select-children#children_box
+            =form.select :child_id, options_for_select(@category_children.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @product.category.parent.id}), {}, {class: "field__selector", id: "children_category"}
+          .category-select-grandchildren#grandchildren_box
+            = form.select :category_id, options_for_select(@category_grandchildren.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @product.category.id}),{}, {class: "field__selector", id: "grandchild_category"}
 
         .field__label
           .name ブランド
           .better 任意
         = form.text_field :brand, placeholder: "例）シャネル", class: "field__input"
 
-        .field__label
-          .name 商品の状態
-          .required 必須
-        = form.select(:condition_id, Condition.all.map {|condition|[condition.name, condition.id]}, {prompt: "選択してください"}, {class: "field__selector"})
+        .product-condition-wrapper
+          .field__label
+            .name 商品の状態
+            .required 必須
+          = form.select(:condition_id, Condition.all.map {|condition|[condition.name, condition.id]}, {prompt: "選択してください"}, {class: "field__selector", id: "field__selector-product-condition"})
 
       .sales__page__main__shipment
         .text 配送について
-        .field__label
-          .name 配送料の負担
-          .required 必須
-        = form.select(:shipping_cost_id, ShippingCost.all.map {|shipping_cost|[shipping_cost.name, shipping_cost.id]},  {prompt: "選択してください"}, {class: "field__selector"})
+        .shipping-cost-wrapper
+          .field__label
+            .name 配送料の負担
+            .required 必須
+          = form.select(:shipping_cost_id, ShippingCost.all.map {|shipping_cost|[shipping_cost.name, shipping_cost.id]},  {prompt: "選択してください"}, {class: "field__selector", id: "field__selector-shipping-cost"})
 
-        .field__label
-          .name 発送元の地域
-          .required 必須
-        = form.select(:prefecture_id, Prefecture.all.map {|prefecture|[prefecture.name, prefecture.id]}, {prompt: "選択してください"}, {class: "field__selector"})
+        .prefecture-wrapper
+          .field__label
+            .name 発送元の地域
+            .required 必須
+          = form.select(:prefecture_id, Prefecture.all.map {|prefecture|[prefecture.name, prefecture.id]}, {prompt: "選択してください"}, {class: "field__selector", id: "field__selector-prefecture"})
 
-        .field__label
-          .name 発送までの日数
-          .required 必須
-        = form.select(:shipment_date_id, ShipmentDate.all.map {|shipment_date|[shipment_date.name, shipment_date.id]}, {prompt: "選択してください"}, {class: "field__selector"})
+        .date-wrapper
+          .field__label
+            .name 発送までの日数
+            .required 必須
+          = form.select(:shipment_date_id, ShipmentDate.all.map {|shipment_date|[shipment_date.name, shipment_date.id]}, {prompt: "選択してください"}, {class: "field__selector", id: "field__selector-date"})
 
       .sales__page__main__price
         .text 価格 (¥300〜9,999,999)
-        .sales-price
-          .field__label
-            .name 販売価格
-            .required 必須
-          .price
-            .price-tag ¥
-            = form.number_field :price, placeholder: "0", class: "field__input"
+        .sales-price-wrapper
+          .sales-price
+            .field__label
+              .name 販売価格
+              .required 必須
+            .price
+              .price-tag ¥
+              = form.number_field :price, placeholder: "0", class: "field__input", id: "field__input-price"
+          .error-message#price ¥300以上、¥9,999,999以下で入力して
         .sales-comission
           .name 販売手数料 (10%)
           .right_bar
@@ -102,7 +106,6 @@
           .right_bar_2
       .sales__page__main__button
         = form.submit "更新する", class: "next" 
-        -# = link_to "下書きに保存", "#", class: "pending" 
         = link_to "もどる", root_path, class: "back" 
         .agreement 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
   = render 'layouts/form-footer'

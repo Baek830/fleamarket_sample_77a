@@ -10,8 +10,13 @@ $(function(){
   }
   $('input[type=file]').on('change', function(){
     if ($('#preview-box__0').width != 0) {
-      deleteErrorMessage('photo');
+      $('#photo').css({'display': 'none'});
     }
+    // if ($('.delete-box').length == 0) {
+    //   $('#photo').css({'display': 'block'});
+    // } else {
+    //   $('#photo').css({'display': 'none'});
+    // };
   });
   $('#field__input-product-name').on('keyup', function() {
     let productName = $(this).val();
