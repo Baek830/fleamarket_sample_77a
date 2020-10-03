@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :move_to_products_index, only: [:show, :edit, :logout]
   before_action :set_parents
 
+  def new
+  end
+
   def show
     @user = User.find(params[:id])
     @sale_item = Product.where(seller_id: current_user.id)

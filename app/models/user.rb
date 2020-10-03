@@ -6,10 +6,12 @@ class User < ApplicationRecord
   has_many :sold_products, -> { where("buyer_id is not NULL")}, class_name: "Product", foreign_key: "seller_id"
   has_many :favorites, dependent: :destroy
   has_many :favorite_products, through: :favorites, source: :product
+  has_many :sns_credentials
+  has_many :comments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :validatable
+          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter, :facebook, :google_oauth2]
           validates :nickname, :birthday , presence: true
           validates :first_name, :last_name, presence: true,
                     format: {
@@ -23,6 +25,19 @@ class User < ApplicationRecord
                     }
           has_many :delivery_addresses, dependent: :destroy
           accepts_nested_attributes_for :delivery_addresses
+
+def self.from_omniauth(auth)
+  sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
+  user = sns.user || User.where(email: auth.info.email).first_or_initialize(
+    nickname: auth.info.name,
+      email: auth.info.email
+  )
+  if user.persisted?
+    sns.user = user
+    sns.save
+  end
+  { user: user, sns: sns }
+end
 
 def favorited_by?(product_id)
   favorites.where(product_id: product_id).exists?

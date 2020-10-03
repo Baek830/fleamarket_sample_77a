@@ -10,7 +10,7 @@
 @import "errors_messages";
 @import "slick";
 @import "slick-theme";
-@import "common";
+@import "slick-common";
 @import "categories";
 @import "category_function";
 @import "users/user";
@@ -20,7 +20,7 @@
 @import "purchase";
 @import "cards/card-register";
 @import "cards/crad-index";
-
+@import "sessions.scss";
 
 @mixin logo() {
   width: 120px;

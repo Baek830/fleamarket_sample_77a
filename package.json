@@ -1,5 +1,8 @@
 {
   "name": "fleamarket_sample_77a",
   "private": true,
-  "dependencies": {}
+  "type": "module",
+  "dependencies": {
+    "sweetalert2": "^10.3.0"
+  }
 }
