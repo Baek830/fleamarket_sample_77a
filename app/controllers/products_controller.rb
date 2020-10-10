@@ -51,11 +51,8 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to product_path(@product)
     else
-      unless @product.images.present?
-        render :edit
-      else
-        render :edit
-      end
+      render :edit
+    end
   end
 
   def show
