@@ -5,8 +5,8 @@ class ProductsController < ApplicationController
   
   def index
     @products = Product.includes(:images).order('created_at DESC')
-    @product = Product.all.order("created_at DESC").limit(10)
-    @brand = Product.where(brand: 'ロレックス').order("created_at DESC").limit(10)
+    @product = Product.all.order("created_at DESC").limit(15)
+    @brand = Product.where(brand: 'ロレックス').order("created_at DESC").limit(15)
   end
 
   def new
