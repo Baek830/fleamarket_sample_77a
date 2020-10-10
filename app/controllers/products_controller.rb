@@ -49,9 +49,9 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_path(@product), notice: '更新しました'
+      redirect_to product_path(@product)
     else
-      render 'edit'
+      render :edit
     end
   end
 
