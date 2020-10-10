@@ -13,14 +13,14 @@ class ProductsController < ApplicationController
     @product = Product.new
     @images = @product.images.new
   end
-
+  
   def category_children
     @category_children = Category.find(params[:parent_name]).children
   end
 
   def category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
-  end  
+  end
 
   def create
     @product = Product.new(product_params)
@@ -44,10 +44,16 @@ class ProductsController < ApplicationController
     @category = Category.find(params[:id])
     @category_children = @product.category.parent.parent.children
     @category_grandchildren = @product.category.parent.children
-
   end
 
   def update
+    @grandchild_category = @product.category
+    @child_category = @grandchild_category.parent
+    @category_parent = @child_category.parent
+
+    @category = Category.find(params[:id])
+    @category_children = @product.category.parent.parent.children
+    @category_grandchildren = @product.category.parent.children
     if @product.update(product_params)
       redirect_to product_path(@product)
     else
@@ -172,5 +178,4 @@ class ProductsController < ApplicationController
   def find_product
     @product = Product.includes(:images).find(params[:id])
   end
-
 end

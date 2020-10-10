@@ -45,6 +45,36 @@ $(document).on('turbolinks:load', function(){
       }
     }
 
+    if (window.location.href.match(/\/products\/\d/)){
+      var count = $('.preview-box').length;
+      $('.preview-box').each(function(index, box){
+        $(box).attr('id', `preview-box__${index}`);
+      })
+      $('.delete-box').each(function(index, box){
+        $(box).attr('id', `delete_btn_${index}`);
+      })
+      if (count == 0) {
+        $('.label-content').css({'width': `100%`});
+        $('#photo').css({'display': 'block'});
+      }
+      else if (count < 5) {
+        $('.label-content').css({'width': `calc(100% - (20% * ${count}))`});
+        $('#photo').css({'display': 'none'});
+      }
+      else if (count == 5){
+        $('.label-content').css({'width': `100%`});
+        $('#photo').css({'display': 'none'});
+      }
+      else if (count <= 9){
+        $('.label-content').css({'width': `calc(100% - (20% * (${count} - 5)))`});
+        $('#photo').css({'display': 'none'});
+      }
+      if (count == 10) {
+        $('.label-content').hide();
+        $('#photo').css({'display': 'none'});
+      }
+    }
+
     function setLabel() {
       var count = $('.preview-box').length;
       $('.preview-box').each(function(index, box){

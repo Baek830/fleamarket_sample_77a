@@ -50,7 +50,7 @@
           .name カテゴリー
           .required 必須
         .product-category-wrapper
-          = form.select :category_id, options_for_select( @parents.map{|condition|[condition[:name], condition[:id]]}, {selected: @product.category.parent.parent.id}),{} , {class: "field__selector", id: "parent_category"}
+          = form.select :parent_name, options_for_select( @parents.map{|condition|[condition[:name], condition[:id]]}, {selected: @product.category.parent.parent.id}),{} , {class: "field__selector", id: "parent_category"}
           .category-select-children#children_box
             =form.select :child_id, options_for_select(@category_children.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @product.category.parent.id}), {}, {class: "field__selector", id: "children_category"}
           .category-select-grandchildren#grandchildren_box
