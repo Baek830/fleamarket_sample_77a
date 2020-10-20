@@ -62,7 +62,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    #ここのifはコントローラーに書かない方がいいかも。。。
     if user_signed_in? 
       @favorite = Favorite.find_by(user_id: current_user.id, product_id: @product.id)
     end
@@ -89,21 +88,13 @@ class ProductsController < ApplicationController
     @card = Card.where(user_id: current_user.id).first
 
     if @card.present?
-      # 登録している場合,PAY.JPからカード情報を取得する
-      # PAY.JPの秘密鍵をセットする。
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      # PAY.JPから顧客情報を取得する。
       customer = Payjp::Customer.retrieve(@card.customer_id)
-      # PAY.JPの顧客情報から、デフォルトで使うクレジットカードを取得する。
       @card_info = customer.cards.retrieve(customer.default_card)
-      # クレジットカード情報から表示させたい情報を定義する。
-      # クレジットカードの画像を表示するために、カード会社を取得
       @card_brand = @card_info.brand
-      # クレジットカードの有効期限を取得
       @exp_month = @card_info.exp_month.to_s
       @exp_year = @card_info.exp_year.to_s.slice(2,3) 
 
-      # クレジットカード会社を取得したので、カード会社の画像をviewに表示させるため、ファイルを指定する。
       case @card_brand
       when "Visa"
         @card_image = "creditcards/visa_1.svg"
