@@ -26,6 +26,7 @@
             .hidden-content
               = form.fields_for :images do |i|
                 = i.file_field :image, class: "hidden-field"
+                = i.hidden_field :image_cache
                 = i.check_box:_destroy, class: "hidden-checkbox"
 
               - @product.images.length.upto(9) do |i|

@@ -170,7 +170,7 @@ class ProductsController < ApplicationController
       :shipment_date_id, 
       :prefecture_id, 
       :category_id, 
-      [images_attributes: [:image, :_destroy, :id]]
+      [images_attributes: [:image, :_destroy, :id, :image_cache]]
       )
       .merge(seller_id: current_user.id)
   end
