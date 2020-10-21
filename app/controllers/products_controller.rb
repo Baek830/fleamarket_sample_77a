@@ -141,7 +141,8 @@ class ProductsController < ApplicationController
 
     if @product.update(buyer_id: current_user.id)
       flash[:notice] = '購入しました'
-      redirect_to controller: 'products', action: 'show', id: @product.id
+      redirect_to root_path
+      # redirect_to controller: 'products', action: 'show', id: @product.id
     else
       flash[:alert] = '購入に失敗しました'
       redirect_to controller: 'products', action: 'show', id: @product.id
